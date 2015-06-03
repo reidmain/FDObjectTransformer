@@ -14,6 +14,7 @@
 		27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
 		27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
+		27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

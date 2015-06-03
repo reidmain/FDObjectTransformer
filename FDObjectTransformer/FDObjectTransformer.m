@@ -41,6 +41,44 @@
 
 #pragma mark - Public Methods
 
+- (id)objectOfClass: (Class)objectClass from:(id)from
+{
+	if (objectClass == nil 
+		|| from == nil)
+	{
+		return nil;
+	}
+	
+	if ([from isKindOfClass: objectClass] == YES)
+	{
+		return from;
+	}
+	
+	id transformedObject = nil;
+	
+	if (objectClass == [NSString class])
+	{
+		if ([from isKindOfClass: [NSNumber class]] == YES)
+		{
+			transformedObject = [from stringValue];
+		}
+		else if ([from isKindOfClass: [NSURL class]] == YES)
+		{
+			transformedObject = [from absoluteString];
+		}
+		else if ([from isKindOfClass: [NSDate class]] == YES)
+		{
+			transformedObject = [_dateFormatter stringFromDate: from];
+		}
+		else
+		{
+			transformedObject = [from description];
+		}
+	}
+	
+	return transformedObject;
+}
+
 
 #pragma mark - Overridden Methods
 
