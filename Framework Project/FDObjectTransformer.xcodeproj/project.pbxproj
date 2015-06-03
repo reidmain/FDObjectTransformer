@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27ACFD051B1EC42D004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */; };
+		27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */; };
+		27ACFD251B1EC474004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */; };
+		27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
+		27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27ACFD061B1EC42D004B8142 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27ACFCF01B1EC42D004B8142 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27ACFCF81B1EC42D004B8142;
+			remoteInfo = FDObjectTransformer;
+		};
+		27ACFD261B1EC474004B8142 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27ACFCF01B1EC42D004B8142 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27ACFD191B1EC474004B8142;
+			remoteInfo = FDObjectTransformer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDObjectTransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27ACFD041B1EC42D004B8142 /* FDObjectTransformer iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FDObjectTransformer iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27ACFD0A1B1EC42D004B8142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDObjectTransformerTests.m; sourceTree = "<group>"; };
+		27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDObjectTransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27ACFD241B1EC474004B8142 /* FDObjectTransformer OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FDObjectTransformer OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDObjectTransformer.h; sourceTree = "<group>"; };
+		27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDObjectTransformer.m; sourceTree = "<group>"; };
+		27ACFD3B1B1ECA0A004B8142 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27ACFD3F1B1ECA17004B8142 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27ACFCF51B1EC42D004B8142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD011B1EC42D004B8142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD051B1EC42D004B8142 /* FDObjectTransformer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD161B1EC474004B8142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD211B1EC474004B8142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD251B1EC474004B8142 /* FDObjectTransformer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27ACFCEF1B1EC42D004B8142 = {
+			isa = PBXGroup;
+			children = (
+				27ACFCFB1B1EC42D004B8142 /* FDObjectTransformer Framework */,
+				27ACFD081B1EC42D004B8142 /* FDObjectTransformer Tests */,
+				27ACFCFA1B1EC42D004B8142 /* Products */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 1;
+		};
+		27ACFCFA1B1EC42D004B8142 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */,
+				27ACFD041B1EC42D004B8142 /* FDObjectTransformer iOS Tests.xctest */,
+				27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */,
+				27ACFD241B1EC474004B8142 /* FDObjectTransformer OS X Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27ACFCFB1B1EC42D004B8142 /* FDObjectTransformer Framework */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD331B1EC956004B8142 /* FDObjectTransformer */,
+				27ACFD3A1B1ECA0A004B8142 /* iOS Supporting Files */,
+				27ACFD3E1B1ECA17004B8142 /* OS X Supporting Files */,
+			);
+			name = "FDObjectTransformer Framework";
+			sourceTree = "<group>";
+		};
+		27ACFD081B1EC42D004B8142 /* FDObjectTransformer Tests */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */,
+				27ACFD091B1EC42D004B8142 /* Supporting Files */,
+			);
+			path = "FDObjectTransformer Tests";
+			sourceTree = "<group>";
+		};
+		27ACFD091B1EC42D004B8142 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD0A1B1EC42D004B8142 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27ACFD331B1EC956004B8142 /* FDObjectTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */,
+				27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */,
+			);
+			name = FDObjectTransformer;
+			path = ../FDObjectTransformer;
+			sourceTree = "<group>";
+		};
+		27ACFD3A1B1ECA0A004B8142 /* iOS Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD3B1B1ECA0A004B8142 /* Info.plist */,
+			);
+			path = "iOS Supporting Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		27ACFD3E1B1ECA17004B8142 /* OS X Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27ACFD3F1B1ECA17004B8142 /* Info.plist */,
+			);
+			path = "OS X Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		27ACFCF61B1EC42D004B8142 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD171B1EC474004B8142 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		27ACFCF81B1EC42D004B8142 /* FDObjectTransformer iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27ACFD0F1B1EC42D004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer iOS" */;
+			buildPhases = (
+				27ACFCF41B1EC42D004B8142 /* Sources */,
+				27ACFCF51B1EC42D004B8142 /* Frameworks */,
+				27ACFCF61B1EC42D004B8142 /* Headers */,
+				27ACFCF71B1EC42D004B8142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FDObjectTransformer iOS";
+			productName = FDObjectTransformer;
+			productReference = 27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27ACFD031B1EC42D004B8142 /* FDObjectTransformer iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27ACFD121B1EC42D004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer iOS Tests" */;
+			buildPhases = (
+				27ACFD001B1EC42D004B8142 /* Sources */,
+				27ACFD011B1EC42D004B8142 /* Frameworks */,
+				27ACFD021B1EC42D004B8142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27ACFD071B1EC42D004B8142 /* PBXTargetDependency */,
+			);
+			name = "FDObjectTransformer iOS Tests";
+			productName = FDObjectTransformerTests;
+			productReference = 27ACFD041B1EC42D004B8142 /* FDObjectTransformer iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		27ACFD191B1EC474004B8142 /* FDObjectTransformer OS X */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27ACFD2D1B1EC474004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer OS X" */;
+			buildPhases = (
+				27ACFD151B1EC474004B8142 /* Sources */,
+				27ACFD161B1EC474004B8142 /* Frameworks */,
+				27ACFD171B1EC474004B8142 /* Headers */,
+				27ACFD181B1EC474004B8142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FDObjectTransformer OS X";
+			productName = FDObjectTransformer;
+			productReference = 27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27ACFD231B1EC474004B8142 /* FDObjectTransformer OS X Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27ACFD301B1EC474004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer OS X Tests" */;
+			buildPhases = (
+				27ACFD201B1EC474004B8142 /* Sources */,
+				27ACFD211B1EC474004B8142 /* Frameworks */,
+				27ACFD221B1EC474004B8142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27ACFD271B1EC474004B8142 /* PBXTargetDependency */,
+			);
+			name = "FDObjectTransformer OS X Tests";
+			productName = FDObjectTransformerTests;
+			productReference = 27ACFD241B1EC474004B8142 /* FDObjectTransformer OS X Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27ACFCF01B1EC42D004B8142 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "1414 Degrees";
+				TargetAttributes = {
+					27ACFCF81B1EC42D004B8142 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					27ACFD031B1EC42D004B8142 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					27ACFD191B1EC474004B8142 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					27ACFD231B1EC474004B8142 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 27ACFCF31B1EC42D004B8142 /* Build configuration list for PBXProject "FDObjectTransformer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 27ACFCEF1B1EC42D004B8142;
+			productRefGroup = 27ACFCFA1B1EC42D004B8142 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27ACFCF81B1EC42D004B8142 /* FDObjectTransformer iOS */,
+				27ACFD191B1EC474004B8142 /* FDObjectTransformer OS X */,
+				27ACFD031B1EC42D004B8142 /* FDObjectTransformer iOS Tests */,
+				27ACFD231B1EC474004B8142 /* FDObjectTransformer OS X Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27ACFCF71B1EC42D004B8142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD021B1EC42D004B8142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD181B1EC474004B8142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD221B1EC474004B8142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27ACFCF41B1EC42D004B8142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD001B1EC42D004B8142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD151B1EC474004B8142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27ACFD201B1EC474004B8142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27ACFD071B1EC42D004B8142 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27ACFCF81B1EC42D004B8142 /* FDObjectTransformer iOS */;
+			targetProxy = 27ACFD061B1EC42D004B8142 /* PBXContainerItemProxy */;
+		};
+		27ACFD271B1EC474004B8142 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27ACFD191B1EC474004B8142 /* FDObjectTransformer OS X */;
+			targetProxy = 27ACFD261B1EC474004B8142 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		27ACFD0D1B1EC42D004B8142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = FDObjectTransformer;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27ACFD0E1B1EC42D004B8142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = FDObjectTransformer;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27ACFD101B1EC42D004B8142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "iOS Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		27ACFD111B1EC42D004B8142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "iOS Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		27ACFD131B1EC42D004B8142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FDObjectTransformer Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		27ACFD141B1EC42D004B8142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FDObjectTransformer Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		27ACFD2E1B1EC474004B8142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "OS X Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		27ACFD2F1B1EC474004B8142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "OS X Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		27ACFD311B1EC474004B8142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FDObjectTransformerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		27ACFD321B1EC474004B8142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FDObjectTransformerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27ACFCF31B1EC42D004B8142 /* Build configuration list for PBXProject "FDObjectTransformer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27ACFD0D1B1EC42D004B8142 /* Debug */,
+				27ACFD0E1B1EC42D004B8142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27ACFD0F1B1EC42D004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27ACFD101B1EC42D004B8142 /* Debug */,
+				27ACFD111B1EC42D004B8142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27ACFD121B1EC42D004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27ACFD131B1EC42D004B8142 /* Debug */,
+				27ACFD141B1EC42D004B8142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27ACFD2D1B1EC474004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer OS X" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27ACFD2E1B1EC474004B8142 /* Debug */,
+				27ACFD2F1B1EC474004B8142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27ACFD301B1EC474004B8142 /* Build configuration list for PBXNativeTarget "FDObjectTransformer OS X Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27ACFD311B1EC474004B8142 /* Debug */,
+				27ACFD321B1EC474004B8142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27ACFCF01B1EC42D004B8142 /* Project object */;
+}
