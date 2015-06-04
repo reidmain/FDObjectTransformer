@@ -2,6 +2,9 @@
 
 @import FDObjectTransformer;
 
+#define FDAssertIsKindOfClass(object, objectClass, ...) \
+	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
+
 @interface FDObjectTransformerTests : XCTestCase
 
 @end
@@ -133,6 +136,30 @@
 		from: number];
 	XCTAssertNotEqualObjects(number, transformedNumber);
 	XCTAssertNil(transformedNumber);
+}
+
+- (void)testTransformationsFromNSArray
+{
+	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
+	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
+	
+	// Test transforming an array of strings.
+	NSArray *transformedStringsToStrings = [_transformer objectOfClass: [NSString class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfStrings, transformedStringsToStrings);
+	
+	NSArray *transformedStringsToNumbers = [_transformer objectOfClass: [NSNumber class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedStringsToNumbers);
+	
+	// Test transforming an array of numbers.
+	NSArray *transformedNumbersToNumbers = [_transformer objectOfClass: [NSNumber class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedNumbersToNumbers);
+	
+	NSArray *transformedNumbersToStrings = [_transformer objectOfClass: [NSString class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfStrings, transformedNumbersToStrings);
 }
 
 - (void)testPerformanceExample

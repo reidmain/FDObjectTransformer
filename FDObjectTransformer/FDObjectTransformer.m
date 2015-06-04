@@ -56,7 +56,25 @@
 	
 	id transformedObject = nil;
 	
-	if (objectClass == [NSString class])
+	if ([from isKindOfClass: [NSArray class]] == YES)
+	{
+		Class arrayClass = [from class];
+		NSMutableArray *mutableArray = [NSMutableArray array];
+		
+		[from enumerateObjectsUsingBlock: ^(id objectInArray, NSUInteger index, BOOL *stop)
+			{
+				id transformedObjectInArray = [self objectOfClass: objectClass 
+					from: objectInArray];
+				
+				if (transformedObjectInArray != nil)
+				{
+					[mutableArray addObject: transformedObjectInArray];
+				}
+			}];
+		
+		transformedObject = [arrayClass arrayWithArray: mutableArray];
+	}
+	else if (objectClass == [NSString class])
 	{
 		if ([from isKindOfClass: [NSNumber class]] == YES)
 		{
