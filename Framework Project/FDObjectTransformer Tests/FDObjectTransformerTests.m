@@ -83,6 +83,28 @@
 	XCTAssertNil(transformedURL);
 }
 
+- (void)testTransformationToNSURL
+{
+	// Test the transformation from NSURL to NSURL.
+	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
+	NSURL *transformedURL = [_transformer objectOfClass: [NSURL class] 
+		from: url];
+	XCTAssertEqualObjects(url, transformedURL);
+	
+	// Test the transformation from NSString to NSURL.
+	NSString *urlString = @"http://www.reidmain.com";
+	NSURL *transformedURLString = [_transformer objectOfClass: [NSURL class] 
+		from: urlString];
+	XCTAssertEqualObjects([NSURL URLWithString: urlString], transformedURLString);
+	
+	// Test the transformation from NSNumber to NSURL.
+	NSNumber *number = @(21);
+	NSURL *transformedNumber = [_transformer objectOfClass: [NSURL class] 
+		from: number];
+	XCTAssertNotEqualObjects(number, transformedNumber);
+	XCTAssertNil(transformedNumber);
+}
+
 - (void)testPerformanceExample
 {
     [self measureBlock: ^

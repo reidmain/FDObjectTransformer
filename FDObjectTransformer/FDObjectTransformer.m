@@ -82,6 +82,13 @@
 			transformedObject = @([from longLongValue]);
 		}
 	}
+	else if (objectClass == [NSURL class])
+	{
+		if ([from isKindOfClass: [NSString class]] == YES)
+		{
+			transformedObject = [NSURL URLWithString: from];
+		}
+	}
 	
 	return transformedObject;
 }
