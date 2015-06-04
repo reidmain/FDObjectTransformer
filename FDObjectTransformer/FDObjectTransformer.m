@@ -75,6 +75,13 @@
 			transformedObject = [from description];
 		}
 	}
+	else if (objectClass == [NSNumber class])
+	{
+		if ([from isKindOfClass: [NSString class]] == YES)
+		{
+			transformedObject = @([from longLongValue]);
+		}
+	}
 	
 	return transformedObject;
 }
