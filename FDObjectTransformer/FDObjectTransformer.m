@@ -82,6 +82,13 @@
 			transformedObject = @([from longLongValue]);
 		}
 	}
+	else if (objectClass == [NSDate class])
+	{
+		if ([from isKindOfClass: [NSString class]] == YES)
+		{
+			transformedObject = [_dateFormatter dateFromString: from];
+		}
+	}
 	else if (objectClass == [NSURL class])
 	{
 		if ([from isKindOfClass: [NSString class]] == YES)

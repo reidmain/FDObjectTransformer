@@ -83,6 +83,36 @@
 	XCTAssertNil(transformedURL);
 }
 
+- (void)testTransformationToNSDate
+{
+	// Test the transformation from NSDate to NSDate.
+	NSDate *date = [NSDate date];
+	NSDate *transformedDate = [_transformer objectOfClass: [NSDate class] 
+		from: date];
+	XCTAssertEqualObjects(date, transformedDate);
+	
+	// Test the transformation from NSString to NSDate.
+	NSString *dateString = @"01/15/2013";
+	NSDate *dateFromString = [_transformer.dateFormatter dateFromString: dateString];
+	NSDate *transformedDateString = [_transformer objectOfClass: [NSDate class] 
+		from: dateString];
+	XCTAssertEqualObjects(dateFromString, transformedDateString);
+	
+	// Test the transformation from NSNumber to NSDate.
+	NSNumber *number = @(21);
+	NSDate *transformedNumber = [_transformer objectOfClass: [NSDate class] 
+		from: number];
+	XCTAssertNotEqualObjects(number, transformedNumber);
+	XCTAssertNil(transformedNumber);
+	
+	// Test the transformation from NSURL to NSDate.
+	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
+	NSURL *transformedURL = [_transformer objectOfClass: [NSDate class] 
+		from: url];
+	XCTAssertNotEqualObjects(url, transformedURL);
+	XCTAssertNil(transformedURL);
+}
+
 - (void)testTransformationToNSURL
 {
 	// Test the transformation from NSURL to NSURL.
