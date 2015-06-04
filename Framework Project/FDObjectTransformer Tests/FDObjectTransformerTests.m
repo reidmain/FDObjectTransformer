@@ -20,6 +20,17 @@
 	_transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
 }
 
+- (void)testBaseCases
+{
+	id nilObjectClass = [_transformer objectOfClass: nil 
+		from: @"Reid"];
+	XCTAssertNil(nilObjectClass);
+	
+	id nilObject = [_transformer objectOfClass: [NSString class] 
+		from: nil];
+	XCTAssertNil(nilObject);
+}
+
 - (void)testTransformationToNSString
 {
 	// Test the transformation from NSString to NSString.
