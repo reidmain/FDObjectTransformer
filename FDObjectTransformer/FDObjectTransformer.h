@@ -1,4 +1,5 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
+#import "FDColor+Creation.h"
 
 
 #pragma mark Constants

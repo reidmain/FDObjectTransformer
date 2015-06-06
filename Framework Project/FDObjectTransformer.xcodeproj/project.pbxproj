@@ -15,6 +15,12 @@
 		27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
 		27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
 		27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */; };
+		27D00ECD1B228D4C000FCA05 /* FDColor+Creation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D00ECE1B228D4C000FCA05 /* FDColor+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */; };
+		27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */; };
+		27D00EE61B22A873000FCA05 /* FDColor+Creation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */; };
+		27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,9 @@
 		27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDObjectTransformer.m; sourceTree = "<group>"; };
 		27ACFD3B1B1ECA0A004B8142 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27ACFD3F1B1ECA17004B8142 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FDColor+Creation.h"; sourceTree = "<group>"; };
+		27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FDColor+Creation.m"; sourceTree = "<group>"; };
+		27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDColorCreationTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */,
+				27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */,
 				27ACFD091B1EC42D004B8142 /* Supporting Files */,
 			);
 			path = "FDObjectTransformer Tests";
@@ -132,6 +142,8 @@
 		27ACFD331B1EC956004B8142 /* FDObjectTransformer */ = {
 			isa = PBXGroup;
 			children = (
+				27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */,
+				27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */,
 				27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */,
 				27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */,
 			);
@@ -163,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
+				27D00ECD1B228D4C000FCA05 /* FDColor+Creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
+				27D00EE61B22A873000FCA05 /* FDColor+Creation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00ECE1B228D4C000FCA05 /* FDColor+Creation.m in Sources */,
 				27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */,
 				27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */,
 				27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */,
 				27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,16 +572,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FDObjectTransformerTests/Info.plist;
+				INFOPLIST_FILE = "FDObjectTransformer Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,11 +588,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FDObjectTransformerTests/Info.plist;
+				INFOPLIST_FILE = "FDObjectTransformer Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";

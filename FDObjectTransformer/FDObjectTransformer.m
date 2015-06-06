@@ -1,4 +1,5 @@
 #import "FDObjectTransformer.h"
+#import "FDColor+Creation.h"
 
 
 #pragma mark Constants
@@ -112,6 +113,17 @@
 		if ([from isKindOfClass: [NSString class]] == YES)
 		{
 			transformedObject = [NSURL URLWithString: from];
+		}
+	}
+	else if (objectClass == [FDColor class])
+	{
+		if ([from isKindOfClass: [NSNumber class]] == YES)
+		{
+			transformedObject = [FDColor fd_colorFromRGBANumber: from];
+		}
+		else if ([from isKindOfClass: [NSString class]] == YES)
+		{
+			transformedObject = [FDColor fd_colorFromHexString: from];
 		}
 	}
 	
