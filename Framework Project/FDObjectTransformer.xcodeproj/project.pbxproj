@@ -8,42 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		27ACFD051B1EC42D004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */; };
-		27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */; };
 		27ACFD251B1EC474004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */; };
 		27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27ACFD381B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
 		27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */; };
-		27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */; };
 		27D00ECD1B228D4C000FCA05 /* FDColor+Creation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D00ECE1B228D4C000FCA05 /* FDColor+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */; };
-		27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */; };
 		27D00EE61B22A873000FCA05 /* FDColor+Creation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */; };
-		27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */; };
 		27D00EEB1B22B2FA000FCA05 /* FDDeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */; };
 		27D00EEC1B22B2FA000FCA05 /* FDDeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */; };
-		27D00EEE1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EED1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m */; };
 		27D00EF11B22BFA6000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; };
 		27D00EF21B22BFA6000FCA05 /* NSObject+DeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */; };
 		27D00EF51B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */; };
 		27D00EF61B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */; };
-		27D00EFB1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF81B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.m */; };
-		27D00EFC1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF81B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.m */; };
 		27D00EFD1B23B18E000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */; };
 		27D00EFE1B23B193000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; };
 		27D00EFF1B23B197000FCA05 /* FDDeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */; };
 		27D00F001B23B199000FCA05 /* FDDeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */; };
 		27D00F101B23B476000FCA05 /* FDKeypath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F0F1B23B476000FCA05 /* FDKeypath.h */; };
 		27D00F111B23B476000FCA05 /* FDKeypath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F0F1B23B476000FCA05 /* FDKeypath.h */; };
-		27D00F141B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */; };
-		27D00F151B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */; };
-		27D00F181B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
-		27D00F191B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
-		27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
-		27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
-		27D00F231B25058D000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */; };
-		27D00F241B25058D000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */; };
+		27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F291B250C48000FCA05 /* FDColorCreationTests.m */; };
+		27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F291B250C48000FCA05 /* FDColorCreationTests.m */; };
+		27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */; };
+		27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */; };
+		27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */; };
+		27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */; };
+		27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */; };
+		27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */; };
+		27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
+		27D00F3D1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
+		27D00F401B250C48000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F331B250C48000FCA05 /* FDRandomModel.m */; };
+		27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F331B250C48000FCA05 /* FDRandomModel.m */; };
+		27D00F431B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */; };
+		27D00F441B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +66,6 @@
 		27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDObjectTransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD041B1EC42D004B8142 /* FDObjectTransformer iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FDObjectTransformer iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD0A1B1EC42D004B8142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDObjectTransformerTests.m; sourceTree = "<group>"; };
 		27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDObjectTransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD241B1EC474004B8142 /* FDObjectTransformer OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FDObjectTransformer OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDObjectTransformer.h; sourceTree = "<group>"; };
@@ -76,22 +74,23 @@
 		27ACFD3F1B1ECA17004B8142 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FDColor+Creation.h"; sourceTree = "<group>"; };
 		27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FDColor+Creation.m"; sourceTree = "<group>"; };
-		27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDColorCreationTests.m; sourceTree = "<group>"; };
 		27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredProperty.h; sourceTree = "<group>"; };
 		27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredProperty.m; sourceTree = "<group>"; };
-		27D00EED1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTests.m; sourceTree = "<group>"; };
 		27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeclaredProperty.h"; sourceTree = "<group>"; };
 		27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeclaredProperty.m"; sourceTree = "<group>"; };
 		27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDThreadSafeMutableDictionary.h; sourceTree = "<group>"; };
 		27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDThreadSafeMutableDictionary.m; sourceTree = "<group>"; };
-		27D00EF71B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModel.h; sourceTree = "<group>"; };
-		27D00EF81B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModel.m; sourceTree = "<group>"; };
 		27D00F0F1B23B476000FCA05 /* FDKeypath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDKeypath.h; sourceTree = "<group>"; };
-		27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModelSubclass.h; sourceTree = "<group>"; };
-		27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModelSubclass.m; sourceTree = "<group>"; };
-		27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeypathTests.m; sourceTree = "<group>"; };
-		27D00F1D1B24FADF000FCA05 /* FDRandomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomModel.h; sourceTree = "<group>"; };
-		27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomModel.m; sourceTree = "<group>"; };
+		27D00F291B250C48000FCA05 /* FDColorCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDColorCreationTests.m; sourceTree = "<group>"; };
+		27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeypathTests.m; sourceTree = "<group>"; };
+		27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDObjectTransformerTests.m; sourceTree = "<group>"; };
+		27D00F2D1B250C48000FCA05 /* FDDeclaredPropertyTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModel.h; sourceTree = "<group>"; };
+		27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModel.m; sourceTree = "<group>"; };
+		27D00F2F1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModelSubclass.h; sourceTree = "<group>"; };
+		27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModelSubclass.m; sourceTree = "<group>"; };
+		27D00F321B250C48000FCA05 /* FDRandomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomModel.h; sourceTree = "<group>"; };
+		27D00F331B250C48000FCA05 /* FDRandomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomModel.m; sourceTree = "<group>"; };
+		27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,16 +161,7 @@
 		27ACFD081B1EC42D004B8142 /* FDObjectTransformer Tests */ = {
 			isa = PBXGroup;
 			children = (
-				27D00ECF1B228EF2000FCA05 /* FDColorCreationTests.m */,
-				27D00EF71B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.h */,
-				27D00EF81B22C1B7000FCA05 /* FDDeclaredPropertyTestModel.m */,
-				27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */,
-				27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */,
-				27D00EED1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m */,
-				27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */,
-				27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */,
-				27D00F1D1B24FADF000FCA05 /* FDRandomModel.h */,
-				27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */,
+				27D00F281B250C48000FCA05 /* Classes */,
 				27ACFD091B1EC42D004B8142 /* Supporting Files */,
 			);
 			path = "FDObjectTransformer Tests";
@@ -220,6 +210,31 @@
 			path = "OS X Supporting Files";
 			sourceTree = "<group>";
 		};
+		27D00F281B250C48000FCA05 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				27D00F2C1B250C48000FCA05 /* Models */,
+				27D00F291B250C48000FCA05 /* FDColorCreationTests.m */,
+				27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */,
+				27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */,
+				27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		27D00F2C1B250C48000FCA05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27D00F2D1B250C48000FCA05 /* FDDeclaredPropertyTestModel.h */,
+				27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */,
+				27D00F2F1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */,
+				27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */,
+				27D00F321B250C48000FCA05 /* FDRandomModel.h */,
+				27D00F331B250C48000FCA05 /* FDRandomModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -230,7 +245,6 @@
 				27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
 				27D00EF51B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */,
 				27D00EF11B22BFA6000FCA05 /* NSObject+DeclaredProperty.h in Headers */,
-				27D00F141B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h in Headers */,
 				27D00ECD1B228D4C000FCA05 /* FDColor+Creation.h in Headers */,
 				27D00EEB1B22B2FA000FCA05 /* FDDeclaredProperty.h in Headers */,
 				27D00F101B23B476000FCA05 /* FDKeypath.h in Headers */,
@@ -244,7 +258,6 @@
 				27ACFD371B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
 				27D00EFE1B23B193000FCA05 /* NSObject+DeclaredProperty.h in Headers */,
 				27D00EE61B22A873000FCA05 /* FDColor+Creation.h in Headers */,
-				27D00F151B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h in Headers */,
 				27D00EFF1B23B197000FCA05 /* FDDeclaredProperty.h in Headers */,
 				27D00EFD1B23B18E000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */,
 				27D00F111B23B476000FCA05 /* FDKeypath.h in Headers */,
@@ -417,13 +430,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D00F191B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
-				27D00EFB1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
-				27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */,
-				27D00EEE1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
-				27D00F241B25058D000FCA05 /* FDRandomModel.m in Sources */,
-				27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */,
-				27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */,
+				27D00F431B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
+				27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
+				27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
+				27D00F401B250C48000FCA05 /* FDRandomModel.m in Sources */,
+				27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */,
+				27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,12 +454,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D00F231B25058D000FCA05 /* FDRandomModel.m in Sources */,
-				27D00F181B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
-				27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */,
-				27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */,
-				27D00EFC1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
-				27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */,
+				27D00F441B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				27D00F3D1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
+				27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
+				27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
+				27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */,
+				27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */,
+				27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
