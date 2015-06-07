@@ -29,7 +29,7 @@ An NSArray to anything. This is a edge case scenario where the array itself is n
 #pragma mark - Properties
 
 /**
-The date formatter to use whenever transforming to or from a NSDate.
+The date formatter to use whenever transforming to or from an NSDate.
 */
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
