@@ -25,6 +25,10 @@
 
 - (void)testKeypathAlias
 {
+	NSLock *lock = [NSLock new];
+	
+	XCTAssertEqualObjects(@keypathForObject(lock.name), @keypath(lock.name));
+	XCTAssertEqualObjects(@keypathForObject(lock.name.uppercaseString), @keypath(lock.name.uppercaseString));
 	XCTAssertEqualObjects(@keypathForClass(NSLock, name), @keypath(NSLock, name));
 	XCTAssertEqualObjects(@keypathForClass(NSLock, name.uppercaseString), @keypath(NSLock, name.uppercaseString));
 }
