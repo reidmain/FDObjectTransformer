@@ -192,7 +192,7 @@
 	XCTAssertEqualObjects(arrayOfStrings, transformedNumbersToStrings);
 }
 
-- (void)testPerformanceExample
+- (void)testPerformance
 {
     [self measureBlock: ^
 		{
