@@ -20,7 +20,6 @@ typedef NS_ENUM(NSUInteger, FDDeclaredPropertyTypeEncoding)
     FDDeclaredPropertyTypeEncodingFloat,
     FDDeclaredPropertyTypeEncodingDouble,
     FDDeclaredPropertyTypeEncodingBool,
-    FDDeclaredPropertyTypeEncodingVoid,
     FDDeclaredPropertyTypeEncodingCharacterString,
     FDDeclaredPropertyTypeEncodingObject,
     FDDeclaredPropertyTypeEncodingClass,

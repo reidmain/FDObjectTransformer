@@ -126,13 +126,6 @@
 					break;
 				}
 				
-				case 'v':
-				{
-					declaredProperty->_typeEncoding = FDDeclaredPropertyTypeEncodingVoid;
-					
-					break;
-				}
-				
 				case '*':
 				{
 					declaredProperty->_typeEncoding = FDDeclaredPropertyTypeEncodingCharacterString;
@@ -340,12 +333,6 @@
 		{
 			typeEncodingAsString = @"Bool";
 			
-			break;
-		}
-		
-		case FDDeclaredPropertyTypeEncodingVoid:
-		{
-			typeEncodingAsString = @"void";
 			break;
 		}
 		

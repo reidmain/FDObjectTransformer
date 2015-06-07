@@ -14,122 +14,97 @@
 
 - (void)testName
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqualObjects(@keypath(testModel.charProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.charProperty)].name);
-	XCTAssertEqualObjects(@keypath(testModel.intProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.intProperty)].name);
-	XCTAssertEqualObjects(@keypath(testModel.shortProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.shortProperty)].name);
+	XCTAssertEqualObjects(@keypath(FDDeclaredPropertyTestModel, charProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, charProperty)].name);
+	XCTAssertEqualObjects(@keypath(FDDeclaredPropertyTestModel, intProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, intProperty)].name);
+	XCTAssertEqualObjects(@keypath(FDDeclaredPropertyTestModel, shortProperty), [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, shortProperty)].name);
 }
 
 - (void)testObjectClass
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.charProperty)].objectClass);
-	XCTAssertEqualObjects([NSObject class], [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.objectProperty)].objectClass);
-	XCTAssertEqualObjects([NSString class], [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.stringProperty)].objectClass);
-	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.weakProperty)].objectClass);
-	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.classProperty)].objectClass);
+	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, charProperty)].objectClass);
+	XCTAssertEqualObjects([NSObject class], [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, objectProperty)].objectClass);
+	XCTAssertEqualObjects([NSString class], [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, stringProperty)].objectClass);
+	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, weakProperty)].objectClass);
+	XCTAssertEqualObjects(nil, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, classProperty)].objectClass);
 }
 
 - (void)testTypeEncodings
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingChar, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.charProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingInt, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.intProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingShort, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.shortProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.longProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.longLongProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedChar, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.unsignedCharProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedInt, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.unsignedIntProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedShort, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.unsignedShortProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.unsignedLongProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.unsignedLongProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingFloat, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.floatProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingDouble, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.doubleProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingBool, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.boolProperty)].typeEncoding);
-//	XCTAssertEqual(FDDeclaredPropertyTypeEncodingVoid, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.voidProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingCharacterString, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.characterStringProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.objectProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.copiedProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.weakProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingClass, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.classProperty)].typeEncoding);
-	XCTAssertEqual(FDDeclaredPropertyTypeEncodingSelector, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.selectorProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingChar, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, charProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingInt, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, intProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingShort, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, shortProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, longProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, longLongProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedChar, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, unsignedCharProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedInt, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, unsignedIntProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedShort, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, unsignedShortProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, unsignedLongProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingUnsignedLongLong, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, unsignedLongProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingFloat, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, floatProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingDouble, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, doubleProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingBool, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, boolProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingCharacterString, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, characterStringProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, objectProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, copiedProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingObject, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, weakProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingClass, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, classProperty)].typeEncoding);
+	XCTAssertEqual(FDDeclaredPropertyTypeEncodingSelector, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, selectorProperty)].typeEncoding);
 }
 
 - (void)testMemoryManagementPolicy
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyAssign, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.charProperty)].memoryManagementPolicy);
-	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyRetain, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.strongProperty)].memoryManagementPolicy);
-	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyAssign, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.weakProperty)].memoryManagementPolicy);
-	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyCopy, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.copiedProperty)].memoryManagementPolicy);
+	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyAssign, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, charProperty)].memoryManagementPolicy);
+	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyRetain, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, strongProperty)].memoryManagementPolicy);
+	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyAssign, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, weakProperty)].memoryManagementPolicy);
+	XCTAssertEqual(FDDeclaredPropertyMemoryManagementPolicyCopy, [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, copiedProperty)].memoryManagementPolicy);
 }
 
 - (void)testWeakReference
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.strongProperty)].isWeakReference);
-	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.weakProperty)].isWeakReference);
+	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, strongProperty)].isWeakReference);
+	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, weakProperty)].isWeakReference);
 }
 
 - (void)testReadonly
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.notReadonlyProperty)].isReadOnly);
-	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.readonlyProperty)].isReadOnly);
+	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, notReadonlyProperty)].isReadOnly);
+	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, readonlyProperty)].isReadOnly);
 }
 
 - (void)testNonAtomic
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.atomicProperty)].isNonAtomic);
-	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.nonAtomicProperty)].isNonAtomic);
+	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, atomicProperty)].isNonAtomic);
+	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, nonAtomicProperty)].isNonAtomic);
 }
 
 - (void)testDynamic
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.synthesizedProperty)].isDynamic);
-	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.dynamicProperty)].isDynamic);
+	XCTAssertFalse([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, synthesizedProperty)].isDynamic);
+	XCTAssertTrue([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, dynamicProperty)].isDynamic);
 }
 
 - (void)testBackingInstanceVariable
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqualObjects(@"_synthesizedProperty", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.synthesizedProperty)].backingInstanceVariableName);
-	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.dynamicProperty)].backingInstanceVariableName);
+	XCTAssertEqualObjects(@"_synthesizedProperty", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, synthesizedProperty)].backingInstanceVariableName);
+	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, dynamicProperty)].backingInstanceVariableName);
 }
 
 - (void)testCustomGetter
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqualObjects(@"myCustomGetter", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.customGetterProperty)].customGetterSelectorName);
-	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.synthesizedProperty)].customGetterSelectorName);
+	XCTAssertEqualObjects(@"myCustomGetter", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, customGetterProperty)].customGetterSelectorName);
+	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, synthesizedProperty)].customGetterSelectorName);
 }
 
 - (void)testCustomSetter
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	XCTAssertEqualObjects(@"myCustomSetter:", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.customSetterProperty)].customSetterSelectorName);
-	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.synthesizedProperty)].customSetterSelectorName);
+	XCTAssertEqualObjects(@"myCustomSetter:", [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, customSetterProperty)].customSetterSelectorName);
+	XCTAssertNil([FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, synthesizedProperty)].customSetterSelectorName);
 }
 
 - (void)testEquality
 {
-	FDDeclaredPropertyTestModel *testModel = nil;
-	
-	FDDeclaredProperty *declaredPropertyFromKey = [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(testModel.testModel)];
-	FDDeclaredProperty *declaredPropertyFromKeyPath = [FDDeclaredPropertyTestModel fd_declaredPropertyForKeyPath: @keypath(testModel.testModel.testModel.testModel)];
+	FDDeclaredProperty *declaredPropertyFromKey = [FDDeclaredPropertyTestModel fd_declaredPropertyForName: @keypath(FDDeclaredPropertyTestModel, testModel)];
+	FDDeclaredProperty *declaredPropertyFromKeyPath = [FDDeclaredPropertyTestModel fd_declaredPropertyForKeyPath: @keypath(FDDeclaredPropertyTestModel, testModel.testModel.testModel)];
 	XCTAssertEqualObjects(declaredPropertyFromKey, declaredPropertyFromKeyPath);
 }
 
@@ -137,11 +112,11 @@
 {
 	NSArray *allDeclaredPropertiesOnTestModel = [FDDeclaredPropertyTestModel fd_declaredPropertiesUntilSuperclass: nil];
 	NSArray *allDeclaredPropertiesOnTestModelAltMethod = [FDDeclaredPropertyTestModel fd_declaredPropertiesUntilSuperclass: [NSObject class]];
-	XCTAssertEqual(32, [allDeclaredPropertiesOnTestModel count]);
+	XCTAssertEqual(31, [allDeclaredPropertiesOnTestModel count]);
 	XCTAssertEqual([allDeclaredPropertiesOnTestModel count], [allDeclaredPropertiesOnTestModelAltMethod count]);
 	
 	NSArray *allDeclaredPropertiesOnTestModelSubclass = [FDDeclaredPropertyTestModelSubclass fd_declaredPropertiesUntilSuperclass: nil];
-	XCTAssertEqual(35, [allDeclaredPropertiesOnTestModelSubclass count]);
+	XCTAssertEqual(34, [allDeclaredPropertiesOnTestModelSubclass count]);
 	
 	NSArray *declaredPropertiesOnTestModelSubclass = [FDDeclaredPropertyTestModelSubclass fd_declaredPropertiesUntilSuperclass: [FDDeclaredPropertyTestModel class]];
 	XCTAssertEqual([allDeclaredPropertiesOnTestModelSubclass count] - [allDeclaredPropertiesOnTestModel count], [declaredPropertiesOnTestModelSubclass count]);

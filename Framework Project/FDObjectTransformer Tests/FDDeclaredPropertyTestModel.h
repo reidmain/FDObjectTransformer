@@ -21,7 +21,6 @@
 @property (nonatomic, assign) float floatProperty;
 @property (nonatomic, assign) double doubleProperty;
 @property (nonatomic, assign) BOOL boolProperty;
-@property (nonatomic, assign) void *voidProperty;
 @property (nonatomic, assign) char *characterStringProperty;
 @property (nonatomic, strong) NSObject *objectProperty;
 @property (nonatomic, copy) NSString *stringProperty;
