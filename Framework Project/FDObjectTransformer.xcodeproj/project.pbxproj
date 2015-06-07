@@ -42,6 +42,8 @@
 		27D00F191B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
 		27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
 		27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
+		27D00F231B25058D000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */; };
+		27D00F241B25058D000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModelSubclass.h; sourceTree = "<group>"; };
 		27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModelSubclass.m; sourceTree = "<group>"; };
 		27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeypathTests.m; sourceTree = "<group>"; };
+		27D00F1D1B24FADF000FCA05 /* FDRandomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomModel.h; sourceTree = "<group>"; };
+		27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 				27D00EED1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m */,
 				27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */,
 				27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */,
+				27D00F1D1B24FADF000FCA05 /* FDRandomModel.h */,
+				27D00F1E1B24FADF000FCA05 /* FDRandomModel.m */,
 				27ACFD091B1EC42D004B8142 /* Supporting Files */,
 			);
 			path = "FDObjectTransformer Tests";
@@ -415,6 +421,7 @@
 				27D00EFB1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00EEE1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				27D00F241B25058D000FCA05 /* FDRandomModel.m in Sources */,
 				27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */,
 				27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */,
 			);
@@ -434,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00F231B25058D000FCA05 /* FDRandomModel.m in Sources */,
 				27D00F181B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */,
 				27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */,

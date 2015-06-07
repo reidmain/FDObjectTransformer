@@ -2,6 +2,9 @@
 
 @import FDObjectTransformer;
 
+#import "FDRandomModel.h"
+#import "FDKeypath.h"
+
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
 
@@ -138,7 +141,7 @@
 	XCTAssertNil(transformedNumber);
 }
 
-- (void)testTransformationsToFDColor
+- (void)testTransformationToFDColor
 {
 	// Test transformation from FDColor to FDColor.
 	FDColor *color = [FDColor redColor];
@@ -168,7 +171,39 @@
 	XCTAssertNil(transformedURL);
 }
 
-- (void)testTransformationsFromNSArray
+- (void)testTransformationToNSDictionary
+{
+	// Test transformation from NSDictionary to NSDictionary.
+	NSDictionary *dictionary = @{ @"key" : @"value" };
+	NSDictionary *transformedDictionary = [_transformer objectOfClass: [NSDictionary class] 
+		from: dictionary];
+	XCTAssertEqualObjects(dictionary, transformedDictionary);
+	
+	// Test transformation from FDRandomModel to NSDictionary.
+	FDRandomModel *randomModel = ({
+		FDRandomModel *randomModel = [FDRandomModel new];
+		randomModel.string = @"Monster Hunter";
+		randomModel.number = @(21);
+		randomModel.integer = -666;
+		randomModel.date = [NSDate date];
+		randomModel.url = [NSURL URLWithString: @"http://www.reidmain.com"];
+		randomModel.dictionary = dictionary;
+		randomModel.array = @[ @(1), @(2), @(3) ];
+		
+		randomModel;
+	});
+	NSDictionary *transformedRandomModel = [_transformer objectOfClass: [NSDictionary class] 
+		from: randomModel];
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, string)], randomModel.string);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, number)], randomModel.number);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, integer)], @(randomModel.integer));
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, date)], randomModel.date);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, url)], randomModel.url);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, dictionary)], randomModel.dictionary);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, array)], randomModel.array);
+}
+
+- (void)testTransformationFromNSArray
 {
 	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
 	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];

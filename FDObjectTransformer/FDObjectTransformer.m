@@ -1,5 +1,6 @@
 #import "FDObjectTransformer.h"
 #import "FDColor+Creation.h"
+#import "NSObject+DeclaredProperty.h"
 
 
 #pragma mark Constants
@@ -125,6 +126,21 @@
 		{
 			transformedObject = [FDColor fd_colorFromHexString: from];
 		}
+	}
+	else if (objectClass == [NSDictionary class])
+	{
+		NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+		
+		NSArray *declaredProperties = [[from class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
+			{
+				id propertyValue = [from valueForKey: declaredProperty.name];
+				
+				[mutableDictionary setValue: propertyValue 
+					forKey: declaredProperty.name];
+			}];
+		
+		transformedObject = mutableDictionary;
 	}
 	
 	return transformedObject;
