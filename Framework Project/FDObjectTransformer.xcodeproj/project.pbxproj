@@ -40,6 +40,8 @@
 		27D00F151B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */; };
 		27D00F181B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
 		27D00F191B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
+		27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
+		27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,7 @@
 		27D00F0F1B23B476000FCA05 /* FDKeypath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDKeypath.h; sourceTree = "<group>"; };
 		27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDeclaredPropertyTestModelSubclass.h; sourceTree = "<group>"; };
 		27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTestModelSubclass.m; sourceTree = "<group>"; };
+		27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeypathTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,7 @@
 				27D00F121B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.h */,
 				27D00F131B23CDC7000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */,
 				27D00EED1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m */,
+				27D00F1A1B24DE03000FCA05 /* FDKeypathTests.m */,
 				27ACFD0B1B1EC42D004B8142 /* FDObjectTransformerTests.m */,
 				27ACFD091B1EC42D004B8142 /* Supporting Files */,
 			);
@@ -409,6 +413,7 @@
 			files = (
 				27D00F191B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00EFB1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
+				27D00F1B1B24DE03000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00EEE1B22BD4F000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
 				27D00ED01B228EF2000FCA05 /* FDColorCreationTests.m in Sources */,
 				27ACFD0C1B1EC42D004B8142 /* FDObjectTransformerTests.m in Sources */,
@@ -431,6 +436,7 @@
 			files = (
 				27D00F181B23CE75000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00EE81B22A8CC000FCA05 /* FDColorCreationTests.m in Sources */,
+				27D00F1C1B24F32A000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00EFC1B23B188000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00E9F1B1ED2C6000FCA05 /* FDObjectTransformerTests.m in Sources */,
 			);
