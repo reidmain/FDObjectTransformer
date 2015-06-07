@@ -15,6 +15,13 @@ FDObjectTransformer allows developers to convert an instance of class A into an 
 
 FDObjectTransformer has a number of transformations that it comes with out of the box:
 Anything to NSString
+NSString to NSNumber
+NSString to NSDate
+NSString to NSURL
+NSNumber to a UIColor or NSColor
+NSString to a UIColor or NSColor
+Anything to NSDictionary
+An NSArray to anything. This is a edge case scenario where the array itself is not transformed but every element in the array is instead.
 */
 @interface FDObjectTransformer : NSObject
 
