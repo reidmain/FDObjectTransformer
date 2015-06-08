@@ -1,0 +1,23 @@
+{
+	"string":"Reid",
+	"number":21,
+	"stringFromNumber":21,
+	"numberFromString":"666",
+	"integerFromString":-18,
+	"date":"07/01/1994",
+	"url":"http://www.reidmain.com",
+	"colorFromNumber":3423,
+	"colorFromString":"#343343",
+	"dictionary":{
+		"1":"A",
+		"2":"B",
+		"3":"C",
+		"4":"D",
+	},
+	"array":[
+		"1",
+		"2",
+		"3",
+		"4"
+	],
+}

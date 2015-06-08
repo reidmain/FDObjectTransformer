@@ -43,6 +43,10 @@
 		27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F331B250C48000FCA05 /* FDRandomModel.m */; };
 		27D00F431B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */; };
 		27D00F441B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */; };
+		27D00F471B251412000FCA05 /* FDRandomJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F461B251412000FCA05 /* FDRandomJSONModel.m */; };
+		27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F461B251412000FCA05 /* FDRandomJSONModel.m */; };
+		27D00F4B1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
+		27D00F4C1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,9 @@
 		27D00F321B250C48000FCA05 /* FDRandomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomModel.h; sourceTree = "<group>"; };
 		27D00F331B250C48000FCA05 /* FDRandomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomModel.m; sourceTree = "<group>"; };
 		27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDeclaredPropertyTests.m; sourceTree = "<group>"; };
+		27D00F451B251412000FCA05 /* FDRandomJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomJSONModel.h; sourceTree = "<group>"; };
+		27D00F461B251412000FCA05 /* FDRandomJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomJSONModel.m; sourceTree = "<group>"; };
+		27D00F4A1B25142D000FCA05 /* random.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = random.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				27D00F281B250C48000FCA05 /* Classes */,
+				27D00F491B25142D000FCA05 /* Resources */,
 				27ACFD091B1EC42D004B8142 /* Supporting Files */,
 			);
 			path = "FDObjectTransformer Tests";
@@ -231,8 +239,18 @@
 				27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */,
 				27D00F321B250C48000FCA05 /* FDRandomModel.h */,
 				27D00F331B250C48000FCA05 /* FDRandomModel.m */,
+				27D00F451B251412000FCA05 /* FDRandomJSONModel.h */,
+				27D00F461B251412000FCA05 /* FDRandomJSONModel.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		27D00F491B25142D000FCA05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27D00F4A1B25142D000FCA05 /* random.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00F4B1B25142D000FCA05 /* random.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D00F4C1B25142D000FCA05 /* random.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +454,7 @@
 				27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
+				27D00F471B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
 				27D00F401B250C48000FCA05 /* FDRandomModel.m in Sources */,
 				27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
@@ -458,6 +479,7 @@
 				27D00F3D1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
+				27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
 				27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */,
 				27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */,

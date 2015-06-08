@@ -4,6 +4,7 @@
 
 #import "FDRandomModel.h"
 #import "FDKeypath.h"
+#import "FDRandomJSONModel.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -243,9 +244,25 @@
 
 - (void)testTransformationFromJSONToModel
 {
-	NSBundle *bundle = [NSBundle bundleForClass: [self class]];
-	 [bundle pathForResource: @"" 
-		ofType: @"json"];
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"random"];
+	
+	FDRandomJSONModel *randomJSONModel = [transformer objectOfClass: [FDRandomJSONModel class] 
+		from: jsonObject];
+	
+	XCTAssertNotNil(randomJSONModel);
+	XCTAssertEqualObjects(jsonObject[@"string"], randomJSONModel.string);
+	XCTAssertEqualObjects(jsonObject[@"number"], randomJSONModel.string);
+	XCTAssertEqualObjects(jsonObject[@"stringFromNumber"], randomJSONModel.stringFromNumber);
+	XCTAssertEqualObjects(jsonObject[@"numberFromString"], randomJSONModel.numberFromString);
+	XCTAssertEqual(-18, randomJSONModel.integerFromString);
+	XCTAssertEqualObjects(jsonObject[@"date"], randomJSONModel.date);
+	XCTAssertEqualObjects(jsonObject[@"url"], randomJSONModel.url);
+	XCTAssertEqualObjects(jsonObject[@"colorFromNumber"], randomJSONModel.colorFromNumber);
+	XCTAssertEqualObjects(jsonObject[@"colorFromString"], randomJSONModel.colorFromString);
+	XCTAssertEqualObjects(jsonObject[@"dictionary"], randomJSONModel.dictionary);
+	XCTAssertEqualObjects(jsonObject[@"array"], randomJSONModel.array);
+
 }
 
 - (void)testPerformance
@@ -253,6 +270,21 @@
     [self measureBlock: ^
 		{
 		}];
+}
+
+
+#pragma mark - Private Methods
+
+- (id)_jsonObjectFromFileNamed: (NSString *)filename
+{
+	NSBundle *bundle = [NSBundle bundleForClass: [self class]];
+	NSString *path = [bundle pathForResource: filename 
+		ofType: @"json"];
+	NSData *data = [NSData dataWithContentsOfFile: path];
+	id jsonObject = [NSJSONSerialization JSONObjectWithData: data 
+		options: NSJSONReadingAllowFragments 
+		error: nil];
+	return jsonObject;
 }
 
 @end
