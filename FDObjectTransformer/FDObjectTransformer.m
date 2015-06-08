@@ -142,6 +142,33 @@
 		
 		transformedObject = mutableDictionary;
 	}
+	else
+	{
+		if ([from isKindOfClass: [NSDictionary class]] == YES)
+		{
+			id object = [objectClass new];
+			
+			NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+			[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
+				{
+					// TODO: Add some way for the remote key to not be exactly the same as the property name.
+					id remoteObject = [from objectForKey: declaredProperty.name];
+					
+					id bah = remoteObject;
+					
+					if (declaredProperty.objectClass != nil)
+					{
+						bah = [self objectOfClass: declaredProperty.objectClass 
+							from: remoteObject];
+					}
+					
+					[object setValue: bah 
+						forKey: declaredProperty.name];
+				}];
+			
+			transformedObject = object;
+		}
+	}
 	
 	return transformedObject;
 }

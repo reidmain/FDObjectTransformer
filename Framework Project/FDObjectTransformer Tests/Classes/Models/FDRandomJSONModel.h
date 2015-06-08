@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) NSNumber *number;
 @property (nonatomic, readonly) NSString *stringFromNumber;
 @property (nonatomic, readonly) NSNumber *numberFromString;
-@property (nonatomic, readonly) NSUInteger integerFromString;
+@property (nonatomic, readonly) NSInteger integerFromString;
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) FDColor *colorFromNumber;
