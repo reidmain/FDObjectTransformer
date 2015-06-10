@@ -185,6 +185,13 @@
 						}
 					}
 					
+					// If the transformed object is nil and the declared property is a scalar type do not bother trying to set the property because it will only result in an exception.
+					if (transformedRemoteObject == nil 
+						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
+					{
+						return;
+					}
+					
 					[object setValue: transformedRemoteObject 
 						forKey: declaredProperty.name];
 				}];

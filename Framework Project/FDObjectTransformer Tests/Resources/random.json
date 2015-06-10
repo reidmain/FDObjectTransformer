@@ -4,6 +4,7 @@
 	"stringFromNumber":21,
 	"numberFromString":"666",
 	"integerFromString":-18,
+	"integerFromNull":null,
 	"date":"07/01/1994",
 	"url":"http://www.reidmain.com",
 	"colorFromNumber":3423,
