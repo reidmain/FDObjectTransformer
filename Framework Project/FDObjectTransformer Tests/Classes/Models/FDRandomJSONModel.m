@@ -34,6 +34,7 @@
 	
 	// Initialize instance variables.
 	_initializedPropertyWithNoJSONField = [NSObject new];
+	_initializedPropertyToBeNullified = [NSObject new];
 	
 	// Return initialized instance.
 	return self;

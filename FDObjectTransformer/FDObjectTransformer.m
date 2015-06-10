@@ -167,17 +167,25 @@
 					{
 						return;
 					}
-                
 					
-					id bah = remoteObject;
+					id transformedRemoteObject = nil;
 					
-					if (declaredProperty.objectClass != nil)
+					// If the remote object is not NSNull attempt to transform the remote object into local models. If the remote object is NSNull do nothing and allow the property being set to be cleared.
+					if (remoteObject != [NSNull null])
 					{
-						bah = [self objectOfClass: declaredProperty.objectClass 
-							from: remoteObject];
+						// If the declared property is not a scalar type attempt to transform the remote object into an instance of the property type.
+						if (declaredProperty.objectClass != nil)
+						{
+							transformedRemoteObject = [self objectOfClass: declaredProperty.objectClass 
+								from: remoteObject];
+						}
+						else
+						{
+							transformedRemoteObject = remoteObject;
+						}
 					}
 					
-					[object setValue: bah 
+					[object setValue: transformedRemoteObject 
 						forKey: declaredProperty.name];
 				}];
 			

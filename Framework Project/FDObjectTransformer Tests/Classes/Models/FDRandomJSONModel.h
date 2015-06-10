@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) NSArray *array;
 @property (nonatomic, readonly) NSNull *null;
 @property (nonatomic, readonly) id initializedPropertyWithNoJSONField;
+@property (nonatomic, readonly) id initializedPropertyToBeNullified;
 
 
 #pragma mark - Constructors
