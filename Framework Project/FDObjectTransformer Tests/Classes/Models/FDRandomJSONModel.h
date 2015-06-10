@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) FDColor *colorFromString;
 @property (nonatomic, readonly) NSDictionary *dictionary;
 @property (nonatomic, readonly) NSArray *array;
-
+@property (nonatomic, readonly) NSNull *null;
 
 
 #pragma mark - Constructors

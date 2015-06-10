@@ -45,12 +45,20 @@
 
 - (id)objectOfClass: (Class)objectClass from:(id)from
 {
+	 // If the object is a NSNull return nil to prevent the inevitable crash caused by NSNull getting sent a message.
+    if (from == [NSNull null])
+	{
+        return nil;
+    }
+	
+	// If either the object class or the object are nil there is nothing that can be done and nil should be returned.
 	if (objectClass == nil 
 		|| from == nil)
 	{
 		return nil;
 	}
 	
+	// If the object is a kind of a the object class there is nothing to do and simply return the object.
 	if ([from isKindOfClass: objectClass] == YES)
 	{
 		return from;
