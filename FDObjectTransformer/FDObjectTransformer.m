@@ -162,6 +162,13 @@
 					// TODO: Add some way for the remote key to not be exactly the same as the property name.
 					id remoteObject = [from objectForKey: declaredProperty.name];
 					
+					// If the remote key does not exist on the object ignore it and move onto the next property. There is no point in dealing with a remote key that does not exist because it could only delete data that currently exists.
+					if (remoteObject == nil)
+					{
+						return;
+					}
+                
+					
 					id bah = remoteObject;
 					
 					if (declaredProperty.objectClass != nil)

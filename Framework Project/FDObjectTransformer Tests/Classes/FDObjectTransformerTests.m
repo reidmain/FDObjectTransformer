@@ -266,6 +266,7 @@
 	XCTAssertNotNil(randomJSONModel.dictionary);
 	XCTAssertNotNil(randomJSONModel.array);
 	XCTAssertNil(randomJSONModel.null);
+	XCTAssertNotNil(randomJSONModel.initializedPropertyWithNoJSONField);
 	
 	FDAssertIsKindOfClass(randomJSONModel.string, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.string)].objectClass);
 	FDAssertIsKindOfClass(randomJSONModel.number, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.number)].objectClass);
