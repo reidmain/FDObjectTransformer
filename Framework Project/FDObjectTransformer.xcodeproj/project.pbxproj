@@ -19,12 +19,12 @@
 		27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */; };
 		27D00EEB1B22B2FA000FCA05 /* FDDeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */; };
 		27D00EEC1B22B2FA000FCA05 /* FDDeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */; };
-		27D00EF11B22BFA6000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; };
+		27D00EF11B22BFA6000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D00EF21B22BFA6000FCA05 /* NSObject+DeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */; };
 		27D00EF51B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */; };
 		27D00EF61B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */; };
 		27D00EFD1B23B18E000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */; };
-		27D00EFE1B23B193000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; };
+		27D00EFE1B23B193000FCA05 /* NSObject+DeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27D00EFF1B23B197000FCA05 /* FDDeclaredProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */; };
 		27D00F001B23B199000FCA05 /* FDDeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */; };
 		27D00F101B23B476000FCA05 /* FDKeypath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D00F0F1B23B476000FCA05 /* FDKeypath.h */; };
@@ -47,6 +47,8 @@
 		27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F461B251412000FCA05 /* FDRandomJSONModel.m */; };
 		27D00F4B1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
 		27D00F4C1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
+		27F72E911B2CDF6800C0D9CE /* FDThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */; };
+		27F72E921B2CDF6E00C0D9CE /* NSObject+DeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -483,7 +485,9 @@
 			files = (
 				27D00F001B23B199000FCA05 /* FDDeclaredProperty.m in Sources */,
 				27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */,
+				27F72E921B2CDF6E00C0D9CE /* NSObject+DeclaredProperty.m in Sources */,
 				27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,
+				27F72E911B2CDF6800C0D9CE /* FDThreadSafeMutableDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
