@@ -24,6 +24,8 @@
     [super setUp];
 }
 
+#pragma mark - Invalid
+
 - (void)testBaseCases
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
@@ -36,6 +38,8 @@
 		from: nil];
 	XCTAssertNil(nilObject);
 }
+
+#pragma mark - Default Transformations
 
 - (void)testTransformationToNSString
 {
@@ -219,31 +223,6 @@
 	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, array)], randomModel.array);
 }
 
-- (void)testTransformationFromNSArray
-{
-	FDObjectTransformer *transformer = [FDObjectTransformer new];
-	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
-	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
-	
-	// Test transforming an array of strings.
-	NSArray *transformedStringsToStrings = [transformer objectOfClass: [NSString class] 
-		from: arrayOfStrings];
-	XCTAssertEqualObjects(arrayOfStrings, transformedStringsToStrings);
-	
-	NSArray *transformedStringsToNumbers = [transformer objectOfClass: [NSNumber class] 
-		from: arrayOfStrings];
-	XCTAssertEqualObjects(arrayOfNumbers, transformedStringsToNumbers);
-	
-	// Test transforming an array of numbers.
-	NSArray *transformedNumbersToNumbers = [transformer objectOfClass: [NSNumber class] 
-		from: arrayOfNumbers];
-	XCTAssertEqualObjects(arrayOfNumbers, transformedNumbersToNumbers);
-	
-	NSArray *transformedNumbersToStrings = [transformer objectOfClass: [NSString class] 
-		from: arrayOfNumbers];
-	XCTAssertEqualObjects(arrayOfStrings, transformedNumbersToStrings);
-}
-
 - (void)testTransformationFromJSONToModel
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
@@ -293,6 +272,34 @@
 	XCTAssertEqualObjects(jsonObject[@"dictionary"], randomJSONModel.dictionary);
 	XCTAssertEqualObjects(jsonObject[@"array"], randomJSONModel.array);
 }
+
+- (void)testTransformationFromNSArray
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
+	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
+	
+	// Test transforming an array of strings.
+	NSArray *transformedStringsToStrings = [transformer objectOfClass: [NSString class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfStrings, transformedStringsToStrings);
+	
+	NSArray *transformedStringsToNumbers = [transformer objectOfClass: [NSNumber class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedStringsToNumbers);
+	
+	// Test transforming an array of numbers.
+	NSArray *transformedNumbersToNumbers = [transformer objectOfClass: [NSNumber class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedNumbersToNumbers);
+	
+	NSArray *transformedNumbersToStrings = [transformer objectOfClass: [NSString class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfStrings, transformedNumbersToStrings);
+}
+
+
+#pragma mark - Performance
 
 - (void)testPerformance
 {

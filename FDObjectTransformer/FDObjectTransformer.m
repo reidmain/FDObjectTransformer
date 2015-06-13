@@ -159,40 +159,39 @@
 			NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 			[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 				{
-					// TODO: Add some way for the remote key to not be exactly the same as the property name.
-					id remoteObject = [from objectForKey: declaredProperty.name];
+					id dictionaryObject = [from objectForKey: declaredProperty.name];
 					
-					// If the remote key does not exist on the object ignore it and move onto the next property. There is no point in dealing with a remote key that does not exist because it could only delete data that currently exists.
-					if (remoteObject == nil)
+					// If the declared property's name does not exist in the dictionary ignore it and move onto the next property. There is no point in dealing with a property that does not exist because it could only delete data that currently exists.
+					if (dictionaryObject == nil)
 					{
 						return;
 					}
 					
-					id transformedRemoteObject = nil;
+					id transformedDictionaryObject = nil;
 					
-					// If the remote object is not NSNull attempt to transform the remote object into local models. If the remote object is NSNull do nothing and allow the property being set to be cleared.
-					if (remoteObject != [NSNull null])
+					// If the dictionary object is not NSNull attempt to transform it into the object class. If the dictionary object is NSNull do nothing and allow the property being set to be cleared.
+					if (dictionaryObject != [NSNull null])
 					{
-						// If the declared property is not a scalar type attempt to transform the remote object into an instance of the property type.
+						// If the declared property is not a scalar type attempt to transform the dictionary object into an instance of the property type.
 						if (declaredProperty.objectClass != nil)
 						{
-							transformedRemoteObject = [self objectOfClass: declaredProperty.objectClass 
-								from: remoteObject];
+							transformedDictionaryObject = [self objectOfClass: declaredProperty.objectClass 
+								from: dictionaryObject];
 						}
 						else
 						{
-							transformedRemoteObject = remoteObject;
+							transformedDictionaryObject = dictionaryObject;
 						}
 					}
 					
 					// If the transformed object is nil and the declared property is a scalar type do not bother trying to set the property because it will only result in an exception.
-					if (transformedRemoteObject == nil 
+					if (transformedDictionaryObject == nil 
 						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
 					{
 						return;
 					}
 					
-					[object setValue: transformedRemoteObject 
+					[object setValue: transformedDictionaryObject 
 						forKey: declaredProperty.name];
 				}];
 			
