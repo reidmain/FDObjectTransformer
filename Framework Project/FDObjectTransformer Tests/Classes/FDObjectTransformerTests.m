@@ -152,33 +152,58 @@
 	XCTAssertNil(transformedURL);
 }
 
-- (void)testTransformationToNSDate
+
+#pragma mark NSDate
+
+- (void)testNSDateToNSDate
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSDate *date = [NSDate date];
+	NSDate *transformedDate = [transformer objectOfClass: [NSDate class] 
+		from: date];
+	XCTAssertEqualObjects(date, transformedDate);
+}
+
+- (void)testNSStringToNSDate
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	transformer.dateFormatter = [NSDateFormatter new];
 	transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
 	
-	// Test transformation from NSDate to NSDate.
-	NSDate *date = [NSDate date];
-	NSDate *transformedDate = [transformer objectOfClass: [NSDate class] 
-		from: date];
-	XCTAssertEqualObjects(date, transformedDate);
-	
-	// Test transformation from NSString to NSDate.
 	NSString *dateString = @"01/15/2013";
 	NSDate *dateFromString = [transformer.dateFormatter dateFromString: dateString];
 	NSDate *transformedDateString = [transformer objectOfClass: [NSDate class] 
 		from: dateString];
+	XCTAssertNotNil(transformedDateString);
 	XCTAssertEqualObjects(dateFromString, transformedDateString);
+}
+
+- (void)testNSStringToNSDateWithNoDateFormatterSet
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSNumber to NSDate.
+	NSString *dateString = @"01/15/2013";
+	NSDate *transformedDateString = [transformer objectOfClass: [NSDate class] 
+		from: dateString];
+	XCTAssertNil(transformedDateString);
+}
+
+- (void)testNSNumberToNSDate
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
 	NSNumber *number = @(21);
 	NSDate *transformedNumber = [transformer objectOfClass: [NSDate class] 
 		from: number];
 	XCTAssertNotEqualObjects(number, transformedNumber);
 	XCTAssertNil(transformedNumber);
+}
+
+- (void)testNSURLToNSDate
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSURL to NSDate.
 	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
 	NSURL *transformedURL = [transformer objectOfClass: [NSDate class] 
 		from: url];
