@@ -186,17 +186,9 @@
 		27ACFD331B1EC956004B8142 /* FDObjectTransformer */ = {
 			isa = PBXGroup;
 			children = (
-				27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */,
-				27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */,
-				27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */,
-				27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */,
-				27D00F0F1B23B476000FCA05 /* FDKeypath.h */,
+				27F72E8F1B2CDEEA00C0D9CE /* Dependencies */,
 				27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */,
 				27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */,
-				27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */,
-				27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */,
-				27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */,
-				27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */,
 			);
 			name = FDObjectTransformer;
 			path = ../FDObjectTransformer;
@@ -222,9 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				27D00F2C1B250C48000FCA05 /* Models */,
-				27D00F291B250C48000FCA05 /* FDColorCreationTests.m */,
-				27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */,
-				27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */,
+				27F72E901B2CDF0300C0D9CE /* Dependencies */,
 				27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */,
 			);
 			path = Classes;
@@ -251,6 +241,32 @@
 				27D00F4A1B25142D000FCA05 /* random.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		27F72E8F1B2CDEEA00C0D9CE /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				27D00ECB1B228D4C000FCA05 /* FDColor+Creation.h */,
+				27D00ECC1B228D4C000FCA05 /* FDColor+Creation.m */,
+				27D00EE91B22B2FA000FCA05 /* FDDeclaredProperty.h */,
+				27D00EEA1B22B2FA000FCA05 /* FDDeclaredProperty.m */,
+				27D00F0F1B23B476000FCA05 /* FDKeypath.h */,
+				27D00EF31B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h */,
+				27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */,
+				27D00EEF1B22BFA6000FCA05 /* NSObject+DeclaredProperty.h */,
+				27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		27F72E901B2CDF0300C0D9CE /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				27D00F291B250C48000FCA05 /* FDColorCreationTests.m */,
+				27D00F421B250CD4000FCA05 /* FDDeclaredPropertyTests.m */,
+				27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
