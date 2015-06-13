@@ -41,38 +41,70 @@
 
 #pragma mark - Default Transformations
 
-- (void)testTransformationToNSString
+- (void)testNSStringToNSString
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
-	transformer.dateFormatter = [NSDateFormatter new];
-	transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
 	
-	// Test transformation from NSString to NSString.
 	NSString *name = @"Reid";
 	NSString *transformedName = [transformer objectOfClass: [NSString class] 
 		from: name];
 	XCTAssertEqualObjects(name, transformedName);
+}
+
+- (void)testNSNumberToNSString
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSNumber to NSString.
 	NSNumber *number = [NSNumber numberWithBool: YES];
 	NSString *transformedNumber = [transformer objectOfClass: [NSString class] 
 		from: number];
 	XCTAssertEqualObjects([number stringValue], transformedNumber);
+}
+
+- (void)testNSURLToNSString
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSDate to NSString.
-	NSString *dateString = @"01/15/2013";
-	NSDate *date = [transformer.dateFormatter dateFromString: dateString];
-	NSString *transformedDate = [transformer objectOfClass: [NSString class] 
-		from: date];
-	XCTAssertEqualObjects(dateString, transformedDate);
-	
-	// Test transformation from NSURL to NSString.
 	NSURL *baseURL = [NSURL URLWithString: @"http://www.reidmain.com"];
 	NSURL *url = [NSURL URLWithString: @"about" 
 		relativeToURL: baseURL];
 	NSString *transformedURL = [transformer objectOfClass: [NSString class] 
 		from: url];
 	XCTAssertEqualObjects([url absoluteString], transformedURL);
+}
+
+- (void)testNSDateToNSString
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	transformer.dateFormatter = [NSDateFormatter new];
+	transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
+	
+	NSString *dateString = @"01/15/2013";
+	NSDate *date = [transformer.dateFormatter dateFromString: dateString];
+	NSString *transformedDate = [transformer objectOfClass: [NSString class] 
+		from: date];
+	XCTAssertEqualObjects(dateString, transformedDate);
+}
+
+- (void)testNSDateToNSStringWithNoDateFormatterSet
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSString *dateString = @"01/15/2013";
+	NSDate *date = [transformer.dateFormatter dateFromString: dateString];
+	NSString *transformedDate = [transformer objectOfClass: [NSString class] 
+		from: date];
+	XCTAssertNil(transformedDate);
+}
+
+- (void)testNSDictionaryToNSString
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSDictionary *dictionary = @{ @"name" : @"Reid" };
+	NSString *transformedDictionary = [transformer objectOfClass: [NSString class] 
+		from: dictionary];
+	XCTAssertEqualObjects([dictionary description], transformedDictionary);
 }
 
 - (void)testTransformationToNSNumber
