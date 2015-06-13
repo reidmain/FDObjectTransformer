@@ -221,6 +221,60 @@
 	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, url)], randomModel.url);
 	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, dictionary)], randomModel.dictionary);
 	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, array)], randomModel.array);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, createdAt)], randomModel.createdAt);
+	XCTAssertEqualObjects(transformedRandomModel[@keypath(FDRandomModel, className)], randomModel.className);
+}
+
+- (void)testTransformationFromNSDictionary
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	// Test transformation from a properly formatted NSDictionary to a FDRandomModel.
+	NSDictionary *goodDictionary = @{ 
+		@keypath(FDRandomModel, string) : @"string", 
+		@keypath(FDRandomModel, number) : @(21), 
+		@keypath(FDRandomModel, integer) : @(81), 
+		@keypath(FDRandomModel, date) : [NSDate date], 
+		@keypath(FDRandomModel, url) : [NSURL URLWithString: @"http://www.reidmain.com"], 
+		@keypath(FDRandomModel, dictionary) : @{ @"key" : @"value" }, 
+		@keypath(FDRandomModel, array) : @[ @"1", @"2", @"3" ], 
+		};
+	
+	FDRandomModel *randomModel = [transformer objectOfClass: [FDRandomModel class] 
+		from: goodDictionary];
+	
+	XCTAssertEqualObjects(randomModel.string, goodDictionary[@keypath(FDRandomModel, string)]);
+	XCTAssertEqualObjects(randomModel.number, goodDictionary[@keypath(FDRandomModel, number)]);
+	XCTAssertEqualObjects(@(randomModel.integer), goodDictionary[@keypath(FDRandomModel, integer)]);
+	XCTAssertEqualObjects(randomModel.date, goodDictionary[@keypath(FDRandomModel, date)]);
+	XCTAssertEqualObjects(randomModel.url, goodDictionary[@keypath(FDRandomModel, url)]);
+	XCTAssertEqualObjects(randomModel.dictionary, goodDictionary[@keypath(FDRandomModel, dictionary)]);
+	XCTAssertEqualObjects(randomModel.array, goodDictionary[@keypath(FDRandomModel, array)]);
+	
+	// Test transformation from a poorly formatted NSDictionary to a FDRandomModel.
+	NSDictionary *badDictionary = @{ 
+		@keypath(FDRandomModel, string) : [NSObject new], 
+		@keypath(FDRandomModel, number) : [NSURL URLWithString: @"http://www.reidmain.com"], 
+		@keypath(FDRandomModel, integer) : [NSNull null], 
+		@"Date" : [NSDate date], 
+		@keypath(FDRandomModel, url) : @(1), 
+		@keypath(FDRandomModel, dictionary) : @[ @"1", @"2", @"3" ], 
+		@keypath(FDRandomModel, array) : @"string", 
+		@keypath(FDRandomModel, createdAt) : [NSNull null], 
+		@keypath(FDRandomModel, className) : @"Cooler class name", 
+		};
+	
+	randomModel = [transformer objectOfClass: [FDRandomModel class] 
+		from: badDictionary];
+	
+	XCTAssertEqualObjects(randomModel.string, [badDictionary[@keypath(FDRandomModel, string)] description]);
+	XCTAssertNil(randomModel.number, @"\number\" property is a NSURL which cannot be parsed into a NSNumber so it should be nil.");
+	XCTAssertEqual(randomModel.integer, 0, @"\"integer\" property is null which cannot be parsed into a NSInteger so it should remain zero.");
+	XCTAssertNil(randomModel.date, @"\"date\" is not specified in the dictionary so this should be nil.");
+	XCTAssertNil(randomModel.url, @"url specified in the dictionary is not a NSURL object so this should be nil.");
+	XCTAssertNil(randomModel.dictionary, @"dictionary specified in the dictionary is not a NSDictionary object so this should be nil.");
+	XCTAssertNil(randomModel.array, @"array specified in the dictionary is not a NSArray object so this should be nil.");
+	XCTAssertNotEqualObjects(randomModel.className, goodDictionary[@keypath(FDRandomModel, className)]);
 }
 
 - (void)testTransformationFromJSONToModel

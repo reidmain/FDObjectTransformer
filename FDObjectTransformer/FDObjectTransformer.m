@@ -159,6 +159,13 @@
 			NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 			[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 				{
+					// If the property being set is a read-only property with no backing instance variable setValue:forKey: will always throw an exception so ignore the property. This is indicative of a computed property so it does not need to be set anyway.
+					if (declaredProperty.isReadOnly == YES 
+						&& declaredProperty.backingInstanceVariableName == nil)
+					{
+						return;
+					}
+					
 					id dictionaryObject = [from objectForKey: declaredProperty.name];
 					
 					// If the declared property's name does not exist in the dictionary ignore it and move onto the next property. There is no point in dealing with a property that does not exist because it could only delete data that currently exists.
@@ -184,8 +191,15 @@
 						}
 					}
 					
+					// If the transformed object is not the same type as the property that is being set stop parsing and move onto the next item because there is no point in attempting to set it since it will always result in nil.
+					if (declaredProperty.objectClass != nil 
+						&& transformedDictionaryObject != nil 
+						&& [transformedDictionaryObject isKindOfClass: declaredProperty.objectClass] == NO)
+					{
+						return;
+					}
 					// If the transformed object is nil and the declared property is a scalar type do not bother trying to set the property because it will only result in an exception.
-					if (transformedDictionaryObject == nil 
+					else if (transformedDictionaryObject == nil 
 						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
 					{
 						return;

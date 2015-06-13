@@ -1,10 +1,4 @@
-#import <Foundation/Foundation.h>
-
-
-#pragma mark Constants
-
-
-#pragma mark - Enumerations
+@import Foundation;
 
 
 #pragma mark - Class Interface
@@ -21,15 +15,8 @@
 @property (nonatomic, copy) NSURL *url;
 @property (nonatomic, copy) NSDictionary *dictionary;
 @property (nonatomic, copy) NSArray *array;
-
-
-#pragma mark - Constructors
-
-
-#pragma mark - Static Methods
-
-
-#pragma mark - Instance Methods
+@property (nonatomic, readonly) NSDate *createdAt;
+@property (nonatomic, readonly) NSString *className;
 
 
 @end

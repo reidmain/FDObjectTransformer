@@ -1,25 +1,19 @@
 #import "FDRandomModel.h"
 
 
-#pragma mark Constants
-
-
-#pragma mark - Class Extension
-
-@interface FDRandomModel ()
-
-@end
-
-
-#pragma mark - Class Variables
-
-
 #pragma mark - Class Definition
 
 @implementation FDRandomModel
 
 
 #pragma mark - Properties
+
+- (NSString *)className
+{
+	NSString *className = NSStringFromClass([self class]);
+	
+	return className;
+}
 
 
 #pragma mark - Constructors
@@ -33,19 +27,11 @@
 	}
 	
 	// Initialize instance variables.
+	_createdAt = [NSDate date];
 	
 	// Return initialized instance.
 	return self;
 }
-
-
-#pragma mark - Public Methods
-
-
-#pragma mark - Overridden Methods
-
-
-#pragma mark - Private Methods
 
 
 @end
