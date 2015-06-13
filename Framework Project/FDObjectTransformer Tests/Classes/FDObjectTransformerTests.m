@@ -41,6 +41,8 @@
 
 #pragma mark - Default Transformations
 
+#pragma mark NSString
+
 - (void)testNSStringToNSString
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
@@ -107,23 +109,42 @@
 	XCTAssertEqualObjects([dictionary description], transformedDictionary);
 }
 
-- (void)testTransformationToNSNumber
+#pragma mark NSNumber
+
+- (void)testNSNumberToNSNumber
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSNumber to NSNumber.
 	NSNumber *number = @(21);
 	NSNumber *transformedNumber = [transformer objectOfClass: [NSNumber class] 
 		from: number];
 	XCTAssertEqualObjects(number, transformedNumber);
+}
+
+- (void)testNSStringToNSNumber
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSString to NSSNumber.
 	NSString *string = @"21";
 	NSNumber *transformedString = [transformer objectOfClass: [NSNumber class] 
-		from: number];
+		from: string];
 	XCTAssertEqualObjects(@([string longLongValue]), transformedString);
+}
+
+- (void)testNSStringToNSNumberWithInvalidString
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSURL to NSNumber.
+	NSString *invalidString = @"Reid";
+	NSNumber *transformedString = [transformer objectOfClass: [NSNumber class] 
+		from: invalidString];
+	XCTAssertNil(transformedString);
+}
+
+- (void)testNSURLToNSNumber
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
 	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
 	NSString *transformedURL = [transformer objectOfClass: [NSNumber class] 
 		from: url];

@@ -19,6 +19,9 @@
 #pragma mark - Class Definition
 
 @implementation FDObjectTransformer
+{
+	@private __strong NSNumberFormatter *_numberFormatter;
+}
 
 
 #pragma mark - Properties
@@ -35,6 +38,7 @@
 	}
 	
 	// Initialize instance variables.
+	_numberFormatter = [NSNumberFormatter new];
 	
 	// Return initialized instance.
 	return self;
@@ -107,7 +111,7 @@
 	{
 		if ([from isKindOfClass: [NSString class]] == YES)
 		{
-			transformedObject = @([from longLongValue]);
+			transformedObject = [_numberFormatter numberFromString: from];
 		}
 	}
 	else if (objectClass == [NSDate class])
