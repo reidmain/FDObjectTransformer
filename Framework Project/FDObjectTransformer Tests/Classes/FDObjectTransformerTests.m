@@ -211,23 +211,32 @@
 	XCTAssertNil(transformedURL);
 }
 
-- (void)testTransformationToNSURL
+#pragma mark NSURL
+
+- (void)testNSURLToNSURL
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSURL to NSURL.
 	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
 	NSURL *transformedURL = [transformer objectOfClass: [NSURL class] 
 		from: url];
 	XCTAssertEqualObjects(url, transformedURL);
+}
+
+- (void)testNSStringToNSURL
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSString to NSURL.
 	NSString *urlString = @"http://www.reidmain.com";
 	NSURL *transformedURLString = [transformer objectOfClass: [NSURL class] 
 		from: urlString];
 	XCTAssertEqualObjects([NSURL URLWithString: urlString], transformedURLString);
+}
+
+- (void)testNSNumberToNSURL
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSNumber to NSURL.
 	NSNumber *number = @(21);
 	NSURL *transformedNumber = [transformer objectOfClass: [NSURL class] 
 		from: number];
