@@ -389,6 +389,68 @@
 	XCTAssertNotEqualObjects(randomModel.className, dictionary[@keypath(FDRandomModel, className)]);
 }
 
+
+#pragma mark NSArray
+
+- (void)testNSArrayToNSArray
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSArray *array = @[ @(1), @(2), @(3), @(4), @(5) ];
+	NSArray *transformedArray = [transformer objectOfClass: [NSArray class] 
+		from: array];
+	XCTAssertEqualObjects(array, transformedArray);
+}
+
+- (void)testNSArrayOfStringsToNSArrayOfStrings
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
+	
+	NSArray *transformedArrayOfStrings = [transformer objectOfClass: [NSString class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfStrings, transformedArrayOfStrings);
+}
+
+- (void)testNSArrayOfStringsToNSArrayOfNumbers
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
+	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
+	
+	NSArray *transformedArrayOfNumbers = [transformer objectOfClass: [NSNumber class] 
+		from: arrayOfStrings];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedArrayOfNumbers);
+}
+
+- (void)testNSArrayOfNumbersToNSArrayOfNumbers
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
+	
+	NSArray *transformedArrayOfNumbers = [transformer objectOfClass: [NSNumber class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfNumbers, transformedArrayOfNumbers);
+}
+
+- (void)testNSArrayOfNumbersToNSArrayOfStrings
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
+	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
+	
+	NSArray *transformedArrayOfStrings = [transformer objectOfClass: [NSString class] 
+		from: arrayOfNumbers];
+	XCTAssertEqualObjects(arrayOfStrings, transformedArrayOfStrings);
+}
+
+
+#pragma mark - Custom Transformations
+
 - (void)testTransformationFromJSONToModel
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
@@ -437,31 +499,6 @@
 	XCTAssertEqualObjects([FDColor fd_colorFromHexString: jsonObject[@"colorFromString"]], randomJSONModel.colorFromString);
 	XCTAssertEqualObjects(jsonObject[@"dictionary"], randomJSONModel.dictionary);
 	XCTAssertEqualObjects(jsonObject[@"array"], randomJSONModel.array);
-}
-
-- (void)testTransformationFromNSArray
-{
-	FDObjectTransformer *transformer = [FDObjectTransformer new];
-	NSArray *arrayOfStrings = @[ @"1", @"2", @"3", @"4", @"5" ];
-	NSArray *arrayOfNumbers = @[ @(1), @(2), @(3), @(4), @(5) ];
-	
-	// Test transforming an array of strings.
-	NSArray *transformedStringsToStrings = [transformer objectOfClass: [NSString class] 
-		from: arrayOfStrings];
-	XCTAssertEqualObjects(arrayOfStrings, transformedStringsToStrings);
-	
-	NSArray *transformedStringsToNumbers = [transformer objectOfClass: [NSNumber class] 
-		from: arrayOfStrings];
-	XCTAssertEqualObjects(arrayOfNumbers, transformedStringsToNumbers);
-	
-	// Test transforming an array of numbers.
-	NSArray *transformedNumbersToNumbers = [transformer objectOfClass: [NSNumber class] 
-		from: arrayOfNumbers];
-	XCTAssertEqualObjects(arrayOfNumbers, transformedNumbersToNumbers);
-	
-	NSArray *transformedNumbersToStrings = [transformer objectOfClass: [NSString class] 
-		from: arrayOfNumbers];
-	XCTAssertEqualObjects(arrayOfStrings, transformedNumbersToStrings);
 }
 
 
