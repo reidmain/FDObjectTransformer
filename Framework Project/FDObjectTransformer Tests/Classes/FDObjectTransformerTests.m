@@ -8,6 +8,7 @@
 #import "NSObject+DeclaredProperty.h"
 #import "FDColor+Creation.h"
 #import "FDURLComponentsTransformerAdapter.h"
+#import "FDTwitchStreamSearchResults.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -527,6 +528,45 @@
 	NSURLComponents *transformedURLComponents = [transformer objectOfClass: [NSURLComponents class] 
 		from: urlString];
 	XCTAssertEqualObjects(urlComponents, transformedURLComponents);
+}
+
+- (void)testNSArrayOfJSONToFDTwitchStreamSearchResults
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSDateFormatter *dateFormatter = [NSDateFormatter new];
+	dateFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
+	dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation: @"UTC"];
+	dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
+	transformer.dateFormatter = dateFormatter;
+	
+	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
+	
+	FDTwitchStreamSearchResults *twitchStreamSearchResults = [transformer objectOfClass: [FDTwitchStreamSearchResults class] 
+		from: jsonObject];
+	
+	XCTAssertEqual(twitchStreamSearchResults.total, [jsonObject[@"_total"] unsignedIntegerValue]);
+	XCTAssertNotNil(twitchStreamSearchResults.streams);
+	
+	FDTwitchStream *twitchStream = twitchStreamSearchResults.streams[4];
+	NSDictionary *twitchStreamJSON = jsonObject[@"stream"][4];
+	
+	XCTAssertEqualObjects(twitchStream.game, twitchStreamJSON[@"game"]);
+	XCTAssertEqualObjects(twitchStream.createdAt, twitchStreamJSON[@"created_at"]);
+	XCTAssertEqual(twitchStream.viewers, [twitchStreamJSON[@"viewers"] unsignedIntegerValue]);
+	XCTAssertEqual(twitchStream.videoHeight, [twitchStreamJSON[@"video_height"] floatValue]);
+	XCTAssertEqual(twitchStream.averageFps, [twitchStreamJSON[@"average_fps"] doubleValue]);
+	XCTAssertEqualObjects(twitchStream.channel, twitchStreamJSON[@"channel"]);
+	XCTAssertEqualObjects(twitchStream.preview, twitchStreamJSON[@"preview"]);
+	
+	FDTwitchChannel *twitchChannel = twitchStream.channel;
+	NSDictionary *twitchChannelJSON = jsonObject[@"stream"][4][@"channel"];
+	
+	XCTAssertEqualObjects(twitchChannel.displayName, jsonObject[@"display_name"]);
+	XCTAssertEqual(twitchChannel.mature, [twitchChannelJSON[@"mature"] boolValue]);
+	XCTAssertEqualObjects(twitchChannel.profileBannerBackgroundColor, jsonObject[@"profile_banner_background_color"]);
+	XCTAssertEqualObjects(twitchChannel.createdAt, jsonObject[@"created_at"]);
+	XCTAssertEqualObjects(twitchChannel.updatedAt, jsonObject[@"updated_at"]);
 }
 
 

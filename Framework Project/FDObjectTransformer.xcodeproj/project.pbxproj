@@ -52,6 +52,16 @@
 		27F72E941B2D073A00C0D9CE /* FDObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27F72E971B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */; };
 		27F72E981B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */; };
+		27F72E9E1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72E9D1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m */; };
+		27F72E9F1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72E9D1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m */; };
+		27F72EA21B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA11B2D2FCF00C0D9CE /* FDTwitchStream.m */; };
+		27F72EA31B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA11B2D2FCF00C0D9CE /* FDTwitchStream.m */; };
+		27F72EA61B2D2FEA00C0D9CE /* FDTwitchChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA51B2D2FEA00C0D9CE /* FDTwitchChannel.m */; };
+		27F72EA71B2D2FEA00C0D9CE /* FDTwitchChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA51B2D2FEA00C0D9CE /* FDTwitchChannel.m */; };
+		27F72EAA1B2D2FF300C0D9CE /* FDTwitchImageURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA91B2D2FF300C0D9CE /* FDTwitchImageURLs.m */; };
+		27F72EAB1B2D2FF300C0D9CE /* FDTwitchImageURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EA91B2D2FF300C0D9CE /* FDTwitchImageURLs.m */; };
+		27F72EAD1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 27F72EAC1B2D30FA00C0D9CE /* twitch_stream_search_results.json */; };
+		27F72EAE1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 27F72EAC1B2D30FA00C0D9CE /* twitch_stream_search_results.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +116,15 @@
 		27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDObjectTransformerAdapter.h; sourceTree = "<group>"; };
 		27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDURLComponentsTransformerAdapter.h; sourceTree = "<group>"; };
 		27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDURLComponentsTransformerAdapter.m; sourceTree = "<group>"; };
+		27F72E9C1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchStreamSearchResults.h; sourceTree = "<group>"; };
+		27F72E9D1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchStreamSearchResults.m; sourceTree = "<group>"; };
+		27F72EA01B2D2FCF00C0D9CE /* FDTwitchStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchStream.h; sourceTree = "<group>"; };
+		27F72EA11B2D2FCF00C0D9CE /* FDTwitchStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchStream.m; sourceTree = "<group>"; };
+		27F72EA41B2D2FEA00C0D9CE /* FDTwitchChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchChannel.h; sourceTree = "<group>"; };
+		27F72EA51B2D2FEA00C0D9CE /* FDTwitchChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchChannel.m; sourceTree = "<group>"; };
+		27F72EA81B2D2FF300C0D9CE /* FDTwitchImageURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchImageURLs.h; sourceTree = "<group>"; };
+		27F72EA91B2D2FF300C0D9CE /* FDTwitchImageURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchImageURLs.m; sourceTree = "<group>"; };
+		27F72EAC1B2D30FA00C0D9CE /* twitch_stream_search_results.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = twitch_stream_search_results.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +261,14 @@
 				27D00F331B250C48000FCA05 /* FDRandomModel.m */,
 				27D00F451B251412000FCA05 /* FDRandomJSONModel.h */,
 				27D00F461B251412000FCA05 /* FDRandomJSONModel.m */,
+				27F72E9C1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.h */,
+				27F72E9D1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m */,
+				27F72EA01B2D2FCF00C0D9CE /* FDTwitchStream.h */,
+				27F72EA11B2D2FCF00C0D9CE /* FDTwitchStream.m */,
+				27F72EA41B2D2FEA00C0D9CE /* FDTwitchChannel.h */,
+				27F72EA51B2D2FEA00C0D9CE /* FDTwitchChannel.m */,
+				27F72EA81B2D2FF300C0D9CE /* FDTwitchImageURLs.h */,
+				27F72EA91B2D2FF300C0D9CE /* FDTwitchImageURLs.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				27D00F4A1B25142D000FCA05 /* random.json */,
+				27F72EAC1B2D30FA00C0D9CE /* twitch_stream_search_results.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -441,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F72EAD1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */,
 				27D00F4B1B25142D000FCA05 /* random.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F72EAE1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */,
 				27D00F4C1B25142D000FCA05 /* random.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,13 +510,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F72EAA1B2D2FF300C0D9CE /* FDTwitchImageURLs.m in Sources */,
 				27D00F431B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				27F72EA61B2D2FEA00C0D9CE /* FDTwitchChannel.m in Sources */,
 				27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
 				27D00F471B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
 				27D00F401B250C48000FCA05 /* FDRandomModel.m in Sources */,
+				27F72E9E1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */,
+				27F72EA21B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */,
 				27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,13 +541,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F72EAB1B2D2FF300C0D9CE /* FDTwitchImageURLs.m in Sources */,
 				27D00F441B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				27F72EA71B2D2FEA00C0D9CE /* FDTwitchChannel.m in Sources */,
 				27D00F3D1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
 				27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
 				27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
 				27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */,
+				27F72E9F1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */,
+				27F72EA31B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */,
 				27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
