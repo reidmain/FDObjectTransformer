@@ -49,6 +49,9 @@
 		27D00F4C1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
 		27F72E911B2CDF6800C0D9CE /* FDThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */; };
 		27F72E921B2CDF6E00C0D9CE /* NSObject+DeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */; };
+		27F72E941B2D073A00C0D9CE /* FDObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F72E971B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */; };
+		27F72E981B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		27D00F451B251412000FCA05 /* FDRandomJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDRandomJSONModel.h; sourceTree = "<group>"; };
 		27D00F461B251412000FCA05 /* FDRandomJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDRandomJSONModel.m; sourceTree = "<group>"; };
 		27D00F4A1B25142D000FCA05 /* random.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = random.json; sourceTree = "<group>"; };
+		27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDObjectTransformerAdapter.h; sourceTree = "<group>"; };
+		27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDURLComponentsTransformerAdapter.h; sourceTree = "<group>"; };
+		27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDURLComponentsTransformerAdapter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,7 @@
 				27F72E8F1B2CDEEA00C0D9CE /* Dependencies */,
 				27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */,
 				27ACFD351B1EC9FC004B8142 /* FDObjectTransformer.m */,
+				27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */,
 			);
 			name = FDObjectTransformer;
 			path = ../FDObjectTransformer;
@@ -218,6 +225,8 @@
 				27D00F2C1B250C48000FCA05 /* Models */,
 				27F72E901B2CDF0300C0D9CE /* Dependencies */,
 				27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */,
+				27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */,
+				27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -278,6 +287,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F72E971B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h in Headers */,
+				27F72E941B2D073A00C0D9CE /* FDObjectTransformerAdapter.h in Headers */,
 				27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
 				27D00EF51B22C02A000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */,
 				27D00EF11B22BFA6000FCA05 /* NSObject+DeclaredProperty.h in Headers */,
@@ -457,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D00EEC1B22B2FA000FCA05 /* FDDeclaredProperty.m in Sources */,
+				27F72E981B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m in Sources */,
 				27D00EF61B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m in Sources */,
 				27D00ECE1B228D4C000FCA05 /* FDColor+Creation.m in Sources */,
 				27D00EF21B22BFA6000FCA05 /* NSObject+DeclaredProperty.m in Sources */,

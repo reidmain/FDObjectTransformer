@@ -1,5 +1,6 @@
 @import Foundation;
 #import "FDColor+Creation.h"
+#import "FDObjectTransformerAdapter.h"
 
 
 #pragma mark Constants
@@ -37,9 +38,6 @@ The date formatter to use whenever transforming to or from an NSDate.
 #pragma mark - Constructors
 
 
-#pragma mark - Static Methods
-
-
 #pragma mark - Instance Methods
 
 /**
@@ -50,7 +48,12 @@ Attempt to convert from into an instance of the specified objectClass.
 
 @return An instance of objectClass if a transformation from the class of from to the object class exists.
 */
-- (id)objectOfClass: (Class)objectClass from:(id)from;
+- (id)objectOfClass: (Class)objectClass 
+	from: (id)from;
+
+- (void)registerAdapter: (id<FDObjectTransformerAdapter>)adapter 
+	fromClass: (Class)fromClass 
+	toClass: (Class)toClass;
 
 
 @end

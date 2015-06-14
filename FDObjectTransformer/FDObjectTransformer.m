@@ -1,6 +1,7 @@
 #import "FDObjectTransformer.h"
 #import "FDColor+Creation.h"
 #import "NSObject+DeclaredProperty.h"
+#import "FDThreadSafeMutableDictionary.h"
 
 
 #pragma mark Constants
@@ -20,6 +21,7 @@
 
 @implementation FDObjectTransformer
 {
+	@private __strong FDThreadSafeMutableDictionary *_adaptersGoingToClass;
 	@private __strong NSNumberFormatter *_numberFormatter;
 }
 
@@ -38,6 +40,7 @@
 	}
 	
 	// Initialize instance variables.
+	_adaptersGoingToClass = [FDThreadSafeMutableDictionary new];
 	_numberFormatter = [NSNumberFormatter new];
 	
 	// Return initialized instance.
@@ -69,6 +72,26 @@
 	}
 	
 	id transformedObject = nil;
+	
+	NSString *toClassString = NSStringFromClass(objectClass);
+	FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
+	if ([adaptersGoingFromClass count] > 0)
+	{
+		Class fromClass = [from class];
+		while (fromClass)
+		{
+			NSString *fromClassString = NSStringFromClass(fromClass);
+			id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
+			if (adapter)
+			{
+				transformedObject = [adapter transformObject:from intoClass:objectClass];
+				
+				return transformedObject;
+			}
+			
+			fromClass = [fromClass superclass];
+		}
+	}
 	
 	if ([from isKindOfClass: [NSArray class]] == YES)
 	{
@@ -218,6 +241,22 @@
 	}
 	
 	return transformedObject;
+}
+
+- (void)registerAdapter:(id<FDObjectTransformerAdapter>)adapter fromClass:(Class)fromClass toClass:(Class)toClass
+{
+	NSString *toClassString = NSStringFromClass(toClass);
+	FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
+	if (adaptersGoingFromClass == nil)
+	{
+		adaptersGoingFromClass = [FDThreadSafeMutableDictionary new];
+		[_adaptersGoingToClass setObject: adaptersGoingFromClass 
+			forKey: toClassString];
+	}
+	
+	NSString *fromClassString = NSStringFromClass(fromClass);
+	[adaptersGoingFromClass setValue: adapter 
+		forKey: fromClassString];
 }
 
 

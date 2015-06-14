@@ -7,6 +7,7 @@
 #import "FDRandomJSONModel.h"
 #import "NSObject+DeclaredProperty.h"
 #import "FDColor+Creation.h"
+#import "FDURLComponentsTransformerAdapter.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -16,17 +17,13 @@
 @end
 
 @implementation FDObjectTransformerTests
-{
-}
 
-- (void)setUp
-{
-    [super setUp];
-}
 
-#pragma mark - Invalid
+#pragma mark - Default Transformations
 
-- (void)testBaseCases
+#pragma mark Invalid
+
+- (void)testNils
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
@@ -39,7 +36,6 @@
 	XCTAssertNil(nilObject);
 }
 
-#pragma mark - Default Transformations
 
 #pragma mark NSString
 
@@ -501,17 +497,36 @@
 
 #pragma mark - Custom Transformations
 
-- (void)testNSURLComponentsToNSURL
+- (void)testNSURLToNSURLComponents
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	[transformer registerAdapter: [FDURLComponentsTransformerAdapter new] 
+		fromClass: [NSURL class] 
+		toClass: [NSURLComponents class]];
 	
 	NSString *urlString = @"http://www.reidmain.com";
 	NSURLComponents *urlComponents = [[NSURLComponents alloc] 
 		initWithString: urlString];
 	NSURL *url = [NSURL URLWithString: urlString];
-	NSURL *transformedURL = [transformer objectOfClass: [NSURL class] 
-		from: urlComponents];
-	XCTAssertEqualObjects(url, transformedURL);
+	NSURLComponents *transformedURLComponents = [transformer objectOfClass: [NSURLComponents class] 
+		from: url];
+	XCTAssertEqualObjects(urlComponents, transformedURLComponents);
+}
+
+- (void)testNSStringToNSURLComponents
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	[transformer registerAdapter: [FDURLComponentsTransformerAdapter new] 
+		fromClass: [NSString class] 
+		toClass: [NSURLComponents class]];
+	
+	NSString *urlString = @"http://www.reidmain.com";
+	NSURLComponents *urlComponents = [NSURLComponents componentsWithString: urlString];
+	NSURLComponents *transformedURLComponents = [transformer objectOfClass: [NSURLComponents class] 
+		from: urlString];
+	XCTAssertEqualObjects(urlComponents, transformedURLComponents);
 }
 
 
