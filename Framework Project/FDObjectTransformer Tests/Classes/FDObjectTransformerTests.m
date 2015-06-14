@@ -389,6 +389,56 @@
 	XCTAssertNotEqualObjects(randomModel.className, dictionary[@keypath(FDRandomModel, className)]);
 }
 
+- (void)testNSDictionaryOfJSONToFDRandomJSONModel
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	transformer.dateFormatter = [NSDateFormatter new];
+	transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
+	
+	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"random"];
+	
+	FDRandomJSONModel *randomJSONModel = [transformer objectOfClass: [FDRandomJSONModel class] 
+		from: jsonObject];
+	
+	XCTAssertNotNil(randomJSONModel.string);
+	XCTAssertNotNil(randomJSONModel.number);
+	XCTAssertNotNil(randomJSONModel.stringFromNumber);
+	XCTAssertNotNil(randomJSONModel.numberFromString);
+	XCTAssertNotNil(randomJSONModel.date);
+	XCTAssertNotNil(randomJSONModel.url);
+	XCTAssertNotNil(randomJSONModel.colorFromNumber);
+	XCTAssertNotNil(randomJSONModel.colorFromString);
+	XCTAssertNotNil(randomJSONModel.dictionary);
+	XCTAssertNotNil(randomJSONModel.array);
+	XCTAssertNil(randomJSONModel.null);
+	XCTAssertNotNil(randomJSONModel.initializedPropertyWithNoJSONField);
+	XCTAssertNil(randomJSONModel.initializedPropertyToBeNullified);
+	
+	FDAssertIsKindOfClass(randomJSONModel.string, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.string)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.number, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.number)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.stringFromNumber, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.stringFromNumber)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.numberFromString, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.numberFromString)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.date, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.date)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.url, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.url)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.colorFromNumber, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.colorFromNumber)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.colorFromString, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.colorFromString)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.dictionary, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.dictionary)].objectClass);
+	FDAssertIsKindOfClass(randomJSONModel.array, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.array)].objectClass);
+	
+	XCTAssertEqualObjects(jsonObject[@"string"], randomJSONModel.string);
+	XCTAssertEqualObjects(jsonObject[@"number"], randomJSONModel.number);
+	XCTAssertEqualObjects([jsonObject[@"stringFromNumber"] stringValue], randomJSONModel.stringFromNumber);
+	XCTAssertEqualObjects(@([jsonObject[@"numberFromString"] longLongValue]), randomJSONModel.numberFromString);
+	XCTAssertEqual(-18, randomJSONModel.integerFromString);
+	XCTAssertEqual(0, randomJSONModel.integerFromNull);
+	XCTAssertEqualObjects([transformer.dateFormatter dateFromString: jsonObject[@"date"]], randomJSONModel.date);
+	XCTAssertEqualObjects([NSURL URLWithString: jsonObject[@"url"]], randomJSONModel.url);
+	XCTAssertEqualObjects([FDColor fd_colorFromRGBANumber: jsonObject[@"colorFromNumber"]], randomJSONModel.colorFromNumber);
+	XCTAssertEqualObjects([FDColor fd_colorFromHexString: jsonObject[@"colorFromString"]], randomJSONModel.colorFromString);
+	XCTAssertEqualObjects(jsonObject[@"dictionary"], randomJSONModel.dictionary);
+	XCTAssertEqualObjects(jsonObject[@"array"], randomJSONModel.array);
+}
+
 
 #pragma mark NSArray
 
@@ -446,59 +496,6 @@
 	NSArray *transformedArrayOfStrings = [transformer objectOfClass: [NSString class] 
 		from: arrayOfNumbers];
 	XCTAssertEqualObjects(arrayOfStrings, transformedArrayOfStrings);
-}
-
-
-#pragma mark - Custom Transformations
-
-- (void)testTransformationFromJSONToModel
-{
-	FDObjectTransformer *transformer = [FDObjectTransformer new];
-	transformer.dateFormatter = [NSDateFormatter new];
-	transformer.dateFormatter.dateFormat = @"MM/dd/yyyy";
-	
-	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"random"];
-	
-	FDRandomJSONModel *randomJSONModel = [transformer objectOfClass: [FDRandomJSONModel class] 
-		from: jsonObject];
-	
-	XCTAssertNotNil(randomJSONModel.string);
-	XCTAssertNotNil(randomJSONModel.number);
-	XCTAssertNotNil(randomJSONModel.stringFromNumber);
-	XCTAssertNotNil(randomJSONModel.numberFromString);
-	XCTAssertNotNil(randomJSONModel.date);
-	XCTAssertNotNil(randomJSONModel.url);
-	XCTAssertNotNil(randomJSONModel.colorFromNumber);
-	XCTAssertNotNil(randomJSONModel.colorFromString);
-	XCTAssertNotNil(randomJSONModel.dictionary);
-	XCTAssertNotNil(randomJSONModel.array);
-	XCTAssertNil(randomJSONModel.null);
-	XCTAssertNotNil(randomJSONModel.initializedPropertyWithNoJSONField);
-	XCTAssertNil(randomJSONModel.initializedPropertyToBeNullified);
-	
-	FDAssertIsKindOfClass(randomJSONModel.string, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.string)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.number, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.number)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.stringFromNumber, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.stringFromNumber)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.numberFromString, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.numberFromString)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.date, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.date)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.url, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.url)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.colorFromNumber, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.colorFromNumber)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.colorFromString, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.colorFromString)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.dictionary, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.dictionary)].objectClass);
-	FDAssertIsKindOfClass(randomJSONModel.array, [[randomJSONModel class] fd_declaredPropertyForKeyPath:@keypath(randomJSONModel.array)].objectClass);
-	
-	XCTAssertEqualObjects(jsonObject[@"string"], randomJSONModel.string);
-	XCTAssertEqualObjects(jsonObject[@"number"], randomJSONModel.number);
-	XCTAssertEqualObjects([jsonObject[@"stringFromNumber"] stringValue], randomJSONModel.stringFromNumber);
-	XCTAssertEqualObjects(@([jsonObject[@"numberFromString"] longLongValue]), randomJSONModel.numberFromString);
-	XCTAssertEqual(-18, randomJSONModel.integerFromString);
-	XCTAssertEqual(0, randomJSONModel.integerFromNull);
-	XCTAssertEqualObjects([transformer.dateFormatter dateFromString: jsonObject[@"date"]], randomJSONModel.date);
-	XCTAssertEqualObjects([NSURL URLWithString: jsonObject[@"url"]], randomJSONModel.url);
-	XCTAssertEqualObjects([FDColor fd_colorFromRGBANumber: jsonObject[@"colorFromNumber"]], randomJSONModel.colorFromNumber);
-	XCTAssertEqualObjects([FDColor fd_colorFromHexString: jsonObject[@"colorFromString"]], randomJSONModel.colorFromString);
-	XCTAssertEqualObjects(jsonObject[@"dictionary"], randomJSONModel.dictionary);
-	XCTAssertEqualObjects(jsonObject[@"array"], randomJSONModel.array);
 }
 
 
