@@ -499,6 +499,22 @@
 }
 
 
+#pragma mark - Custom Transformations
+
+- (void)testNSURLComponentsToNSURL
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	NSString *urlString = @"http://www.reidmain.com";
+	NSURLComponents *urlComponents = [[NSURLComponents alloc] 
+		initWithString: urlString];
+	NSURL *url = [NSURL URLWithString: urlString];
+	NSURL *transformedURL = [transformer objectOfClass: [NSURL class] 
+		from: urlComponents];
+	XCTAssertEqualObjects(url, transformedURL);
+}
+
+
 #pragma mark - Performance
 
 - (void)testPerformance
