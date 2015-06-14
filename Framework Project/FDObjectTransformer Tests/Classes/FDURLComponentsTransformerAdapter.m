@@ -2,7 +2,7 @@
 
 @implementation FDURLComponentsTransformerAdapter
 
-- (id)transformObject:(id)object intoClass:(Class)targetClass
+- (id)transformObject:(id)object intoClass:(Class)targetClass fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
 {
 	id transformedObject = nil;
 	

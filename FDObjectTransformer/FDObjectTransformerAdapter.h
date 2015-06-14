@@ -1,5 +1,7 @@
 @import Foundation;
 
+@class FDObjectTransformer;
+
 #pragma mark Forward Declarations
 
 
@@ -12,7 +14,7 @@
 
 @required
 
-- (id)transformObject:(id)object intoClass:(Class)targetClass;
+- (id)transformObject:(id)object intoClass:(Class)targetClass fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
 
 
 #pragma mark - Optional Methods

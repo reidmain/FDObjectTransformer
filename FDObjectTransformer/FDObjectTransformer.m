@@ -84,7 +84,7 @@
 			id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
 			if (adapter)
 			{
-				transformedObject = [adapter transformObject:from intoClass:objectClass];
+				transformedObject = [adapter transformObject:from intoClass:objectClass fromObjectTransformer: self];
 				
 				return transformedObject;
 			}
@@ -95,7 +95,6 @@
 	
 	if ([from isKindOfClass: [NSArray class]] == YES)
 	{
-		Class arrayClass = [from class];
 		NSMutableArray *mutableArray = [NSMutableArray array];
 		
 		[from enumerateObjectsUsingBlock: ^(id objectInArray, NSUInteger index, BOOL *stop)
@@ -109,7 +108,8 @@
 				}
 			}];
 		
-		transformedObject = [arrayClass arrayWithArray: mutableArray];
+		// TODO: Create an instance of the array class instead of always returning a NSArray.
+		transformedObject = [NSArray arrayWithArray: mutableArray];
 	}
 	else if (objectClass == [NSString class])
 	{
@@ -257,6 +257,13 @@
 	NSString *fromClassString = NSStringFromClass(fromClass);
 	[adaptersGoingFromClass setValue: adapter 
 		forKey: fromClassString];
+}
+
+- (void)registerJSONAdapter:(FDJSONObjectTransformerAdapter *)adapter
+{
+	[self registerAdapter: adapter 
+		fromClass: [NSDictionary class] 
+		toClass: adapter.modelClass];
 }
 
 

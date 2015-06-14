@@ -1,6 +1,7 @@
 @import Foundation;
 #import "FDColor+Creation.h"
 #import "FDObjectTransformerAdapter.h"
+#import "FDJSONObjectTransformerAdapter.h"
 
 
 #pragma mark Constants
@@ -54,6 +55,8 @@ Attempt to convert from into an instance of the specified objectClass.
 - (void)registerAdapter: (id<FDObjectTransformerAdapter>)adapter 
 	fromClass: (Class)fromClass 
 	toClass: (Class)toClass;
+
+- (void)registerJSONAdapter:(FDJSONObjectTransformerAdapter *)adapter;
 
 
 @end
