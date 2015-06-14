@@ -109,6 +109,7 @@
 	XCTAssertEqualObjects([dictionary description], transformedDictionary);
 }
 
+
 #pragma mark NSNumber
 
 - (void)testNSNumberToNSNumber
@@ -211,6 +212,7 @@
 	XCTAssertNil(transformedURL);
 }
 
+
 #pragma mark NSURL
 
 - (void)testNSURLToNSURL
@@ -244,31 +246,45 @@
 	XCTAssertNil(transformedNumber);
 }
 
-- (void)testTransformationToFDColor
+
+#pragma mark FDColor
+
+- (void)testFDColorToFDColor
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from FDColor to FDColor.
 	FDColor *color = [FDColor redColor];
 	FDColor *transformedColor = [transformer objectOfClass: [FDColor class] 
 		from: color];
 	XCTAssertEqualObjects(color, transformedColor);
+}
+
+- (void)testNSNumberToFDColor
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSNumber to FDColor.
 	NSNumber *number = @(342);
 	FDColor *numberAsColor = [FDColor fd_colorFromRGBANumber: number];
 	FDColor *transformedNumber = [transformer objectOfClass: [FDColor class] 
 		from: number];
 	XCTAssertEqualObjects(numberAsColor, transformedNumber);
+}
+
+- (void)testNSStringToFDColor
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSString to FDColor.
-	NSString *string = @"#342";
+	NSString *string = @"#342342";
 	FDColor *stringAsColor = [FDColor fd_colorFromHexString: string];
 	FDColor *transformedString = [transformer objectOfClass: [FDColor class] 
 		from: string];
 	XCTAssertEqualObjects(stringAsColor, transformedString);
+}
+
+- (void)testNSURLToFDColor
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	// Test transformation from NSURL to FDColor.
 	NSURL *url = [NSURL URLWithString: @"http://www.reidmain.com"];
 	FDColor *transformedURL = [transformer objectOfClass: [FDColor class] 
 		from: url];
