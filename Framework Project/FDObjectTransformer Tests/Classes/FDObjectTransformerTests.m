@@ -11,6 +11,7 @@
 #import "FDTwitchStreamSearchResults.h"
 #import "FDJSONObjectTransformerAdapter.h"
 #import "FDValueTransformer.h"
+#import "FDTwitchObjectTransformer.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -534,71 +535,7 @@
 
 - (void)testNSArrayOfJSONToFDTwitchStreamSearchResults
 {
-	FDObjectTransformer *transformer = [FDObjectTransformer new];
-	
-	NSDateFormatter *dateFormatter = [NSDateFormatter new];
-	dateFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
-	dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation: @"UTC"];
-	dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
-	transformer.dateFormatter = dateFormatter;
-	
-	FDJSONObjectTransformerAdapter *twitchStreamSearchResultsJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchStreamSearchResultsJSONAdapter.modelClass = [FDTwitchStreamSearchResults class];
-	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_total" 
-		forLocalKey: @keypath(FDTwitchStreamSearchResults, total)];
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_links" 
-		forLocalKey: @keypath(FDTwitchStreamSearchResults, next)];
-	[twitchStreamSearchResultsJSONAdapter registerCollectionType: [FDTwitchStream class] 
-		forPropertyName: @keypath(FDTwitchStreamSearchResults, streams)];
-	[twitchStreamSearchResultsJSONAdapter registerValueTransformer: [FDValueTransformer transformerWithBlock: ^id(id value)
-		{
-			id transformedValue = nil;
-			
-			if ([value isKindOfClass: [NSDictionary class]] == YES)
-			{
-				transformedValue = [NSURL URLWithString: value[@"next"]];
-			}
-			
-			return transformedValue;
-		}] 
-		forPropertyName: @keypath(FDTwitchStreamSearchResults, next)];
-	[transformer registerJSONAdapter: twitchStreamSearchResultsJSONAdapter];
-	
-	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchStreamJSONAdapter.modelClass = [FDTwitchStream class];
-	twitchStreamJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamJSONAdapter registerRemoteKey: @"_id" 
-		forLocalKey: @keypath(FDTwitchStream, streamID)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"game" 
-		forLocalKey: @keypath(FDTwitchStream, gameName)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"viewers" 
-		forLocalKey: @keypath(FDTwitchStream, viewerCount)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"preview" 
-		forLocalKey: @keypath(FDTwitchStream, previewImageURLs)];
-	[transformer registerJSONAdapter: twitchStreamJSONAdapter];
-	
-	FDJSONObjectTransformerAdapter *twitchChannelJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchChannelJSONAdapter.modelClass = [FDTwitchChannel class];
-	twitchChannelJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchChannelJSONAdapter registerRemoteKey: @"game" 
-		forLocalKey: @keypath(FDTwitchChannel, gameName)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"mature" 
-		forLocalKey: @keypath(FDTwitchChannel, isMature)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"partner" 
-		forLocalKey: @keypath(FDTwitchChannel, isPartner)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"profile_banner" 
-		forLocalKey: @keypath(FDTwitchChannel, profileBannerURL)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"views" 
-		forLocalKey: @keypath(FDTwitchChannel, viewCount)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"followers" 
-		forLocalKey: @keypath(FDTwitchChannel, followerCount)];
-	[transformer registerJSONAdapter: twitchChannelJSONAdapter];
-	
-	FDJSONObjectTransformerAdapter *twitchImageURLsJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchImageURLsJSONAdapter.modelClass = [FDTwitchImageURLs class];
-	twitchImageURLsJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[transformer registerJSONAdapter: twitchImageURLsJSONAdapter];
+	FDTwitchObjectTransformer *transformer = [FDTwitchObjectTransformer new];
 	
 	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
 	

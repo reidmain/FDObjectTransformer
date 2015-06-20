@@ -70,6 +70,8 @@
 		27F72ED21B3514D700C0D9CE /* FDValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72ECF1B3514D700C0D9CE /* FDValueTransformer.h */; };
 		27F72ED31B3514D700C0D9CE /* FDValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72ED01B3514D700C0D9CE /* FDValueTransformer.m */; };
 		27F72ED41B3514D700C0D9CE /* FDValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72ED01B3514D700C0D9CE /* FDValueTransformer.m */; };
+		27F72EDB1B35194F00C0D9CE /* FDTwitchObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72ED61B3518DA00C0D9CE /* FDTwitchObjectTransformer.m */; };
+		27F72EDC1B35194F00C0D9CE /* FDTwitchObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72ED61B3518DA00C0D9CE /* FDTwitchObjectTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		27F72EC11B2D37C900C0D9CE /* FDJSONObjectTransformerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDJSONObjectTransformerAdapter.m; sourceTree = "<group>"; };
 		27F72ECF1B3514D700C0D9CE /* FDValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDValueTransformer.h; sourceTree = "<group>"; };
 		27F72ED01B3514D700C0D9CE /* FDValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDValueTransformer.m; sourceTree = "<group>"; };
+		27F72ED51B3518DA00C0D9CE /* FDTwitchObjectTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchObjectTransformer.h; sourceTree = "<group>"; };
+		27F72ED61B3518DA00C0D9CE /* FDTwitchObjectTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchObjectTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */,
 				27F72E951B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h */,
 				27F72E961B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m */,
+				27F72ED51B3518DA00C0D9CE /* FDTwitchObjectTransformer.h */,
+				27F72ED61B3518DA00C0D9CE /* FDTwitchObjectTransformer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				27F72E9E1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27F72EA21B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */,
+				27F72EDC1B35194F00C0D9CE /* FDTwitchObjectTransformer.m in Sources */,
 				27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +583,7 @@
 				27F72E9F1B2D2FC500C0D9CE /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27F72EA31B2D2FCF00C0D9CE /* FDTwitchStream.m in Sources */,
+				27F72EDB1B35194F00C0D9CE /* FDTwitchObjectTransformer.m in Sources */,
 				27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
