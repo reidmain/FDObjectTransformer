@@ -52,6 +52,8 @@ Attempt to convert from into an instance of the specified objectClass.
 - (id)objectOfClass: (Class)objectClass 
 	from: (id)from;
 
+- (id)jsonObjectFrom: (id)from;
+
 - (void)registerAdapter: (id<FDObjectTransformerAdapter>)adapter 
 	fromClass: (Class)fromClass 
 	toClass: (Class)toClass;

@@ -583,6 +583,52 @@
 	XCTAssertEqualObjects(twitchChannel.updatedAt, [transformer.dateFormatter dateFromString: twitchChannelJSON[@"updated_at"]]);
 }
 
+- (void)testFDTwitchStreamSearchResultsToJSONObject
+{
+	FDTwitchObjectTransformer *transformer = [FDTwitchObjectTransformer new];
+	
+	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
+	
+	FDTwitchStreamSearchResults *twitchStreamSearchResults = [transformer objectOfClass: [FDTwitchStreamSearchResults class] 
+		from: jsonObject];
+	NSDictionary *twitchStreamSearchResultsJSON = [transformer jsonObjectFrom: twitchStreamSearchResults];
+	
+	XCTAssertEqualObjects(twitchStreamSearchResultsJSON[@"_total"], @(twitchStreamSearchResults.total));
+	XCTAssertEqualObjects(twitchStreamSearchResultsJSON[@"_links"], [twitchStreamSearchResults.next absoluteString]);
+	
+	FDTwitchStream *twitchStream = twitchStreamSearchResults.streams[3];
+	NSDictionary *twitchStreamJSON = twitchStreamSearchResultsJSON[@"streams"][3];
+	
+	XCTAssertEqualObjects(twitchStreamJSON[@"_id"], @(twitchStream.streamID));
+	XCTAssertEqualObjects(twitchStreamJSON[@"game"], twitchStream.gameName);
+	XCTAssertEqualObjects(twitchStreamJSON[@"created_at"], [transformer.dateFormatter stringFromDate: twitchStream.createdAt]);
+	XCTAssertEqualObjects(twitchStreamJSON[@"viewers"], @(twitchStream.viewerCount));
+	XCTAssertEqualObjects(twitchStreamJSON[@"video_height"], @(twitchStream.videoHeight));
+	XCTAssertEqualObjects(twitchStreamJSON[@"average_fps"], @(twitchStream.averageFPS));
+	
+	FDTwitchImageURLs *previewImageURLs = twitchStream.previewImageURLs;
+	NSDictionary *previewImageURLsJSON = twitchStreamJSON[@"preview"];
+	XCTAssertEqualObjects(previewImageURLsJSON[@"small"], [previewImageURLs.small absoluteString]);
+	XCTAssertEqualObjects(previewImageURLsJSON[@"medium"], [previewImageURLs.medium absoluteString]);
+	XCTAssertEqualObjects(previewImageURLsJSON[@"large"], [previewImageURLs.large absoluteString]);
+	XCTAssertEqualObjects(previewImageURLsJSON[@"template"], previewImageURLs.template);
+	
+	FDTwitchChannel *twitchChannel = twitchStream.channel;
+	NSDictionary *twitchChannelJSON = twitchStreamJSON[@"channel"];
+	
+	XCTAssertEqualObjects(twitchChannelJSON[@"name"], twitchChannel.name);
+	XCTAssertEqualObjects(twitchChannelJSON[@"display_name"], twitchChannel.displayName);
+	XCTAssertEqualObjects(twitchChannelJSON[@"status"], twitchChannel.status);
+	XCTAssertEqualObjects(twitchChannelJSON[@"game"], twitchChannel.gameName);
+	XCTAssertEqualObjects(twitchChannelJSON[@"mature"], @(twitchChannel.isMature));
+	XCTAssertEqualObjects(twitchChannelJSON[@"partner"], @(twitchChannel.isPartner));
+	XCTAssertEqualObjects(twitchChannelJSON[@"profile_banner"], [twitchChannel.profileBannerURL absoluteString]);
+	XCTAssertEqualObjects(twitchChannelJSON[@"views"], @(twitchChannel.viewCount));
+	XCTAssertEqualObjects(twitchChannelJSON[@"followers"], @(twitchChannel.followerCount));
+	XCTAssertEqualObjects(twitchChannelJSON[@"created_at"], [transformer.dateFormatter stringFromDate: twitchChannel.createdAt]);
+	XCTAssertEqualObjects(twitchChannelJSON[@"updated_at"], [transformer.dateFormatter stringFromDate: twitchChannel.updatedAt]);
+}
+
 
 #pragma mark - Performance
 

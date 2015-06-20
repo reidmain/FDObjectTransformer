@@ -2,6 +2,7 @@
 #import "FDColor+Creation.h"
 #import "NSObject+DeclaredProperty.h"
 #import "FDThreadSafeMutableDictionary.h"
+#import "FDJSONObject.h"
 
 
 #pragma mark Constants
@@ -243,6 +244,14 @@
 	return transformedObject;
 }
 
+- (id)jsonObjectFrom: (id)from
+{
+	id jsonObject = [self objectOfClass: [FDJSONObject class] 
+		from: from];
+	
+	return jsonObject;
+}
+
 - (void)registerAdapter:(id<FDObjectTransformerAdapter>)adapter fromClass:(Class)fromClass toClass:(Class)toClass
 {
 	NSString *toClassString = NSStringFromClass(toClass);
@@ -264,6 +273,10 @@
 	[self registerAdapter: adapter 
 		fromClass: [NSDictionary class] 
 		toClass: adapter.modelClass];
+	
+	[self registerAdapter: adapter 
+		fromClass: adapter.modelClass 
+		toClass: [FDJSONObject class]];
 }
 
 

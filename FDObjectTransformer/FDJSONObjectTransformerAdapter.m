@@ -3,6 +3,7 @@
 #import "NSObject+DeclaredProperty.h"
 #import "FDObjectTransformer.h"
 #import "FDThreadSafeMutableDictionary.h"
+#import "FDJSONObject.h"
 
 
 #pragma mark Constants
@@ -136,7 +137,7 @@
 
 #pragma mark - FDObjectTransformerAdapter Methods
 
-- (id)transformObject:(id)object intoClass:(Class)targetClass fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
+- (id)transformObject:(id)object intoClass:(Class)targetClass fromObjectTransformer: (FDObjectTransformer *)objectTransformer
 {
 	id transformedObject = nil;
 	
@@ -213,8 +214,84 @@
 					forKey: declaredProperty.name];
 			}];
 	}
+	else if ([targetClass isSubclassOfClass: [FDJSONObject class]] == YES)
+	{
+		NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
+		
+		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
+			{
+				// If the property being read is a read-only property with no backing instance variable this is indicative of a computed property so it does not need to be converted to JSON.
+				if (declaredProperty.isReadOnly == YES 
+					&& declaredProperty.backingInstanceVariableName == nil)
+				{
+					return;
+				}
+				
+				id value = [object valueForKey: declaredProperty.name];
+				id transformedValue = [self _jsonObjectFrom: value 
+					fromObjectTransformer: objectTransformer];
+				
+				if (transformedValue != nil)
+				{
+					NSString *remoteKey = [self remoteKeyForLocalKey: declaredProperty.name];
+					[mutableDictionary setValue: transformedValue 
+						forKey: remoteKey];
+				}
+			}];
+		
+		transformedObject = [mutableDictionary copy];
+	}
 	
 	return transformedObject;
+}
+
+
+#pragma mark - Private Methods
+
+- (id)_jsonObjectFrom: (id)from  fromObjectTransformer: (FDObjectTransformer *)objectTransformer
+{
+	if (from == nil)
+	{
+		return nil;
+	}
+	
+	id jsonObject = nil;
+	
+	if ([from isKindOfClass: [NSArray class]] == YES)
+	{
+		NSMutableArray *mutableArray = [NSMutableArray new];
+		
+		[from enumerateObjectsUsingBlock: ^(id objectInArray, NSUInteger index, BOOL *stop)
+			{
+				id transformedObject = [self _jsonObjectFrom: objectInArray 
+					fromObjectTransformer: objectTransformer];
+				
+				if (transformedObject != nil) {
+					[mutableArray addObject: transformedObject];
+				}
+			}];
+		
+		jsonObject = [mutableArray copy];
+	}
+	else if ([from isKindOfClass: [NSString class]] == YES 
+		|| [from isKindOfClass: [NSNumber class]] == YES 
+		|| [from isKindOfClass: [NSNull class]] == YES)
+	{
+		jsonObject = from;
+	}
+	else if ([from isKindOfClass: [NSDate class]] == YES 
+		|| [from isKindOfClass:[NSURL class]])
+	{
+        jsonObject = [objectTransformer objectOfClass: [NSString class] 
+			from: from];
+    }
+	else
+	{
+		jsonObject = [objectTransformer jsonObjectFrom: from];
+	}
+	
+	return jsonObject;
 }
 
 
