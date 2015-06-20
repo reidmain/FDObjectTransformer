@@ -74,24 +74,30 @@
 	
 	id transformedObject = nil;
 	
-	NSString *toClassString = NSStringFromClass(objectClass);
-	FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
-	if ([adaptersGoingFromClass count] > 0)
+	Class toClass = objectClass;
+	while (toClass != nil)
 	{
-		Class fromClass = [from class];
-		while (fromClass)
+		NSString *toClassString = NSStringFromClass(toClass);
+		FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
+		if ([adaptersGoingFromClass count] > 0)
 		{
-			NSString *fromClassString = NSStringFromClass(fromClass);
-			id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
-			if (adapter)
+			Class fromClass = [from class];
+			while (fromClass != nil)
 			{
-				transformedObject = [adapter transformObject:from intoClass:objectClass fromObjectTransformer: self];
+				NSString *fromClassString = NSStringFromClass(fromClass);
+				id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
+				if (adapter != nil)
+				{
+					transformedObject = [adapter transformObject:from intoClass:objectClass fromObjectTransformer: self];
+					
+					return transformedObject;
+				}
 				
-				return transformedObject;
+				fromClass = [fromClass superclass];
 			}
-			
-			fromClass = [fromClass superclass];
 		}
+		
+		toClass = [toClass superclass];
 	}
 	
 	if ([from isKindOfClass: [NSArray class]] == YES)
