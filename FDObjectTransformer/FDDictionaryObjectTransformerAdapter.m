@@ -130,7 +130,22 @@
 {
 	id transformedObject = nil;
 	
-	if ([object isKindOfClass: [NSDictionary class]] == YES)
+	if (targetClass == [NSDictionary class])
+	{
+		NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+		
+		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
+			{
+				id propertyValue = [object valueForKey: declaredProperty.name];
+				
+				[mutableDictionary setValue: propertyValue 
+					forKey: declaredProperty.name];
+			}];
+		
+		transformedObject = mutableDictionary;
+	}
+	else if ([object isKindOfClass: [NSDictionary class]] == YES)
 	{
 		transformedObject = [targetClass new];
 		
@@ -158,6 +173,8 @@
 				// If the dictionary object is not NSNull attempt to transform it otherwise do nothing and allow the property being set to be cleared.
 				if (dictionaryObject != [NSNull null])
 				{
+					transformedDictionaryObject = dictionaryObject;
+					
 					NSValueTransformer *valueTransformer = [_valueTransformers objectForKey: declaredProperty.name];
 					if (valueTransformer != nil)
 					{
@@ -178,10 +195,6 @@
 					{
 						transformedDictionaryObject = [objectTransformer objectOfClass: declaredProperty.objectClass 
 							from: dictionaryObject];
-					}
-					else
-					{
-						transformedDictionaryObject = dictionaryObject;
 					}
 				}
 				

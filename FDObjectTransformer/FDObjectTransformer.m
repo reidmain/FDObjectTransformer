@@ -171,79 +171,21 @@
 	}
 	else if (objectClass == [NSDictionary class])
 	{
-		NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+		FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
 		
-		NSArray *declaredProperties = [[from class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
-		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
-			{
-				id propertyValue = [from valueForKey: declaredProperty.name];
-				
-				[mutableDictionary setValue: propertyValue 
-					forKey: declaredProperty.name];
-			}];
-		
-		transformedObject = mutableDictionary;
+		transformedObject = [adapter transformObject: from 
+				intoClass: objectClass 
+				fromObjectTransformer: self];
 	}
 	else
 	{
 		if ([from isKindOfClass: [NSDictionary class]] == YES)
 		{
-			id object = [objectClass new];
+			FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
 			
-			NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
-			[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
-				{
-					// If the property being set is a read-only property with no backing instance variable setValue:forKey: will always throw an exception so ignore the property. This is indicative of a computed property so it does not need to be set anyway.
-					if (declaredProperty.isReadOnly == YES 
-						&& declaredProperty.backingInstanceVariableName == nil)
-					{
-						return;
-					}
-					
-					id dictionaryObject = [from objectForKey: declaredProperty.name];
-					
-					// If the declared property's name does not exist in the dictionary ignore it and move onto the next property. There is no point in dealing with a property that does not exist because it could only delete data that currently exists.
-					if (dictionaryObject == nil)
-					{
-						return;
-					}
-					
-					id transformedDictionaryObject = nil;
-					
-					// If the dictionary object is not NSNull attempt to transform it into the object class. If the dictionary object is NSNull do nothing and allow the property being set to be cleared.
-					if (dictionaryObject != [NSNull null])
-					{
-						// If the declared property is not a scalar type attempt to transform the dictionary object into an instance of the property type.
-						if (declaredProperty.objectClass != nil)
-						{
-							transformedDictionaryObject = [self objectOfClass: declaredProperty.objectClass 
-								from: dictionaryObject];
-						}
-						else
-						{
-							transformedDictionaryObject = dictionaryObject;
-						}
-					}
-					
-					// If the transformed object is not the same type as the property that is being set stop parsing and move onto the next item because there is no point in attempting to set it since it will always result in nil.
-					if (declaredProperty.objectClass != nil 
-						&& transformedDictionaryObject != nil 
-						&& [transformedDictionaryObject isKindOfClass: declaredProperty.objectClass] == NO)
-					{
-						return;
-					}
-					// If the transformed object is nil and the declared property is a scalar type do not bother trying to set the property because it will only result in an exception.
-					else if (transformedDictionaryObject == nil 
-						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
-					{
-						return;
-					}
-					
-					[object setValue: transformedDictionaryObject 
-						forKey: declaredProperty.name];
-				}];
-			
-			transformedObject = object;
+			transformedObject = [adapter transformObject: from 
+				intoClass: objectClass 
+				fromObjectTransformer: self];
 		}
 	}
 	
