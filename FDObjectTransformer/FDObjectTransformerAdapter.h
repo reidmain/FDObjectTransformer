@@ -14,7 +14,9 @@
 
 @required
 
-- (id)transformObject:(id)object intoClass:(Class)targetClass fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
+- (id)transformObject: (id)object 
+	intoClass: (Class)targetClass 
+	fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
 
 
 #pragma mark - Optional Methods

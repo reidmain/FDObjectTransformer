@@ -177,16 +177,13 @@
 				intoClass: objectClass 
 				fromObjectTransformer: self];
 	}
-	else
+	else if ([from isKindOfClass: [NSDictionary class]] == YES)
 	{
-		if ([from isKindOfClass: [NSDictionary class]] == YES)
-		{
-			FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
-			
-			transformedObject = [adapter transformObject: from 
-				intoClass: objectClass 
-				fromObjectTransformer: self];
-		}
+		FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
+		
+		transformedObject = [adapter transformObject: from 
+			intoClass: objectClass 
+			fromObjectTransformer: self];
 	}
 	
 	return transformedObject;
