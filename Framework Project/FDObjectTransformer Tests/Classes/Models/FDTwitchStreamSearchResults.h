@@ -11,6 +11,7 @@
 
 @property (nonatomic, copy, readonly) NSArray *streams;
 @property (nonatomic, assign, readonly) NSUInteger total;
+@property (nonatomic, copy, readonly) NSURL *next; 
 
 
 @end

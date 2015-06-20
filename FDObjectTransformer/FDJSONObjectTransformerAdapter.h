@@ -35,10 +35,14 @@ typedef NS_ENUM(NSUInteger, FDJSONObjectTransformerAdapterPropertyNamingPolicy)
 
 #pragma mark - Instance Methods
 
-- (void)registerRemoteKey: (NSString *)remoteKey forLocalKey: (NSString *)localKey;
+- (void)registerRemoteKey: (NSString *)remoteKey 
+	forLocalKey: (NSString *)localKey;
 - (NSString *)remoteKeyForLocalKey: (NSString *)localKey;
 
 - (void)registerCollectionType: (Class)collectionType 
+	forPropertyName: (NSString *)propertyName;
+
+- (void)registerValueTransformer: (NSValueTransformer *)valueTransformer 
 	forPropertyName: (NSString *)propertyName;
 
 

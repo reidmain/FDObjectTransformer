@@ -10,6 +10,7 @@
 #import "FDURLComponentsTransformerAdapter.h"
 #import "FDTwitchStreamSearchResults.h"
 #import "FDJSONObjectTransformerAdapter.h"
+#import "FDValueTransformer.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -546,8 +547,22 @@
 	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_total" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, total)];
+	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_links" 
+		forLocalKey: @keypath(FDTwitchStreamSearchResults, next)];
 	[twitchStreamSearchResultsJSONAdapter registerCollectionType: [FDTwitchStream class] 
-		forPropertyName: @"streams"];
+		forPropertyName: @keypath(FDTwitchStreamSearchResults, streams)];
+	[twitchStreamSearchResultsJSONAdapter registerValueTransformer: [FDValueTransformer transformerWithBlock: ^id(id value)
+		{
+			id transformedValue = nil;
+			
+			if ([value isKindOfClass: [NSDictionary class]] == YES)
+			{
+				transformedValue = [NSURL URLWithString: value[@"next"]];
+			}
+			
+			return transformedValue;
+		}] 
+		forPropertyName: @keypath(FDTwitchStreamSearchResults, next)];
 	[transformer registerJSONAdapter: twitchStreamSearchResultsJSONAdapter];
 	
 	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter new];
@@ -592,6 +607,7 @@
 	
 	XCTAssertEqual(twitchStreamSearchResults.total, [jsonObject[@"_total"] unsignedIntegerValue]);
 	XCTAssertNotNil(twitchStreamSearchResults.streams);
+	XCTAssertNotNil(twitchStreamSearchResults.next);
 	
 	FDTwitchStream *twitchStream = twitchStreamSearchResults.streams[4];
 	NSDictionary *twitchStreamJSON = jsonObject[@"streams"][4];

@@ -27,6 +27,7 @@
 {
 	@private __strong FDThreadSafeMutableDictionary *_remoteKeysForLocalKeys;
 	@private __strong FDThreadSafeMutableDictionary *_collectionTypes;
+	@private __strong FDThreadSafeMutableDictionary *_valueTransformers;
 }
 
 
@@ -46,6 +47,7 @@
 	// Initialize instance variables.
 	_remoteKeysForLocalKeys = [FDThreadSafeMutableDictionary new];
 	_collectionTypes = [FDThreadSafeMutableDictionary new];
+	_valueTransformers = [FDThreadSafeMutableDictionary new];
 	
 	// Return initialized instance.
 	return self;
@@ -118,6 +120,13 @@
 		forKey: propertyName];
 }
 
+- (void)registerValueTransformer: (NSValueTransformer *)valueTransformer 
+	forPropertyName: (NSString *)propertyName
+{
+	[_valueTransformers setValue: valueTransformer 
+		forKey: propertyName];
+}
+
 
 #pragma mark - Overridden Methods
 
@@ -156,10 +165,15 @@
 				
 				id transformedDictionaryObject = nil;
 				
-				// If the dictionary object is not NSNull attempt to transform it into the object class. If the dictionary object is NSNull do nothing and allow the property being set to be cleared.
+				// If the dictionary object is not NSNull attempt to transform it otherwise do nothing and allow the property being set to be cleared.
 				if (dictionaryObject != [NSNull null])
 				{
-					if ([dictionaryObject isKindOfClass: [NSArray class]] == YES 
+					NSValueTransformer *valueTransformer = [_valueTransformers objectForKey: declaredProperty.name];
+					if (valueTransformer != nil)
+					{
+						transformedDictionaryObject = [valueTransformer transformedValue: dictionaryObject];
+					}
+					else if ([dictionaryObject isKindOfClass: [NSArray class]] == YES 
 						&& declaredProperty.objectClass == [NSArray class])
 					{
 						Class collectionType = [_collectionTypes objectForKey: declaredProperty.name];
