@@ -12,6 +12,8 @@
 #import "FDJSONObjectTransformerAdapter.h"
 #import "FDValueTransformer.h"
 #import "FDTwitchObjectTransformer.h"
+#import "FDSoccerPlayer.h"
+#import "FDHockeyPlayer.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -496,6 +498,61 @@
 	NSArray *transformedArrayOfStrings = [transformer objectOfClass: [NSString class] 
 		from: arrayOfNumbers];
 	XCTAssertEqualObjects(arrayOfStrings, transformedArrayOfStrings);
+}
+
+
+#pragma mark Subclassed Models
+
+- (void)testSubclassedModels
+{
+	FDObjectTransformer *transformer = [FDObjectTransformer new];
+	
+	FDDictionaryObjectTransformerAdapter *playerAdapter = [FDDictionaryObjectTransformerAdapter new];
+	[playerAdapter registerRemoteKey: @"first" 
+		forLocalKey: @keypath(FDPlayer, firstName)];
+	[playerAdapter registerRemoteKey: @"last" 
+		forLocalKey: @keypath(FDPlayer, lastName)];
+	[transformer registerAdapter: playerAdapter 
+		fromClass: [NSDictionary class] 
+		toClass: [FDPlayer class]];
+	
+	FDDictionaryObjectTransformerAdapter *hockeyPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
+	[hockeyPlayerAdapter registerRemoteKey: @"shoots" 
+		forLocalKey: @keypath(FDHockeyPlayer, handedness)];
+	[transformer registerAdapter: hockeyPlayerAdapter 
+		fromClass: [NSDictionary class] 
+		toClass: [FDHockeyPlayer class]];
+	
+	FDDictionaryObjectTransformerAdapter *soccerPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
+	[soccerPlayerAdapter registerRemoteKey: @"shoots" 
+		forLocalKey: @keypath(FDSoccerPlayer, footedness)];
+	[transformer registerAdapter: soccerPlayerAdapter 
+		fromClass: [NSDictionary class] 
+		toClass: [FDSoccerPlayer class]];
+	
+	NSDictionary *hockeyPlayerDictionary = @{ 
+		@"first" : @"Phil", 
+		@"last" : @"Kessel", 
+		@"shoots" : @"Right", 
+		};
+	
+	NSDictionary *soccerPlayerDictionary = @{ 
+		@"first" : @"Lionel", 
+		@"last" : @"Messi", 
+		@"shoots" : @"Left", 
+		};
+	
+	FDHockeyPlayer *hockeyPlayer = [transformer objectOfClass: [FDHockeyPlayer class] 
+		from: hockeyPlayerDictionary];
+	XCTAssertEqualObjects(hockeyPlayer.firstName, hockeyPlayerDictionary[@"first"]);
+	XCTAssertEqualObjects(hockeyPlayer.lastName, hockeyPlayerDictionary[@"last"]);
+	XCTAssertEqualObjects(hockeyPlayer.handedness, hockeyPlayerDictionary[@"shoots"]);
+	
+	FDSoccerPlayer *soccerPlayer = [transformer objectOfClass: [FDSoccerPlayer class] 
+		from: soccerPlayerDictionary];
+	XCTAssertEqualObjects(soccerPlayer.firstName, soccerPlayerDictionary[@"first"]);
+	XCTAssertEqualObjects(soccerPlayer.lastName, soccerPlayerDictionary[@"last"]);
+	XCTAssertEqualObjects(soccerPlayer.footedness, soccerPlayerDictionary[@"shoots"]);
 }
 
 
