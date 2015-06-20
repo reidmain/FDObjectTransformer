@@ -85,8 +85,18 @@
 				}
 				
 				id value = [object valueForKey: declaredProperty.name];
-				id transformedValue = [self _jsonObjectFrom: value 
-					fromObjectTransformer: objectTransformer];
+				id transformedValue = nil;
+				
+				FDEnumTransformer *enumTransformer = [self enumTransformerForLocalKey: declaredProperty.name];
+				if (enumTransformer != nil)
+				{
+					transformedValue = [enumTransformer stringForEnum: value];
+				}
+				else
+				{
+					transformedValue = [self _jsonObjectFrom: value 
+						fromObjectTransformer: objectTransformer];
+				}
 				
 				if (transformedValue != nil)
 				{

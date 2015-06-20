@@ -1,6 +1,7 @@
 @import Foundation;
 
 #import "FDObjectTransformerAdapter.h"
+#import "FDEnumTransformer.h"
 
 
 #pragma mark Constants
@@ -44,6 +45,10 @@ typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPo
 
 - (void)registerCollectionType: (Class)collectionType 
 	forPropertyName: (NSString *)propertyName;
+
+- (void)registerEnumDictionary: (NSDictionary *)dictionary 
+	forLocalKey: (NSString *)localKey;
+- (FDEnumTransformer *)enumTransformerForLocalKey: (NSString *)localKey;
 
 - (void)registerValueTransformer: (NSValueTransformer *)valueTransformer 
 	forPropertyName: (NSString *)propertyName;

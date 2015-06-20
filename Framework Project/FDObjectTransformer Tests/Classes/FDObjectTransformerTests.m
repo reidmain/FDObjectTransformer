@@ -533,7 +533,7 @@
 	XCTAssertEqualObjects(urlComponents, transformedURLComponents);
 }
 
-- (void)testNSArrayOfJSONToFDTwitchStreamSearchResults
+- (void)testNSDictionaryOfJSONToFDTwitchStreamSearchResults
 {
 	FDTwitchObjectTransformer *transformer = [FDTwitchObjectTransformer new];
 	
@@ -581,6 +581,8 @@
 	XCTAssertEqual(twitchChannel.followerCount, [twitchChannelJSON[@"followers"] unsignedIntegerValue]);
 	XCTAssertEqualObjects(twitchChannel.createdAt, [transformer.dateFormatter dateFromString: twitchChannelJSON[@"created_at"]]);
 	XCTAssertEqualObjects(twitchChannel.updatedAt, [transformer.dateFormatter dateFromString: twitchChannelJSON[@"updated_at"]]);
+	XCTAssertEqual(twitchChannel.language, FDTwitchChannelLanguageEnglish);
+	XCTAssertEqual(twitchChannel.broadcasterLanguage, FDTwitchChannelLanguageEnglish);
 }
 
 - (void)testFDTwitchStreamSearchResultsToJSONObject
@@ -627,17 +629,28 @@
 	XCTAssertEqualObjects(twitchChannelJSON[@"followers"], @(twitchChannel.followerCount));
 	XCTAssertEqualObjects(twitchChannelJSON[@"created_at"], [transformer.dateFormatter stringFromDate: twitchChannel.createdAt]);
 	XCTAssertEqualObjects(twitchChannelJSON[@"updated_at"], [transformer.dateFormatter stringFromDate: twitchChannel.updatedAt]);
+	XCTAssertEqualObjects(twitchChannelJSON[@"language"], @"en");
+	XCTAssertEqualObjects(twitchChannelJSON[@"broadcaster_language"], @"en");
 }
 
 
 #pragma mark - Performance
 
-- (void)testPerformance
-{
-    [self measureBlock: ^
-		{
-		}];
-}
+//- (void)testPerformance
+//{
+//	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
+//	
+//	FDTwitchObjectTransformer *transformer = [FDTwitchObjectTransformer new];
+//	
+//    [self measureBlock: ^
+//		{
+//			for (NSUInteger i=0; i < 500; i++)
+//			{
+//				[transformer objectOfClass: [FDTwitchStreamSearchResults class] 
+//					from: jsonObject];
+//			}
+//		}];
+//}
 
 
 #pragma mark - Private Methods

@@ -91,6 +91,15 @@
 		forLocalKey: @keypath(FDTwitchChannel, viewCount)];
 	[twitchChannelJSONAdapter registerRemoteKey: @"followers" 
 		forLocalKey: @keypath(FDTwitchChannel, followerCount)];
+	NSDictionary *dictionary = @{ 
+		@"en" : @(FDTwitchChannelLanguageEnglish), 
+		@"zh" : @(FDTwitchChannelLanguageChinese), 
+		@"zh-tw" : @(FDTwitchChannelLanguageTaiwanese), 
+		};
+	[twitchChannelJSONAdapter registerEnumDictionary: dictionary 
+		forLocalKey: @keypath(FDTwitchChannel, language)];
+	[twitchChannelJSONAdapter registerEnumDictionary: dictionary 
+		forLocalKey: @keypath(FDTwitchChannel, broadcasterLanguage)];
 	[self registerJSONAdapter: twitchChannelJSONAdapter];
 	
 	FDJSONObjectTransformerAdapter *twitchImageURLsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchImageURLs class]];

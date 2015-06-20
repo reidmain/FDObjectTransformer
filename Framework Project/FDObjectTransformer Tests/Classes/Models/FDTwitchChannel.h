@@ -2,6 +2,16 @@
 #import "FDColor+Creation.h"
 
 
+#pragma mark - Enumerations
+
+typedef NS_ENUM(NSUInteger, FDTwitchChannelLanguage) {
+    FDTwitchChannelLanguageUnknown,
+    FDTwitchChannelLanguageEnglish,
+    FDTwitchChannelLanguageChinese,
+	FDTwitchChannelLanguageTaiwanese,
+};
+
+
 #pragma mark - Class Interface
 
 @interface FDTwitchChannel : NSObject
@@ -21,6 +31,8 @@
 @property (nonatomic, assign, readonly) NSUInteger followerCount;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSDate *updatedAt;
+@property (nonatomic, assign, readonly) FDTwitchChannelLanguage language;
+@property (nonatomic, assign, readonly) FDTwitchChannelLanguage broadcasterLanguage;
 
 
 @end

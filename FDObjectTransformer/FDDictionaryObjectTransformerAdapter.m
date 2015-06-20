@@ -23,6 +23,7 @@
 {
 	@private __strong FDThreadSafeMutableDictionary *_remoteKeysForLocalKeys;
 	@private __strong FDThreadSafeMutableDictionary *_collectionTypes;
+	@private __strong FDThreadSafeMutableDictionary *_enumTransformers;
 	@private __strong FDThreadSafeMutableDictionary *_valueTransformers;
 }
 
@@ -43,6 +44,7 @@
 	// Initialize instance variables.
 	_remoteKeysForLocalKeys = [FDThreadSafeMutableDictionary new];
 	_collectionTypes = [FDThreadSafeMutableDictionary new];
+	_enumTransformers = [FDThreadSafeMutableDictionary new];
 	_valueTransformers = [FDThreadSafeMutableDictionary new];
 	
 	// Return initialized instance.
@@ -116,6 +118,21 @@
 		forKey: propertyName];
 }
 
+- (void)registerEnumDictionary: (NSDictionary *)dictionary 
+	forLocalKey: (NSString *)localKey
+{
+	FDEnumTransformer *enumTransformer = [FDEnumTransformer enumTransformerWithDictionary: dictionary];
+	[_enumTransformers setValue: enumTransformer 
+		forKey: localKey];
+}
+
+- (FDEnumTransformer *)enumTransformerForLocalKey: (NSString *)localKey
+{
+	FDEnumTransformer *enumTransformer = [_enumTransformers objectForKey: localKey];
+	
+	return enumTransformer;
+}
+
 - (void)registerValueTransformer: (NSValueTransformer *)valueTransformer 
 	forPropertyName: (NSString *)propertyName
 {
@@ -138,6 +155,15 @@
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 			{
 				id propertyValue = [object valueForKey: declaredProperty.name];
+				
+				if ([propertyValue isKindOfClass: [NSNumber class]] == YES)
+				{
+					FDEnumTransformer *enumTransformer = [_enumTransformers objectForKey: declaredProperty.name];
+					if (enumTransformer != nil)
+					{
+						propertyValue = [enumTransformer stringForEnum: propertyValue];
+					}
+				}
 				
 				[mutableDictionary setValue: propertyValue 
 					forKey: declaredProperty.name];
@@ -184,10 +210,19 @@
 						&& declaredProperty.objectClass == [NSArray class])
 					{
 						Class collectionType = [_collectionTypes objectForKey: declaredProperty.name];
-						if (collectionType)
+						if (collectionType != nil)
 						{
 							transformedDictionaryObject = [objectTransformer objectOfClass: collectionType 
 								from: dictionaryObject];
+						}
+					}
+					else if ([dictionaryObject isKindOfClass: [NSString class]] == YES 
+						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
+					{
+						FDEnumTransformer *enumTransformer = [_enumTransformers objectForKey: declaredProperty.name];
+						if (enumTransformer != nil)
+						{
+							transformedDictionaryObject = [enumTransformer enumForString: dictionaryObject];
 						}
 					}
 					// If the declared property is not a scalar type attempt to transform the dictionary object into an instance of the property type.
@@ -211,9 +246,17 @@
 				{
 					return;
 				}
-				
-				[transformedObject setValue: transformedDictionaryObject 
-					forKey: declaredProperty.name];
+					
+				@try
+				{
+					[transformedObject setValue: transformedDictionaryObject 
+						forKeyPath: declaredProperty.name];
+				}
+				// If the key path on the local model does not exist an exception will most likely be thrown. Catch this exeception and log it so that any incorrect mappings will not crash the application.
+				@catch (NSException *exception)
+				{
+//					FDLog(FDLogLevelInfo, @"Could not set %@ property on %@ because %@", localKeyPath, [model class], [exception reason]);
+				}
 			}];
 	}
 	
