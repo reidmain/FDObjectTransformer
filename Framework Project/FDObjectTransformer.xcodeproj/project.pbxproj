@@ -47,6 +47,7 @@
 		27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F461B251412000FCA05 /* FDRandomJSONModel.m */; };
 		27D00F4B1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
 		27D00F4C1B25142D000FCA05 /* random.json in Resources */ = {isa = PBXBuildFile; fileRef = 27D00F4A1B25142D000FCA05 /* random.json */; };
+		27E423081B353A8D00B15B5B /* FDObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */; };
 		27F72E911B2CDF6800C0D9CE /* FDThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF41B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m */; };
 		27F72E921B2CDF6E00C0D9CE /* NSObject+DeclaredProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00EF01B22BFA6000FCA05 /* NSObject+DeclaredProperty.m */; };
 		27F72E941B2D073A00C0D9CE /* FDObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +77,10 @@
 		27F72EE01B35222600C0D9CE /* FDJSONObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72EDD1B35222600C0D9CE /* FDJSONObject.h */; };
 		27F72EE11B35222600C0D9CE /* FDJSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EDE1B35222600C0D9CE /* FDJSONObject.m */; };
 		27F72EE21B35222600C0D9CE /* FDJSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EDE1B35222600C0D9CE /* FDJSONObject.m */; };
+		27F72EE51B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72EE31B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F72EE61B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F72EE31B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27F72EE71B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EE41B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m */; };
+		27F72EE81B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F72EE41B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,8 @@
 		27F72ED61B3518DA00C0D9CE /* FDTwitchObjectTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchObjectTransformer.m; sourceTree = "<group>"; };
 		27F72EDD1B35222600C0D9CE /* FDJSONObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDJSONObject.h; sourceTree = "<group>"; };
 		27F72EDE1B35222600C0D9CE /* FDJSONObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDJSONObject.m; sourceTree = "<group>"; };
+		27F72EE31B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDictionaryObjectTransformerAdapter.h; sourceTree = "<group>"; };
+		27F72EE41B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDictionaryObjectTransformerAdapter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +248,8 @@
 				27F72EDD1B35222600C0D9CE /* FDJSONObject.h */,
 				27F72EDE1B35222600C0D9CE /* FDJSONObject.m */,
 				27F72E931B2D073A00C0D9CE /* FDObjectTransformerAdapter.h */,
+				27F72EE31B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h */,
+				27F72EE41B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m */,
 				27F72EC01B2D37C900C0D9CE /* FDJSONObjectTransformerAdapter.h */,
 				27F72EC11B2D37C900C0D9CE /* FDJSONObjectTransformerAdapter.m */,
 			);
@@ -348,6 +357,7 @@
 				27F72EDF1B35222600C0D9CE /* FDJSONObject.h in Headers */,
 				27F72E971B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.h in Headers */,
 				27F72EC41B2D385000C0D9CE /* FDJSONObjectTransformerAdapter.h in Headers */,
+				27F72EE51B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h in Headers */,
 				27F72ED11B3514D700C0D9CE /* FDValueTransformer.h in Headers */,
 				27F72E941B2D073A00C0D9CE /* FDObjectTransformerAdapter.h in Headers */,
 				27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */,
@@ -372,6 +382,8 @@
 				27D00EFF1B23B197000FCA05 /* FDDeclaredProperty.h in Headers */,
 				27D00EFD1B23B18E000FCA05 /* FDThreadSafeMutableDictionary.h in Headers */,
 				27D00F111B23B476000FCA05 /* FDKeypath.h in Headers */,
+				27E423081B353A8D00B15B5B /* FDObjectTransformerAdapter.h in Headers */,
+				27F72EE61B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +549,7 @@
 				27F72ED31B3514D700C0D9CE /* FDValueTransformer.m in Sources */,
 				27F72E981B2D228800C0D9CE /* FDURLComponentsTransformerAdapter.m in Sources */,
 				27D00EF61B22C02A000FCA05 /* FDThreadSafeMutableDictionary.m in Sources */,
+				27F72EE71B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m in Sources */,
 				27D00ECE1B228D4C000FCA05 /* FDColor+Creation.m in Sources */,
 				27F72EC71B2D385600C0D9CE /* FDJSONObjectTransformerAdapter.m in Sources */,
 				27D00EF21B22BFA6000FCA05 /* NSObject+DeclaredProperty.m in Sources */,
@@ -573,6 +586,7 @@
 				27D00F001B23B199000FCA05 /* FDDeclaredProperty.m in Sources */,
 				27D00EE71B22A878000FCA05 /* FDColor+Creation.m in Sources */,
 				27F72EC81B2D385700C0D9CE /* FDJSONObjectTransformerAdapter.m in Sources */,
+				27F72EE81B35357900C0D9CE /* FDDictionaryObjectTransformerAdapter.m in Sources */,
 				27F72EE21B35222600C0D9CE /* FDJSONObject.m in Sources */,
 				27F72E921B2CDF6E00C0D9CE /* NSObject+DeclaredProperty.m in Sources */,
 				27ACFD391B1EC9FC004B8142 /* FDObjectTransformer.m in Sources */,

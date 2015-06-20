@@ -43,9 +43,8 @@
 	dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
 	self.dateFormatter = dateFormatter;
 	
-	FDJSONObjectTransformerAdapter *twitchStreamSearchResultsJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchStreamSearchResultsJSONAdapter.modelClass = [FDTwitchStreamSearchResults class];
-	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
+	FDJSONObjectTransformerAdapter *twitchStreamSearchResultsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStreamSearchResults class]];
+	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_total" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, total)];
 	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_links" 
@@ -66,9 +65,8 @@
 		forPropertyName: @keypath(FDTwitchStreamSearchResults, next)];
 	[self registerJSONAdapter: twitchStreamSearchResultsJSONAdapter];
 	
-	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchStreamJSONAdapter.modelClass = [FDTwitchStream class];
-	twitchStreamJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
+	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStream class]];
+	twitchStreamJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[twitchStreamJSONAdapter registerRemoteKey: @"_id" 
 		forLocalKey: @keypath(FDTwitchStream, streamID)];
 	[twitchStreamJSONAdapter registerRemoteKey: @"game" 
@@ -79,9 +77,8 @@
 		forLocalKey: @keypath(FDTwitchStream, previewImageURLs)];
 	[self registerJSONAdapter: twitchStreamJSONAdapter];
 	
-	FDJSONObjectTransformerAdapter *twitchChannelJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchChannelJSONAdapter.modelClass = [FDTwitchChannel class];
-	twitchChannelJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
+	FDJSONObjectTransformerAdapter *twitchChannelJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchChannel class]];
+	twitchChannelJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[twitchChannelJSONAdapter registerRemoteKey: @"game" 
 		forLocalKey: @keypath(FDTwitchChannel, gameName)];
 	[twitchChannelJSONAdapter registerRemoteKey: @"mature" 
@@ -96,9 +93,8 @@
 		forLocalKey: @keypath(FDTwitchChannel, followerCount)];
 	[self registerJSONAdapter: twitchChannelJSONAdapter];
 	
-	FDJSONObjectTransformerAdapter *twitchImageURLsJSONAdapter = [FDJSONObjectTransformerAdapter new];
-	twitchImageURLsJSONAdapter.modelClass = [FDTwitchImageURLs class];
-	twitchImageURLsJSONAdapter.propertyNamingPolicy = FDJSONObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
+	FDJSONObjectTransformerAdapter *twitchImageURLsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchImageURLs class]];
+	twitchImageURLsJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[self registerJSONAdapter: twitchImageURLsJSONAdapter];
 	
 	// Return initialized instance.
