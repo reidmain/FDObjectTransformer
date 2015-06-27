@@ -44,6 +44,11 @@
 	_adaptersGoingToClass = [FDThreadSafeMutableDictionary new];
 	_numberFormatter = [NSNumberFormatter new];
 	
+	// TODO: Evaluate if this actually should be done here. I'm starting to think that a FDJSONObjectTransformerAdapter shouldn't store a model class with it because it is really only used as a way to simplify the registering of it with a transformer.
+	[self registerAdapter: [FDJSONObjectTransformerAdapter new] 
+		fromClass: [NSObject class] 
+		toClass: [FDJSONObject class]];
+	
 	// Return initialized instance.
 	return self;
 }
