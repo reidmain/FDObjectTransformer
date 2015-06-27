@@ -72,7 +72,7 @@
 	
 	if ([targetClass isSubclassOfClass: [FDJSONObject class]] == YES)
 	{
-		NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
+		transformedObject = [NSMutableDictionary new];
 		
 		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
@@ -100,13 +100,24 @@
 				
 				if (transformedValue != nil)
 				{
-					NSString *remoteKey = [self remoteKeyForLocalKey: declaredProperty.name];
-					[mutableDictionary setValue: transformedValue 
-						forKey: remoteKey];
+					NSString *remoteKeyPath = [self remoteKeyPathForLocalKey: declaredProperty.name];
+					
+					NSArray *keys = [remoteKeyPath componentsSeparatedByString: @"."];
+					__block NSDictionary *currentDictionary = transformedObject;
+					for (NSUInteger i = 0; i < [keys count] - 1; i++)
+					{
+						NSString *key = keys[i];
+						
+						NSMutableDictionary *dictionary = [NSMutableDictionary new];
+						[currentDictionary setValue:dictionary forKey:key];
+						
+						currentDictionary = dictionary;
+					};
+					
+					[transformedObject setValue: transformedValue 
+						forKeyPath: remoteKeyPath];
 				}
 			}];
-		
-		transformedObject = [mutableDictionary copy];
 	}
 	else
 	{

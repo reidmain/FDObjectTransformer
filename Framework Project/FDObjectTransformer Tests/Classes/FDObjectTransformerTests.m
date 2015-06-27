@@ -508,23 +508,23 @@
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
 	FDDictionaryObjectTransformerAdapter *playerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[playerAdapter registerRemoteKey: @"first" 
+	[playerAdapter registerRemoteKeyPath: @"first" 
 		forLocalKey: @keypath(FDPlayer, firstName)];
-	[playerAdapter registerRemoteKey: @"last" 
+	[playerAdapter registerRemoteKeyPath: @"last" 
 		forLocalKey: @keypath(FDPlayer, lastName)];
 	[transformer registerAdapter: playerAdapter 
 		fromClass: [NSDictionary class] 
 		toClass: [FDPlayer class]];
 	
 	FDDictionaryObjectTransformerAdapter *hockeyPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[hockeyPlayerAdapter registerRemoteKey: @"shoots" 
+	[hockeyPlayerAdapter registerRemoteKeyPath: @"shoots" 
 		forLocalKey: @keypath(FDHockeyPlayer, handedness)];
 	[transformer registerAdapter: hockeyPlayerAdapter 
 		fromClass: [NSDictionary class] 
 		toClass: [FDHockeyPlayer class]];
 	
 	FDDictionaryObjectTransformerAdapter *soccerPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[soccerPlayerAdapter registerRemoteKey: @"shoots" 
+	[soccerPlayerAdapter registerRemoteKeyPath: @"shoots" 
 		forLocalKey: @keypath(FDSoccerPlayer, footedness)];
 	[transformer registerAdapter: soccerPlayerAdapter 
 		fromClass: [NSDictionary class] 
@@ -594,17 +594,18 @@
 {
 	FDTwitchObjectTransformer *transformer = [FDTwitchObjectTransformer new];
 	
-	NSDictionary *jsonObject = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
+	NSDictionary *twitchStreamSearchResultsJSON = [self _jsonObjectFromFileNamed: @"twitch_stream_search_results"];
 	
 	FDTwitchStreamSearchResults *twitchStreamSearchResults = [transformer objectOfClass: [FDTwitchStreamSearchResults class] 
-		from: jsonObject];
+		from: twitchStreamSearchResultsJSON];
 	
-	XCTAssertEqual(twitchStreamSearchResults.total, [jsonObject[@"_total"] unsignedIntegerValue]);
+	// TODO: Add an assert here to make sure the streams are all of class FDTwitchStream.
 	XCTAssertNotNil(twitchStreamSearchResults.streams);
-	XCTAssertNotNil(twitchStreamSearchResults.next);
+	XCTAssertEqual(twitchStreamSearchResults.total, [twitchStreamSearchResultsJSON[@"_total"] unsignedIntegerValue]);
+	XCTAssertEqualObjects(twitchStreamSearchResults.next, [NSURL URLWithString: twitchStreamSearchResultsJSON[@"_links"][@"next"]]);
 	
 	FDTwitchStream *twitchStream = twitchStreamSearchResults.streams[4];
-	NSDictionary *twitchStreamJSON = jsonObject[@"streams"][4];
+	NSDictionary *twitchStreamJSON = twitchStreamSearchResultsJSON[@"streams"][4];
 	
 	XCTAssertEqual(twitchStream.streamID, [twitchStreamJSON[@"_id"] unsignedIntegerValue]);
 	XCTAssertEqualObjects(twitchStream.game, twitchStreamJSON[@"game"]);
@@ -612,8 +613,8 @@
 	XCTAssertEqual(twitchStream.viewers, [twitchStreamJSON[@"viewers"] unsignedIntegerValue]);
 	XCTAssertEqual(twitchStream.videoHeight, [twitchStreamJSON[@"video_height"] floatValue]);
 	XCTAssertEqual(twitchStream.averageFPS, [twitchStreamJSON[@"average_fps"] doubleValue]);
-	XCTAssertNotNil(twitchStream.preview);
-	XCTAssertNotNil(twitchStream.channel);
+	FDAssertIsKindOfClass(twitchStream.preview, [FDTwitchImageURLs class]);
+	FDAssertIsKindOfClass(twitchStream.channel, [FDTwitchChannel class]);
 	
 	FDTwitchImageURLs *previewImageURLs = twitchStream.preview;
 	NSDictionary *previewImageURLsJSON = twitchStreamJSON[@"preview"];
@@ -653,7 +654,7 @@
 	NSDictionary *twitchStreamSearchResultsJSON = [transformer jsonObjectFrom: twitchStreamSearchResults];
 	
 	XCTAssertEqualObjects(twitchStreamSearchResultsJSON[@"_total"], @(twitchStreamSearchResults.total));
-	XCTAssertEqualObjects(twitchStreamSearchResultsJSON[@"_links"], [twitchStreamSearchResults.next absoluteString]);
+	XCTAssertEqualObjects(twitchStreamSearchResultsJSON[@"_links"][@"next"], [twitchStreamSearchResults.next absoluteString]);
 	
 	FDTwitchStream *twitchStream = twitchStreamSearchResults.streams[3];
 	NSDictionary *twitchStreamJSON = twitchStreamSearchResultsJSON[@"streams"][3];

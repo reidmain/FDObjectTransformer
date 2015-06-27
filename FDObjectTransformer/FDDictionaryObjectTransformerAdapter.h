@@ -39,9 +39,9 @@ typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPo
 
 #pragma mark - Instance Methods
 
-- (void)registerRemoteKey: (NSString *)remoteKey 
+- (void)registerRemoteKeyPath: (NSString *)remoteKeyPath 
 	forLocalKey: (NSString *)localKey;
-- (NSString *)remoteKeyForLocalKey: (NSString *)localKey;
+- (NSString *)remoteKeyPathForLocalKey: (NSString *)localKey;
 
 - (void)registerCollectionType: (Class)collectionType 
 	forPropertyName: (NSString *)propertyName;

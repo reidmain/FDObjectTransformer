@@ -45,29 +45,17 @@
 	
 	FDJSONObjectTransformerAdapter *twitchStreamSearchResultsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStreamSearchResults class]];
 	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_total" 
+	[twitchStreamSearchResultsJSONAdapter registerRemoteKeyPath: @"_total" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, total)];
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKey: @"_links" 
+	[twitchStreamSearchResultsJSONAdapter registerRemoteKeyPath: @"_links.next" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, next)];
 	[twitchStreamSearchResultsJSONAdapter registerCollectionType: [FDTwitchStream class] 
 		forPropertyName: @keypath(FDTwitchStreamSearchResults, streams)];
-	[twitchStreamSearchResultsJSONAdapter registerValueTransformer: [FDValueTransformer transformerWithBlock: ^id(id value)
-		{
-			id transformedValue = nil;
-			
-			if ([value isKindOfClass: [NSDictionary class]] == YES)
-			{
-				transformedValue = [NSURL URLWithString: value[@"next"]];
-			}
-			
-			return transformedValue;
-		}] 
-		forPropertyName: @keypath(FDTwitchStreamSearchResults, next)];
 	[self registerJSONAdapter: twitchStreamSearchResultsJSONAdapter];
 	
 	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStream class]];
 	twitchStreamJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamJSONAdapter registerRemoteKey: @"_id" 
+	[twitchStreamJSONAdapter registerRemoteKeyPath: @"_id" 
 		forLocalKey: @keypath(FDTwitchStream, streamID)];
 	[self registerJSONAdapter: twitchStreamJSONAdapter];
 	

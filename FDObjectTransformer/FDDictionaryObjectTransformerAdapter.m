@@ -21,7 +21,7 @@
 
 @implementation FDDictionaryObjectTransformerAdapter
 {
-	@private __strong FDThreadSafeMutableDictionary *_remoteKeysForLocalKeys;
+	@private __strong FDThreadSafeMutableDictionary *_remoteKeyPathsForLocalKeys;
 	@private __strong FDThreadSafeMutableDictionary *_collectionTypes;
 	@private __strong FDThreadSafeMutableDictionary *_enumTransformers;
 	@private __strong FDThreadSafeMutableDictionary *_valueTransformers;
@@ -42,7 +42,7 @@
 	}
 	
 	// Initialize instance variables.
-	_remoteKeysForLocalKeys = [FDThreadSafeMutableDictionary new];
+	_remoteKeyPathsForLocalKeys = [FDThreadSafeMutableDictionary new];
 	_collectionTypes = [FDThreadSafeMutableDictionary new];
 	_enumTransformers = [FDThreadSafeMutableDictionary new];
 	_valueTransformers = [FDThreadSafeMutableDictionary new];
@@ -54,30 +54,31 @@
 
 #pragma mark - Public Methods
 
-- (void)registerRemoteKey: (NSString *)remoteKey forLocalKey: (NSString *)localKey
+- (void)registerRemoteKeyPath: (NSString *)remoteKeyPath 
+	forLocalKey: (NSString *)localKey
 {
-	[_remoteKeysForLocalKeys setValue: remoteKey 
+	[_remoteKeyPathsForLocalKeys setValue: remoteKeyPath 
 		forKey: localKey];
 }
 
-- (NSString *)remoteKeyForLocalKey: (NSString *)localKey
+- (NSString *)remoteKeyPathForLocalKey: (NSString *)localKey
 {
-	NSString *remoteKey = [_remoteKeysForLocalKeys objectForKey: localKey];
+	NSString *remoteKeyPath = [_remoteKeyPathsForLocalKeys objectForKey: localKey];
 	
-	if (remoteKey == nil)
+	if (remoteKeyPath == nil)
 	{
 		switch (_propertyNamingPolicy)
 		{
 			case FDDictionaryObjectTransformerAdapterPropertyNamingPolicyIdentity:
 			{
-				remoteKey = localKey;
+				remoteKeyPath = localKey;
 				
 				break;
 			}
 			
 			case FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores:
 			{
-				NSMutableString *lowercaseRemoteKey = [NSMutableString new];
+				NSMutableString *lowercaseRemoteKeyPath = [NSMutableString new];
 				
 				NSScanner *scanner = [NSScanner scannerWithString: localKey];
 				while ([scanner isAtEnd] == NO)
@@ -87,11 +88,11 @@
 						intoString: &uppercaseCharacters];
 					if (uppercaseCharacters != nil)
 					{
-						if ([lowercaseRemoteKey length] > 0)
+						if ([lowercaseRemoteKeyPath length] > 0)
 						{
-							[lowercaseRemoteKey appendString:@"_"];
+							[lowercaseRemoteKeyPath appendString:@"_"];
 						}
-						[lowercaseRemoteKey appendString: [uppercaseCharacters lowercaseString]];
+						[lowercaseRemoteKeyPath appendString: [uppercaseCharacters lowercaseString]];
 					}
 					
 					NSString *lowercaseCharacters = nil;
@@ -99,16 +100,16 @@
 						intoString: &lowercaseCharacters];
 					if (lowercaseCharacters != nil)
 					{
-						[lowercaseRemoteKey appendString: [lowercaseCharacters lowercaseString]];
+						[lowercaseRemoteKeyPath appendString: [lowercaseCharacters lowercaseString]];
 					}
 				}
 				
-				remoteKey = [lowercaseRemoteKey copy];
+				remoteKeyPath = [lowercaseRemoteKeyPath copy];
 			}
 		}
 	}
 	
-	return remoteKey;
+	return remoteKeyPath;
 }
 
 - (void)registerCollectionType: (Class)collectionType 
@@ -185,8 +186,8 @@
 					return;
 				}
 				
-				NSString *remoteKey = [self remoteKeyForLocalKey: declaredProperty.name];
-				id dictionaryObject = [object objectForKey: remoteKey];
+				NSString *remoteKeyPath = [self remoteKeyPathForLocalKey: declaredProperty.name];
+				id dictionaryObject = [object valueForKeyPath: remoteKeyPath];
 				
 				// If the declared property's name does not exist in the dictionary ignore it and move onto the next property. There is no point in dealing with a property that does not exist because it could only delete data that currently exists.
 				if (dictionaryObject == nil)
