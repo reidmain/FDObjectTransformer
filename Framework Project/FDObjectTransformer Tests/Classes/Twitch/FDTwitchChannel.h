@@ -1,4 +1,5 @@
 @import Foundation;
+
 #import "FDColor+Creation.h"
 
 
@@ -22,13 +23,13 @@ typedef NS_ENUM(NSUInteger, FDTwitchChannelLanguage) {
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *displayName;
 @property (nonatomic, copy, readonly) NSString *status;
-@property (nonatomic, copy, readonly) NSString *gameName;
-@property (nonatomic, assign, readonly) BOOL isMature;
-@property (nonatomic, assign, readonly) BOOL isPartner;
-@property (nonatomic, copy, readonly) NSURL *profileBannerURL;
-@property (nonatomic, copy, readonly) UIColor *profileBannerBackgroundColor;
-@property (nonatomic, assign, readonly) NSUInteger viewCount;
-@property (nonatomic, assign, readonly) NSUInteger followerCount;
+@property (nonatomic, copy, readonly) NSString *game;
+@property (nonatomic, assign, readonly) BOOL mature;
+@property (nonatomic, assign, readonly) BOOL partner;
+@property (nonatomic, copy, readonly) NSURL *profileBanner;
+@property (nonatomic, copy, readonly) FDColor *profileBannerBackgroundColor;
+@property (nonatomic, assign, readonly) NSUInteger views;
+@property (nonatomic, assign, readonly) NSUInteger followers;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSDate *updatedAt;
 @property (nonatomic, assign, readonly) FDTwitchChannelLanguage language;

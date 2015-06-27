@@ -69,28 +69,10 @@
 	twitchStreamJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
 	[twitchStreamJSONAdapter registerRemoteKey: @"_id" 
 		forLocalKey: @keypath(FDTwitchStream, streamID)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"game" 
-		forLocalKey: @keypath(FDTwitchStream, gameName)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"viewers" 
-		forLocalKey: @keypath(FDTwitchStream, viewerCount)];
-	[twitchStreamJSONAdapter registerRemoteKey: @"preview" 
-		forLocalKey: @keypath(FDTwitchStream, previewImageURLs)];
 	[self registerJSONAdapter: twitchStreamJSONAdapter];
 	
 	FDJSONObjectTransformerAdapter *twitchChannelJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchChannel class]];
-	twitchChannelJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchChannelJSONAdapter registerRemoteKey: @"game" 
-		forLocalKey: @keypath(FDTwitchChannel, gameName)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"mature" 
-		forLocalKey: @keypath(FDTwitchChannel, isMature)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"partner" 
-		forLocalKey: @keypath(FDTwitchChannel, isPartner)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"profile_banner" 
-		forLocalKey: @keypath(FDTwitchChannel, profileBannerURL)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"views" 
-		forLocalKey: @keypath(FDTwitchChannel, viewCount)];
-	[twitchChannelJSONAdapter registerRemoteKey: @"followers" 
-		forLocalKey: @keypath(FDTwitchChannel, followerCount)];
+	twitchChannelJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;;
 	NSDictionary *dictionary = @{ 
 		@"en" : @(FDTwitchChannelLanguageEnglish), 
 		@"zh" : @(FDTwitchChannelLanguageChinese), 
@@ -101,10 +83,6 @@
 	[twitchChannelJSONAdapter registerEnumDictionary: dictionary 
 		forLocalKey: @keypath(FDTwitchChannel, broadcasterLanguage)];
 	[self registerJSONAdapter: twitchChannelJSONAdapter];
-	
-	FDJSONObjectTransformerAdapter *twitchImageURLsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchImageURLs class]];
-	twitchImageURLsJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[self registerJSONAdapter: twitchImageURLsJSONAdapter];
 	
 	// Return initialized instance.
 	return self;

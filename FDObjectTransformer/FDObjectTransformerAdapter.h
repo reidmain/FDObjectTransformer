@@ -8,6 +8,9 @@
 #pragma mark - Protocol
 
 @protocol FDObjectTransformerAdapter
+<
+	NSObject
+>
 
 
 #pragma mark - Required Methods
