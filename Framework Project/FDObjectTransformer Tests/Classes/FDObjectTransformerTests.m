@@ -14,6 +14,8 @@
 #import "FDTwitchObjectTransformer.h"
 #import "FDSoccerPlayer.h"
 #import "FDHockeyPlayer.h"
+#import "FDFeedPage.h"
+#import "FDFeedObjectTransformer.h"
 
 #define FDAssertIsKindOfClass(object, objectClass, ...) \
 	XCTAssertTrue([object isKindOfClass: objectClass], __VA_ARGS__)
@@ -627,7 +629,7 @@
 	FDTwitchChannel *twitchChannel = twitchStream.channel;
 	NSDictionary *twitchChannelJSON = twitchStreamJSON[@"channel"];
 
-	XCTAssertEqualObjects(twitchChannel.name, twitchChannelJSON[@"name"]);	
+	XCTAssertEqualObjects(twitchChannel.name, twitchChannelJSON[@"name"]);
 	XCTAssertEqualObjects(twitchChannel.displayName, twitchChannelJSON[@"display_name"]);
 	XCTAssertEqualObjects(twitchChannel.status, twitchChannelJSON[@"status"]);
 	XCTAssertEqualObjects(twitchChannel.game, twitchChannelJSON[@"game"]);
@@ -689,6 +691,59 @@
 	XCTAssertEqualObjects(twitchChannelJSON[@"updated_at"], [transformer.dateFormatter stringFromDate: twitchChannel.updatedAt]);
 	XCTAssertEqualObjects(twitchChannelJSON[@"language"], @"en");
 	XCTAssertEqualObjects(twitchChannelJSON[@"broadcaster_language"], @"en");
+}
+
+- (void)testNSDictionaryOfJSONToFDFeedPage
+{
+	FDFeedObjectTransformer *transformer = [FDFeedObjectTransformer new];
+	
+	NSDictionary *feedPageJSON = [self _jsonObjectFromFileNamed: @"feed"];
+	
+	FDFeedPage *feedPage = [transformer objectOfClass: [FDFeedPage class] 
+		from: feedPageJSON];
+	
+	// TODO: Add an assert here to make sure the items are all of class FDFeedItem.
+	XCTAssertNotNil(feedPage.items);
+	XCTAssertEqual(feedPage.page, [feedPageJSON[@"meta"][@"page"] unsignedIntegerValue]);
+	XCTAssertEqualObjects(feedPage.nextIdentifier, feedPageJSON[@"meta"][@"next"]);
+	
+	FDFeedAd *ad = feedPage.items[0];
+	NSDictionary *adJSON = feedPageJSON[@"items"][0];
+	
+	XCTAssertNotNil(ad);
+	XCTAssertEqualObjects(ad.itemID, adJSON[@"id"]);
+	XCTAssertEqualObjects(ad.creator, adJSON[@"creator"]);
+	XCTAssertEqualObjects(ad.createdAt, [transformer.dateFormatter dateFromString: adJSON[@"createdAt"]]);
+	XCTAssertEqualObjects(ad.unitID, adJSON[@"unitID"]);
+	XCTAssertEqualObjects(ad.imageURL, [NSURL URLWithString: adJSON[@"imageURL"]]);
+	XCTAssertEqualObjects(ad.actionURL, [NSURL URLWithString: adJSON[@"actionURL"]]);
+	
+	FDFeedLink *link = feedPage.items[1];
+	NSDictionary *linkJSON = feedPageJSON[@"items"][1];
+	
+	XCTAssertNotNil(link);
+	XCTAssertEqualObjects(link.itemID, linkJSON[@"id"]);
+	XCTAssertEqualObjects(link.creator, linkJSON[@"creator"]);
+	XCTAssertEqualObjects(link.createdAt, [transformer.dateFormatter dateFromString: linkJSON[@"createdAt"]]);
+	XCTAssertEqualObjects(link.url, [NSURL URLWithString: linkJSON[@"url"]]);
+	
+	FDFeedPhoto *photo = feedPage.items[2];
+	NSDictionary *photoJSON = feedPageJSON[@"items"][2];
+	
+	XCTAssertNotNil(photo);
+	XCTAssertEqualObjects(photo.itemID, photoJSON[@"id"]);
+	XCTAssertEqualObjects(photo.creator, photoJSON[@"creator"]);
+	XCTAssertEqualObjects(photo.createdAt, [transformer.dateFormatter dateFromString: photoJSON[@"createdAt"]]);
+	XCTAssertEqualObjects(photo.url, [NSURL URLWithString: photoJSON[@"url"]]);
+	
+	FDFeedStatus *status = feedPage.items[3];
+	NSDictionary *statusJSON = feedPageJSON[@"items"][3];
+	
+	XCTAssertNotNil(status);
+	XCTAssertEqualObjects(status.itemID, statusJSON[@"id"]);
+	XCTAssertEqualObjects(status.creator, statusJSON[@"creator"]);
+	XCTAssertEqualObjects(status.createdAt, [transformer.dateFormatter dateFromString: statusJSON[@"createdAt"]]);
+	XCTAssertEqualObjects(status.body, statusJSON[@"body"]);
 }
 
 

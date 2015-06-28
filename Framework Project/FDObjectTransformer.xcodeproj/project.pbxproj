@@ -17,6 +17,22 @@
 		275E41B01B3F21D800F8F50E /* FDTwitchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41A61B3F21D800F8F50E /* FDTwitchStream.m */; };
 		275E41B11B3F21D800F8F50E /* FDTwitchStreamSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41A81B3F21D800F8F50E /* FDTwitchStreamSearchResults.m */; };
 		275E41B21B3F21D800F8F50E /* FDTwitchStreamSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41A81B3F21D800F8F50E /* FDTwitchStreamSearchResults.m */; };
+		275E41CB1B3F390D00F8F50E /* FDFeedPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41CA1B3F390D00F8F50E /* FDFeedPage.m */; };
+		275E41CC1B3F390D00F8F50E /* FDFeedPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41CA1B3F390D00F8F50E /* FDFeedPage.m */; };
+		275E41CF1B3F39E600F8F50E /* FDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41CE1B3F39E600F8F50E /* FDFeedItem.m */; };
+		275E41D01B3F39E600F8F50E /* FDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41CE1B3F39E600F8F50E /* FDFeedItem.m */; };
+		275E41D31B3F3A1300F8F50E /* FDFeedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41D21B3F3A1300F8F50E /* FDFeedPhoto.m */; };
+		275E41D41B3F3A1300F8F50E /* FDFeedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41D21B3F3A1300F8F50E /* FDFeedPhoto.m */; };
+		275E41D71B3F3A1900F8F50E /* FDFeedLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41D61B3F3A1900F8F50E /* FDFeedLink.m */; };
+		275E41D81B3F3A1900F8F50E /* FDFeedLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41D61B3F3A1900F8F50E /* FDFeedLink.m */; };
+		275E41DB1B3F3A2000F8F50E /* FDFeedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41DA1B3F3A2000F8F50E /* FDFeedStatus.m */; };
+		275E41DC1B3F3A2000F8F50E /* FDFeedStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41DA1B3F3A2000F8F50E /* FDFeedStatus.m */; };
+		275E41DF1B3F3A2A00F8F50E /* FDFeedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41DE1B3F3A2A00F8F50E /* FDFeedAd.m */; };
+		275E41E01B3F3A2A00F8F50E /* FDFeedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41DE1B3F3A2A00F8F50E /* FDFeedAd.m */; };
+		275E41E21B3F3DA400F8F50E /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 275E41E11B3F3DA400F8F50E /* feed.json */; };
+		275E41E31B3F3DA400F8F50E /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 275E41E11B3F3DA400F8F50E /* feed.json */; };
+		275E41E61B3F4C8300F8F50E /* FDFeedObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41E51B3F4C8300F8F50E /* FDFeedObjectTransformer.m */; };
+		275E41E71B3F4C8300F8F50E /* FDFeedObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 275E41E51B3F4C8300F8F50E /* FDFeedObjectTransformer.m */; };
 		27ACFD051B1EC42D004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */; };
 		27ACFD251B1EC474004B8142 /* FDObjectTransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ACFD1A1B1EC474004B8142 /* FDObjectTransformer.framework */; };
 		27ACFD361B1EC9FC004B8142 /* FDObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27ACFD341B1EC9FC004B8142 /* FDObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,7 +60,6 @@
 		27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */; };
 		27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2A1B250C48000FCA05 /* FDKeypathTests.m */; };
 		27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */; };
-		27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2B1B250C48000FCA05 /* FDObjectTransformerTests.m */; };
 		27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */; };
 		27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F2E1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m */; };
 		27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D00F301B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m */; };
@@ -120,6 +135,21 @@
 		275E41A61B3F21D800F8F50E /* FDTwitchStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchStream.m; sourceTree = "<group>"; };
 		275E41A71B3F21D800F8F50E /* FDTwitchStreamSearchResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTwitchStreamSearchResults.h; sourceTree = "<group>"; };
 		275E41A81B3F21D800F8F50E /* FDTwitchStreamSearchResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTwitchStreamSearchResults.m; sourceTree = "<group>"; };
+		275E41C91B3F390D00F8F50E /* FDFeedPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedPage.h; sourceTree = "<group>"; };
+		275E41CA1B3F390D00F8F50E /* FDFeedPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedPage.m; sourceTree = "<group>"; };
+		275E41CD1B3F39E600F8F50E /* FDFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedItem.h; sourceTree = "<group>"; };
+		275E41CE1B3F39E600F8F50E /* FDFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedItem.m; sourceTree = "<group>"; };
+		275E41D11B3F3A1300F8F50E /* FDFeedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedPhoto.h; sourceTree = "<group>"; };
+		275E41D21B3F3A1300F8F50E /* FDFeedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedPhoto.m; sourceTree = "<group>"; };
+		275E41D51B3F3A1900F8F50E /* FDFeedLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedLink.h; sourceTree = "<group>"; };
+		275E41D61B3F3A1900F8F50E /* FDFeedLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedLink.m; sourceTree = "<group>"; };
+		275E41D91B3F3A2000F8F50E /* FDFeedStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedStatus.h; sourceTree = "<group>"; };
+		275E41DA1B3F3A2000F8F50E /* FDFeedStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedStatus.m; sourceTree = "<group>"; };
+		275E41DD1B3F3A2A00F8F50E /* FDFeedAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedAd.h; sourceTree = "<group>"; };
+		275E41DE1B3F3A2A00F8F50E /* FDFeedAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedAd.m; sourceTree = "<group>"; };
+		275E41E11B3F3DA400F8F50E /* feed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = feed.json; sourceTree = "<group>"; };
+		275E41E41B3F4C8300F8F50E /* FDFeedObjectTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFeedObjectTransformer.h; sourceTree = "<group>"; };
+		275E41E51B3F4C8300F8F50E /* FDFeedObjectTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFeedObjectTransformer.m; sourceTree = "<group>"; };
 		27ACFCF91B1EC42D004B8142 /* FDObjectTransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDObjectTransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD041B1EC42D004B8142 /* FDObjectTransformer iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FDObjectTransformer iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ACFD0A1B1EC42D004B8142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -224,6 +254,27 @@
 			path = Twitch;
 			sourceTree = "<group>";
 		};
+		275E41C81B3F38FA00F8F50E /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				275E41DD1B3F3A2A00F8F50E /* FDFeedAd.h */,
+				275E41DE1B3F3A2A00F8F50E /* FDFeedAd.m */,
+				275E41CD1B3F39E600F8F50E /* FDFeedItem.h */,
+				275E41CE1B3F39E600F8F50E /* FDFeedItem.m */,
+				275E41D51B3F3A1900F8F50E /* FDFeedLink.h */,
+				275E41D61B3F3A1900F8F50E /* FDFeedLink.m */,
+				275E41E41B3F4C8300F8F50E /* FDFeedObjectTransformer.h */,
+				275E41E51B3F4C8300F8F50E /* FDFeedObjectTransformer.m */,
+				275E41C91B3F390D00F8F50E /* FDFeedPage.h */,
+				275E41CA1B3F390D00F8F50E /* FDFeedPage.m */,
+				275E41D11B3F3A1300F8F50E /* FDFeedPhoto.h */,
+				275E41D21B3F3A1300F8F50E /* FDFeedPhoto.m */,
+				275E41D91B3F3A2000F8F50E /* FDFeedStatus.h */,
+				275E41DA1B3F3A2000F8F50E /* FDFeedStatus.m */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		27ACFCEF1B1EC42D004B8142 = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +363,7 @@
 		27D00F281B250C48000FCA05 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				275E41C81B3F38FA00F8F50E /* Feed */,
 				275E419E1B3F21D800F8F50E /* Twitch */,
 				27D00F2C1B250C48000FCA05 /* Models */,
 				27F72E901B2CDF0300C0D9CE /* Dependencies */,
@@ -346,6 +398,7 @@
 		27D00F491B25142D000FCA05 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				275E41E11B3F3DA400F8F50E /* feed.json */,
 				27D00F4A1B25142D000FCA05 /* random.json */,
 				27F72EAC1B2D30FA00C0D9CE /* twitch_stream_search_results.json */,
 			);
@@ -555,6 +608,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275E41E21B3F3DA400F8F50E /* feed.json in Resources */,
 				27F72EAD1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */,
 				27D00F4B1B25142D000FCA05 /* random.json in Resources */,
 			);
@@ -571,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275E41E31B3F3DA400F8F50E /* feed.json in Resources */,
 				27F72EAE1B2D30FA00C0D9CE /* twitch_stream_search_results.json in Resources */,
 				27D00F4C1B25142D000FCA05 /* random.json in Resources */,
 			);
@@ -604,10 +659,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275E41D31B3F3A1300F8F50E /* FDFeedPhoto.m in Sources */,
+				275E41CF1B3F39E600F8F50E /* FDFeedItem.m in Sources */,
 				275E41AF1B3F21D800F8F50E /* FDTwitchStream.m in Sources */,
 				27D00F431B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
+				275E41E61B3F4C8300F8F50E /* FDFeedObjectTransformer.m in Sources */,
+				275E41DF1B3F3A2A00F8F50E /* FDFeedAd.m in Sources */,
 				27D00F3C1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
 				27D00F3A1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
+				275E41CB1B3F390D00F8F50E /* FDFeedPage.m in Sources */,
+				275E41D71B3F3A1900F8F50E /* FDFeedLink.m in Sources */,
 				27D00F381B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
 				275E41B11B3F21D800F8F50E /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F471B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
@@ -617,6 +678,7 @@
 				275E41A91B3F21D800F8F50E /* FDTwitchChannel.m in Sources */,
 				27D00F361B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00F341B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
+				275E41DB1B3F3A2000F8F50E /* FDFeedStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,13 +705,19 @@
 				275E41B01B3F21D800F8F50E /* FDTwitchStream.m in Sources */,
 				27D00F441B250CD4000FCA05 /* FDDeclaredPropertyTests.m in Sources */,
 				27D00F3D1B250C48000FCA05 /* FDDeclaredPropertyTestModelSubclass.m in Sources */,
+				275E41D81B3F3A1900F8F50E /* FDFeedLink.m in Sources */,
 				27D00F3B1B250C48000FCA05 /* FDDeclaredPropertyTestModel.m in Sources */,
-				27D00F391B250C48000FCA05 /* FDObjectTransformerTests.m in Sources */,
 				275E41B21B3F21D800F8F50E /* FDTwitchStreamSearchResults.m in Sources */,
 				27D00F481B251412000FCA05 /* FDRandomJSONModel.m in Sources */,
+				275E41D41B3F3A1300F8F50E /* FDFeedPhoto.m in Sources */,
+				275E41E01B3F3A2A00F8F50E /* FDFeedAd.m in Sources */,
 				27D00F411B250C48000FCA05 /* FDRandomModel.m in Sources */,
 				275E41AE1B3F21D800F8F50E /* FDTwitchObjectTransformer.m in Sources */,
+				275E41E71B3F4C8300F8F50E /* FDFeedObjectTransformer.m in Sources */,
+				275E41CC1B3F390D00F8F50E /* FDFeedPage.m in Sources */,
 				275E41AC1B3F21D800F8F50E /* FDTwitchImageURLs.m in Sources */,
+				275E41DC1B3F3A2000F8F50E /* FDFeedStatus.m in Sources */,
+				275E41D01B3F39E600F8F50E /* FDFeedItem.m in Sources */,
 				275E41AA1B3F21D800F8F50E /* FDTwitchChannel.m in Sources */,
 				27D00F371B250C48000FCA05 /* FDKeypathTests.m in Sources */,
 				27D00F351B250C48000FCA05 /* FDColorCreationTests.m in Sources */,
