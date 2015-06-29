@@ -4,9 +4,6 @@
 #import "FDEnumTransformer.h"
 
 
-#pragma mark Constants
-
-
 #pragma mark - Enumerations
 
 typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPolicy)
@@ -17,6 +14,12 @@ typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPo
 	// The property name will be converted to to all lowercase and each word will be separated with underscores.
 	FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores,
 };
+
+
+#pragma mark - Type Definitions
+
+typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class targetClass);
+
 
 #pragma mark - Class Interface
 
@@ -29,6 +32,7 @@ typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPo
 #pragma mark - Properties
 
 @property (nonatomic, assign) FDDictionaryObjectTransformerAdapterPropertyNamingPolicy propertyNamingPolicy;
+@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterInstanceBLock instanceBlock;
 
 
 #pragma mark - Constructors

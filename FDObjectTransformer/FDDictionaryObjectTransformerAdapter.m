@@ -174,9 +174,18 @@
 	}
 	else if ([object isKindOfClass: [NSDictionary class]] == YES)
 	{
-		transformedObject = [targetClass new];
+		if (self.instanceBlock != nil)
+		{
+			transformedObject = self.instanceBlock(object, targetClass);
+		}
+		else
+		{
+			transformedObject = [targetClass new];
+		}
 		
-		NSArray *declaredProperties = [targetClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		// TODO: Verify that the transformed object is not nil.
+		
+		NSArray *declaredProperties = [[transformedObject class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 			{
 				// If the property being set is a read-only property with no backing instance variable setValue:forKey: will always throw an exception so ignore the property. This is indicative of a computed property so it does not need to be set anyway.

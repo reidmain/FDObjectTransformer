@@ -38,6 +38,32 @@
 	FDJSONObjectTransformerAdapter *feedItemJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDFeedItem class]];
 	[feedItemJSONAdapter registerRemoteKeyPath: @"id" 
 		forLocalKey: @keypath(FDFeedItem, itemID)];
+	feedItemJSONAdapter.instanceBlock = ^id(id object, Class targetClass)
+		{
+			if ([object isKindOfClass: [NSDictionary class]] == YES)
+			{
+				NSString *type = object[@"type"];
+				
+				if ([type isEqualToString: @"ad"] == YES)
+				{
+					return [FDFeedAd new];
+				}
+				else if ([type isEqualToString: @"link"] == YES)
+				{
+					return [FDFeedLink new];
+				}
+				else if ([type isEqualToString: @"photo"] == YES)
+				{
+					return [FDFeedPhoto new];
+				}
+				else if ([type isEqualToString: @"status"] == YES)
+				{
+					return [FDFeedStatus new];
+				}
+			}
+			
+			return nil;
+		};
 	[self registerJSONAdapter: feedItemJSONAdapter];
 	
 	// Return initialized instance.
