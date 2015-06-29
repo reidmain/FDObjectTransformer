@@ -159,6 +159,7 @@
 				
 				if ([propertyValue isKindOfClass: [NSNumber class]] == YES)
 				{
+					// TODO: Don't use the enum transformers instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any enum transformers and use the first one.
 					FDEnumTransformer *enumTransformer = [_enumTransformers objectForKey: declaredProperty.name];
 					if (enumTransformer != nil)
 					{
@@ -185,6 +186,8 @@
 		
 		// TODO: Verify that the transformed object is not nil.
 		
+		// TODO: Get the FDDictionaryObjectTransformerAdapter for the transformed object's class because it could be different then the current adapter you are in.
+		
 		NSArray *declaredProperties = [[transformedObject class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 			{
@@ -196,6 +199,8 @@
 				}
 				
 				NSString *remoteKeyPath = [self remoteKeyPathForLocalKey: declaredProperty.name];
+				// TODO: Figure out if this is the right remote key path or not. In theory a adapter for one of the superclasses of this could be returning something custom.
+				
 				id dictionaryObject = [object valueForKeyPath: remoteKeyPath];
 				
 				// If the declared property's name does not exist in the dictionary ignore it and move onto the next property. There is no point in dealing with a property that does not exist because it could only delete data that currently exists.
@@ -211,6 +216,7 @@
 				{
 					transformedDictionaryObject = dictionaryObject;
 					
+					// TODO: Don't use the value transformer instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any value transformers and use the first one.
 					NSValueTransformer *valueTransformer = [_valueTransformers objectForKey: declaredProperty.name];
 					if (valueTransformer != nil)
 					{
@@ -219,6 +225,7 @@
 					else if ([dictionaryObject isKindOfClass: [NSArray class]] == YES 
 						&& declaredProperty.objectClass == [NSArray class])
 					{
+						// TODO: Don't use the collection types instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any collection types and use the first one.
 						Class collectionType = [_collectionTypes objectForKey: declaredProperty.name];
 						if (collectionType != nil)
 						{
@@ -229,6 +236,7 @@
 					else if ([dictionaryObject isKindOfClass: [NSString class]] == YES 
 						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
 					{
+						// TODO: Don't use the enum transformers instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any enum transformers and use the first one.
 						FDEnumTransformer *enumTransformer = [_enumTransformers objectForKey: declaredProperty.name];
 						if (enumTransformer != nil)
 						{
