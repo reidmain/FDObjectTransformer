@@ -38,31 +38,31 @@
 	FDObjectDescriptor *feedItemDescriptor = [FDObjectDescriptor new];
 	[feedItemDescriptor registerRemoteKeyPath: @"id" 
 		forLocalKey: @keypath(FDFeedItem, itemID)];
-	feedItemDescriptor.instanceBlock = ^id(id object, Class targetClass)
+	feedItemDescriptor.classClusterBlock = ^ Class (id from, Class targetClass)
 		{
-			if ([object isKindOfClass: [NSDictionary class]] == YES)
+			if ([from isKindOfClass: [NSDictionary class]] == YES)
 			{
-				NSString *type = object[@"type"];
+				NSString *type = from[@"type"];
 				
 				if ([type isEqualToString: @"ad"] == YES)
 				{
-					return [FDFeedAd new];
+					targetClass = [FDFeedAd class];
 				}
 				else if ([type isEqualToString: @"link"] == YES)
 				{
-					return [FDFeedLink new];
+					targetClass = [FDFeedLink class];
 				}
 				else if ([type isEqualToString: @"photo"] == YES)
 				{
-					return [FDFeedPhoto new];
+					targetClass = [FDFeedPhoto class];
 				}
 				else if ([type isEqualToString: @"status"] == YES)
 				{
-					return [FDFeedStatus new];
+					targetClass = [FDFeedStatus class];
 				}
 			}
 			
-			return nil;
+			return targetClass;
 		};
 	[self registerDescriptor: feedItemDescriptor 
 		forClass: [FDFeedItem class]];

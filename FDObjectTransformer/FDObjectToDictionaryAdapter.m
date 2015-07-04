@@ -17,11 +17,12 @@
 	
 	if (targetClass == [NSDictionary class])
 	{
-		NSArray *descriptors = [objectTransformer descriptorsForClass: targetClass];
+		Class objectClass = [object class];
+		NSArray *descriptors = [objectTransformer descriptorsForClass: objectClass];
 		
 		NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
 		
-		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 			{
 				id propertyValue = [object valueForKey: declaredProperty.name];

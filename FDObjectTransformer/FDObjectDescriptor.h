@@ -20,7 +20,10 @@ typedef NS_ENUM(NSUInteger, FDObjectDescriptorPropertyNamingPolicy)
 
 #pragma mark - Type Definitions
 
-typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class targetClass);
+typedef Class (^FDDictionaryObjectTransformerAdapterClassClusterBlock)(id from, Class targetClass);
+typedef id (^FDDictionaryObjectTransformerAdapterInstanceCreatorBlock)(id from, Class targetClass);
+typedef void (^FDDictionaryObjectTransformerAdapterPreTransformBlock)(id object, id from);
+typedef void (^FDDictionaryObjectTransformerAdapterPostTransformBlock)(id object, id from);
 
 
 #pragma mark - Class Interface
@@ -31,7 +34,10 @@ typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class
 #pragma mark - Properties
 
 @property (nonatomic, assign) FDObjectDescriptorPropertyNamingPolicy propertyNamingPolicy;
-@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterInstanceBLock instanceBlock;
+@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterClassClusterBlock classClusterBlock;
+@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterInstanceCreatorBlock instanceCreatorBlock;
+@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterPreTransformBlock preTransformBlock;
+@property (nonatomic, copy) FDDictionaryObjectTransformerAdapterPostTransformBlock postTransformBlock;
 
 
 #pragma mark - Constructors

@@ -19,11 +19,40 @@
 	{
 		NSArray *descriptors = [objectTransformer descriptorsForClass: targetClass];
 		
-		transformedObject = [targetClass new];
+		for (FDObjectDescriptor *descriptor in descriptors)
+		{
+			if (descriptor.classClusterBlock != nil)
+			{
+				targetClass = descriptor.classClusterBlock(object, targetClass);
+				
+				descriptors = [objectTransformer descriptorsForClass: targetClass];
+				
+				break;
+			}
+		}
 		
-		// TODO: Verify that the transformed object is not nil.
+		for (FDObjectDescriptor *descriptor in descriptors)
+		{
+			if (descriptor.instanceCreatorBlock != nil)
+			{
+				transformedObject = descriptor.instanceCreatorBlock(object, targetClass);
+				
+				break;
+			}
+		}
 		
-		// TODO: Get the FDDictionaryObjectTransformerAdapter for the transformed object's class because it could be different then the current adapter you are in.
+		if (transformedObject == nil)
+		{
+			transformedObject = [targetClass new];
+		}
+		
+		for (FDObjectDescriptor *descriptor in descriptors)
+		{
+			if (descriptor.preTransformBlock != nil)
+			{
+				descriptor.preTransformBlock(transformedObject, object);
+			}
+		}
 		
 		NSArray *declaredProperties = [[transformedObject class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
@@ -144,6 +173,14 @@
 //					FDLog(FDLogLevelInfo, @"Could not set %@ property on %@ because %@", localKeyPath, [model class], [exception reason]);
 				}
 			}];
+		
+		for (FDObjectDescriptor *descriptor in descriptors)
+		{
+			if (descriptor.postTransformBlock != nil)
+			{
+				descriptor.postTransformBlock(transformedObject, object);
+			}
+		}
 	}
 	
 	return transformedObject;

@@ -18,11 +18,12 @@
 	
 	if ([targetClass isSubclassOfClass: [FDJSONObject class]] == YES)
 	{
-		NSArray *descriptors = [objectTransformer descriptorsForClass: [object class]];
+		Class objectClass = [object class];
+		NSArray *descriptors = [objectTransformer descriptorsForClass: objectClass];
 		
 		transformedObject = [NSMutableDictionary new];
 		
-		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
+		NSArray *declaredProperties = [objectClass fd_declaredPropertiesUntilSuperclass: [NSObject class]];
 		[declaredProperties enumerateObjectsUsingBlock: ^(FDDeclaredProperty *declaredProperty, NSUInteger index, BOOL *stop)
 			{
 				// If the property being read is a read-only property with no backing instance variable this is indicative of a computed property so it does not need to be converted to JSON.
