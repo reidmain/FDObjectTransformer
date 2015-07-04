@@ -1,6 +1,6 @@
 @import XCTest;
 
-@import FDObjectTransformer.FDColor_Creation;
+#import "FDColor+Creation.h"
 
 
 @interface FDColorCreationTests : XCTestCase

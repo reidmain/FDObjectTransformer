@@ -1,8 +1,12 @@
 #import "FDObjectTransformer.h"
+
 #import "FDColor+Creation.h"
 #import "NSObject+DeclaredProperty.h"
 #import "FDThreadSafeMutableDictionary.h"
 #import "FDJSONObject.h"
+#import "FDDictionaryToObjectAdapter.h"
+#import "FDObjectToDictionaryAdapter.h"
+#import "FDObjectToJSONObjectAdapter.h"
 
 
 #pragma mark Constants
@@ -22,8 +26,9 @@
 
 @implementation FDObjectTransformer
 {
-	@private __strong FDThreadSafeMutableDictionary *_adaptersGoingToClass;
 	@private __strong NSNumberFormatter *_numberFormatter;
+	@private __strong FDThreadSafeMutableDictionary *_adaptersGoingToClass;
+	@private __strong FDThreadSafeMutableDictionary *_descriptorsForClass;
 }
 
 
@@ -41,11 +46,20 @@
 	}
 	
 	// Initialize instance variables.
-	_adaptersGoingToClass = [FDThreadSafeMutableDictionary new];
 	_numberFormatter = [NSNumberFormatter new];
+	_adaptersGoingToClass = [FDThreadSafeMutableDictionary new];
+	_descriptorsForClass = [FDThreadSafeMutableDictionary new];
 	
 	// TODO: Evaluate if this actually should be done here. I'm starting to think that a FDJSONObjectTransformerAdapter shouldn't store a model class with it because it is really only used as a way to simplify the registering of it with a transformer.
-	[self registerAdapter: [FDJSONObjectTransformerAdapter new] 
+	[self registerAdapter: [FDDictionaryToObjectAdapter new] 
+		fromClass: [NSDictionary class] 
+		toClass: [NSObject class]];
+	
+	[self registerAdapter: [FDObjectToDictionaryAdapter new] 
+		fromClass: [NSObject class] 
+		toClass: [NSDictionary class]];
+		
+	[self registerAdapter: [FDObjectToJSONObjectAdapter new] 
 		fromClass: [NSObject class] 
 		toClass: [FDJSONObject class]];
 	
@@ -80,15 +94,15 @@
 	id transformedObject = nil;
 	
 	Class toClass = objectClass;
-	while (toClass != nil)
-	{
+//	while (toClass != nil)
+//	{
 		NSString *toClassString = NSStringFromClass(toClass);
 		FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
 		if ([adaptersGoingFromClass count] > 0)
 		{
 			Class fromClass = [from class];
-			while (fromClass != nil)
-			{
+//			while (fromClass != nil)
+//			{
 				NSString *fromClassString = NSStringFromClass(fromClass);
 				id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
 				if (adapter != nil)
@@ -98,12 +112,12 @@
 					return transformedObject;
 				}
 				
-				fromClass = [fromClass superclass];
-			}
+//				fromClass = [fromClass superclass];
+//			}
 		}
 		
-		toClass = [toClass superclass];
-	}
+//		toClass = [toClass superclass];
+//	}
 	
 	if ([from isKindOfClass: [NSArray class]] == YES)
 	{
@@ -176,7 +190,7 @@
 	}
 	else if (objectClass == [NSDictionary class])
 	{
-		FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
+		FDObjectToDictionaryAdapter *adapter = [FDObjectToDictionaryAdapter new];
 		
 		transformedObject = [adapter transformObject: from 
 				intoClass: objectClass 
@@ -184,7 +198,7 @@
 	}
 	else if ([from isKindOfClass: [NSDictionary class]] == YES)
 	{
-		FDDictionaryObjectTransformerAdapter *adapter = [FDDictionaryObjectTransformerAdapter new];
+		FDDictionaryToObjectAdapter *adapter = [FDDictionaryToObjectAdapter new];
 		
 		transformedObject = [adapter transformObject: from 
 			intoClass: objectClass 
@@ -218,15 +232,24 @@
 		forKey: fromClassString];
 }
 
-- (void)registerJSONAdapter:(FDJSONObjectTransformerAdapter *)adapter
+- (void)registerDescriptor: (FDObjectDescriptor *)descriptor forClass: (Class)objectClass
 {
-	[self registerAdapter: adapter 
-		fromClass: [NSDictionary class] 
-		toClass: adapter.modelClass];
+	NSString *toClassString = NSStringFromClass(objectClass);
+	[_descriptorsForClass setValue: descriptor 
+		forKey: toClassString];
+}
+
+- (FDObjectDescriptor *)descriptorForClass: (Class)objectClass
+{
+	NSString *toClassString = NSStringFromClass(objectClass);
 	
-	[self registerAdapter: adapter 
-		fromClass: adapter.modelClass 
-		toClass: [FDJSONObject class]];
+	FDObjectDescriptor *descriptor = [_descriptorsForClass objectForKey: toClassString];
+	if (descriptor == nil)
+	{
+		descriptor = [FDObjectDescriptor new];
+	}
+	
+	return descriptor;
 }
 
 

@@ -43,34 +43,37 @@
 	dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ";
 	self.dateFormatter = dateFormatter;
 	
-	FDJSONObjectTransformerAdapter *twitchStreamSearchResultsJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStreamSearchResults class]];
-	twitchStreamSearchResultsJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKeyPath: @"_total" 
+	FDObjectDescriptor *twitchStreamSearchResultsDescriptor = [FDObjectDescriptor new];
+	twitchStreamSearchResultsDescriptor.propertyNamingPolicy = FDObjectDescriptorPropertyNamingPolicyLowerCaseWithUnderscores;
+	[twitchStreamSearchResultsDescriptor registerRemoteKeyPath: @"_total" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, total)];
-	[twitchStreamSearchResultsJSONAdapter registerRemoteKeyPath: @"_links.next" 
+	[twitchStreamSearchResultsDescriptor registerRemoteKeyPath: @"_links.next" 
 		forLocalKey: @keypath(FDTwitchStreamSearchResults, next)];
-	[twitchStreamSearchResultsJSONAdapter registerCollectionType: [FDTwitchStream class] 
+	[twitchStreamSearchResultsDescriptor registerCollectionType: [FDTwitchStream class] 
 		forPropertyName: @keypath(FDTwitchStreamSearchResults, streams)];
-	[self registerJSONAdapter: twitchStreamSearchResultsJSONAdapter];
+	[self registerDescriptor: twitchStreamSearchResultsDescriptor 
+		forClass: [FDTwitchStreamSearchResults class]];
 	
-	FDJSONObjectTransformerAdapter *twitchStreamJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchStream class]];
-	twitchStreamJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;
-	[twitchStreamJSONAdapter registerRemoteKeyPath: @"_id" 
+	FDObjectDescriptor *twitchStreamDescriptor = [FDObjectDescriptor new];
+	twitchStreamDescriptor.propertyNamingPolicy = FDObjectDescriptorPropertyNamingPolicyLowerCaseWithUnderscores;
+	[twitchStreamDescriptor registerRemoteKeyPath: @"_id" 
 		forLocalKey: @keypath(FDTwitchStream, streamID)];
-	[self registerJSONAdapter: twitchStreamJSONAdapter];
+	[self registerDescriptor: twitchStreamDescriptor 
+		forClass: [FDTwitchStream class]];
 	
-	FDJSONObjectTransformerAdapter *twitchChannelJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDTwitchChannel class]];
-	twitchChannelJSONAdapter.propertyNamingPolicy = FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores;;
+	FDObjectDescriptor *twitchChannelDescriptor = [FDObjectDescriptor new];
+	twitchChannelDescriptor.propertyNamingPolicy = FDObjectDescriptorPropertyNamingPolicyLowerCaseWithUnderscores;;
 	NSDictionary *dictionary = @{ 
 		@"en" : @(FDTwitchChannelLanguageEnglish), 
 		@"zh" : @(FDTwitchChannelLanguageChinese), 
 		@"zh-tw" : @(FDTwitchChannelLanguageTaiwanese), 
 		};
-	[twitchChannelJSONAdapter registerEnumDictionary: dictionary 
+	[twitchChannelDescriptor registerEnumDictionary: dictionary 
 		forLocalKey: @keypath(FDTwitchChannel, language)];
-	[twitchChannelJSONAdapter registerEnumDictionary: dictionary 
+	[twitchChannelDescriptor registerEnumDictionary: dictionary 
 		forLocalKey: @keypath(FDTwitchChannel, broadcasterLanguage)];
-	[self registerJSONAdapter: twitchChannelJSONAdapter];
+	[self registerDescriptor: twitchChannelDescriptor 
+		forClass: [FDTwitchChannel class]];
 	
 	// Return initialized instance.
 	return self;

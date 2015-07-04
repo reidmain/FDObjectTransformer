@@ -9,7 +9,7 @@
 #import "FDColor+Creation.h"
 #import "FDURLComponentsTransformerAdapter.h"
 #import "FDTwitchStreamSearchResults.h"
-#import "FDJSONObjectTransformerAdapter.h"
+#import "FDObjectToJSONObjectAdapter.h"
 #import "FDValueTransformer.h"
 #import "FDTwitchObjectTransformer.h"
 #import "FDSoccerPlayer.h"
@@ -509,28 +509,25 @@
 {
 	FDObjectTransformer *transformer = [FDObjectTransformer new];
 	
-	FDDictionaryObjectTransformerAdapter *playerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[playerAdapter registerRemoteKeyPath: @"first" 
+	FDObjectDescriptor *playerDescriptor = [FDObjectDescriptor new];
+	[playerDescriptor registerRemoteKeyPath: @"first" 
 		forLocalKey: @keypath(FDPlayer, firstName)];
-	[playerAdapter registerRemoteKeyPath: @"last" 
+	[playerDescriptor registerRemoteKeyPath: @"last" 
 		forLocalKey: @keypath(FDPlayer, lastName)];
-	[transformer registerAdapter: playerAdapter 
-		fromClass: [NSDictionary class] 
-		toClass: [FDPlayer class]];
+	[transformer registerDescriptor: playerDescriptor 
+		forClass: [FDPlayer class]];
 	
-	FDDictionaryObjectTransformerAdapter *hockeyPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[hockeyPlayerAdapter registerRemoteKeyPath: @"shoots" 
+	FDObjectDescriptor *hockeyPlayerDescriptor = [FDObjectDescriptor new];
+	[hockeyPlayerDescriptor registerRemoteKeyPath: @"shoots" 
 		forLocalKey: @keypath(FDHockeyPlayer, handedness)];
-	[transformer registerAdapter: hockeyPlayerAdapter 
-		fromClass: [NSDictionary class] 
-		toClass: [FDHockeyPlayer class]];
+	[transformer registerDescriptor: hockeyPlayerDescriptor 
+		forClass: [FDHockeyPlayer class]];
 	
-	FDDictionaryObjectTransformerAdapter *soccerPlayerAdapter = [FDDictionaryObjectTransformerAdapter new];
-	[soccerPlayerAdapter registerRemoteKeyPath: @"shoots" 
+	FDObjectDescriptor *soccerPlayerDescriptor = [FDObjectDescriptor new];
+	[soccerPlayerDescriptor registerRemoteKeyPath: @"shoots" 
 		forLocalKey: @keypath(FDSoccerPlayer, footedness)];
-	[transformer registerAdapter: soccerPlayerAdapter 
-		fromClass: [NSDictionary class] 
-		toClass: [FDSoccerPlayer class]];
+	[transformer registerDescriptor: soccerPlayerDescriptor 
+		forClass: [FDSoccerPlayer class]];
 	
 	NSDictionary *hockeyPlayerDictionary = @{ 
 		@"first" : @"Phil", 

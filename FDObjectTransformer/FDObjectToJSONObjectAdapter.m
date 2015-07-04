@@ -1,67 +1,13 @@
-#import "FDJSONObjectTransformerAdapter.h"
-#import "FDObjectTransformerAdapter.h"
-#import "NSObject+DeclaredProperty.h"
-#import "FDObjectTransformer.h"
+#import "FDObjectToJSONObjectAdapter.h"
+
 #import "FDJSONObject.h"
-
-
-#pragma mark Constants
-
-
-#pragma mark - Class Extension
-
-@interface FDJSONObjectTransformerAdapter ()
-
-@end
-
-
-#pragma mark - Class Variables
+#import "FDObjectTransformer.h"
+#import "NSObject+DeclaredProperty.h"
 
 
 #pragma mark - Class Definition
 
-@implementation FDJSONObjectTransformerAdapter
-{
-}
-
-
-#pragma mark - Properties
-
-
-#pragma mark - Constructors
-
-+ (instancetype)adapterForClass: (Class)modelClass
-{
-	FDJSONObjectTransformerAdapter *adapter = [[self alloc] 
-		initWithClass: modelClass];
-	
-	return adapter;
-}
-
-- (instancetype)initWithClass: (Class)modelClass
-{
-	// Abort if base initializer fails.
-	if ((self = [super init]) == nil)
-	{
-		return nil;
-	}
-	
-	// Initialize instance variables.
-	_modelClass = modelClass;
-	
-	// Return initialized instance.
-	return self;
-}
-
-
-#pragma mark - Public Methods
-
-
-
-#pragma mark - Overridden Methods
-
-
-#pragma mark - Private Methods
+@implementation FDObjectToJSONObjectAdapter
 
 
 #pragma mark - FDObjectTransformerAdapter Methods
@@ -72,6 +18,8 @@
 	
 	if ([targetClass isSubclassOfClass: [FDJSONObject class]] == YES)
 	{
+		FDObjectDescriptor *descriptor = [objectTransformer descriptorForClass: targetClass];
+		
 		transformedObject = [NSMutableDictionary new];
 		
 		NSArray *declaredProperties = [[object class] fd_declaredPropertiesUntilSuperclass: [NSObject class]];
@@ -87,7 +35,7 @@
 				id value = [object valueForKey: declaredProperty.name];
 				id transformedValue = nil;
 				
-				FDEnumTransformer *enumTransformer = [self enumTransformerForLocalKey: declaredProperty.name];
+				FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
 				if (enumTransformer != nil)
 				{
 					transformedValue = [enumTransformer stringForEnum: value];
@@ -100,7 +48,7 @@
 				
 				if (transformedValue != nil)
 				{
-					NSString *remoteKeyPath = [self remoteKeyPathForLocalKey: declaredProperty.name];
+					NSString *remoteKeyPath = [descriptor remoteKeyPathForLocalKey: declaredProperty.name];
 					
 					NSArray *keys = [remoteKeyPath componentsSeparatedByString: @"."];
 					__block NSDictionary *currentDictionary = transformedObject;
@@ -118,12 +66,6 @@
 						forKeyPath: remoteKeyPath];
 				}
 			}];
-	}
-	else
-	{
-		transformedObject = [super transformObject: object 
-			intoClass: targetClass 
-			fromObjectTransformer: objectTransformer];
 	}
 	
 	return transformedObject;

@@ -1,7 +1,7 @@
 #import "FDFeedObjectTransformer.h"
 
 #import "FDKeypath.h"
-#import "FDJSONObjectTransformerAdapter.h"
+#import "FDObjectDescriptor.h"
 #import "FDFeedPage.h"
 
 
@@ -26,19 +26,19 @@
 	dateFormatter.dateFormat = @"MM/dd/yyyy HH:mm:ss";
 	self.dateFormatter = dateFormatter;
 	
-	FDJSONObjectTransformerAdapter *feedPageJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDFeedPage class]];
-	[feedPageJSONAdapter registerRemoteKeyPath: @"meta.page" 
+	FDObjectDescriptor *feedPageDescriptor = [FDObjectDescriptor new];
+	[feedPageDescriptor registerRemoteKeyPath: @"meta.page" 
 		forLocalKey: @keypath(FDFeedPage, page)];
-	[feedPageJSONAdapter registerRemoteKeyPath: @"meta.next" 
+	[feedPageDescriptor registerRemoteKeyPath: @"meta.next" 
 		forLocalKey: @keypath(FDFeedPage, nextIdentifier)];
-	[feedPageJSONAdapter registerCollectionType: [FDFeedItem class] 
+	[feedPageDescriptor registerCollectionType: [FDFeedItem class] 
 		forPropertyName: @keypath(FDFeedPage, items)];
-	[self registerJSONAdapter: feedPageJSONAdapter];
+	[self registerDescriptor: feedPageDescriptor forClass: [FDFeedPage class]];
 	
-	FDJSONObjectTransformerAdapter *feedItemJSONAdapter = [FDJSONObjectTransformerAdapter adapterForClass: [FDFeedItem class]];
-	[feedItemJSONAdapter registerRemoteKeyPath: @"id" 
+	FDObjectDescriptor *feedItemDescriptor = [FDObjectDescriptor new];
+	[feedItemDescriptor registerRemoteKeyPath: @"id" 
 		forLocalKey: @keypath(FDFeedItem, itemID)];
-	feedItemJSONAdapter.instanceBlock = ^id(id object, Class targetClass)
+	feedItemDescriptor.instanceBlock = ^id(id object, Class targetClass)
 		{
 			if ([object isKindOfClass: [NSDictionary class]] == YES)
 			{
@@ -64,7 +64,8 @@
 			
 			return nil;
 		};
-	[self registerJSONAdapter: feedItemJSONAdapter];
+	[self registerDescriptor: feedItemDescriptor 
+		forClass: [FDFeedItem class]];
 	
 	// Return initialized instance.
 	return self;

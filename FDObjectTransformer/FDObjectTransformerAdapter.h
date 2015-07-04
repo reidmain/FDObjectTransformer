@@ -2,8 +2,6 @@
 
 @class FDObjectTransformer;
 
-#pragma mark Forward Declarations
-
 
 #pragma mark - Protocol
 
@@ -20,11 +18,6 @@
 - (id)transformObject: (id)object 
 	intoClass: (Class)targetClass 
 	fromObjectTransformer: (FDObjectTransformer *)objectTransformer;
-
-
-#pragma mark - Optional Methods
-
-@optional
 
 
 @end

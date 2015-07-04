@@ -1,18 +1,20 @@
 @import Foundation;
 
-#import "FDObjectTransformerAdapter.h"
 #import "FDEnumTransformer.h"
+
+
+#pragma mark Constants
 
 
 #pragma mark - Enumerations
 
-typedef NS_ENUM(NSUInteger, FDDictionaryObjectTransformerAdapterPropertyNamingPolicy)
+typedef NS_ENUM(NSUInteger, FDObjectDescriptorPropertyNamingPolicy)
 {
 	// No changes will be made to the name of the property. It will be used verbatim.
-	FDDictionaryObjectTransformerAdapterPropertyNamingPolicyIdentity,
+	FDObjectDescriptorPropertyNamingPolicyIdentity,
 	
 	// The property name will be converted to to all lowercase and each word will be separated with underscores.
-	FDDictionaryObjectTransformerAdapterPropertyNamingPolicyLowerCaseWithUnderscores,
+	FDObjectDescriptorPropertyNamingPolicyLowerCaseWithUnderscores,
 };
 
 
@@ -23,15 +25,12 @@ typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class
 
 #pragma mark - Class Interface
 
-@interface FDDictionaryObjectTransformerAdapter : NSObject
-<
-	FDObjectTransformerAdapter
->
+@interface FDObjectDescriptor : NSObject
 
 
 #pragma mark - Properties
 
-@property (nonatomic, assign) FDDictionaryObjectTransformerAdapterPropertyNamingPolicy propertyNamingPolicy;
+@property (nonatomic, assign) FDObjectDescriptorPropertyNamingPolicy propertyNamingPolicy;
 @property (nonatomic, copy) FDDictionaryObjectTransformerAdapterInstanceBLock instanceBlock;
 
 
@@ -49,6 +48,7 @@ typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class
 
 - (void)registerCollectionType: (Class)collectionType 
 	forPropertyName: (NSString *)propertyName;
+- (Class)collectionTypeForPropertyName: (NSString *)propertyName;
 
 - (void)registerEnumDictionary: (NSDictionary *)dictionary 
 	forLocalKey: (NSString *)localKey;
@@ -56,6 +56,7 @@ typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class
 
 - (void)registerValueTransformer: (NSValueTransformer *)valueTransformer 
 	forPropertyName: (NSString *)propertyName;
+- (NSValueTransformer *)valueTransformerForPropertyName: (NSString *)propertyName;
 
 
 @end
