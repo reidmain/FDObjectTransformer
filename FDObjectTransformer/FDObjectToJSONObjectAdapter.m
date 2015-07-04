@@ -18,7 +18,7 @@
 	
 	if ([targetClass isSubclassOfClass: [FDJSONObject class]] == YES)
 	{
-		FDObjectDescriptor *descriptor = [objectTransformer descriptorForClass: targetClass];
+		NSArray *descriptors = [objectTransformer descriptorsForClass: [object class]];
 		
 		transformedObject = [NSMutableDictionary new];
 		
@@ -35,12 +35,21 @@
 				id value = [object valueForKey: declaredProperty.name];
 				id transformedValue = nil;
 				
-				FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
-				if (enumTransformer != nil)
+				if ([value isKindOfClass: [NSNumber class]] == YES)
 				{
-					transformedValue = [enumTransformer stringForEnum: value];
+					for (FDObjectDescriptor *descriptor in descriptors)
+					{
+						FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
+						if (enumTransformer != nil)
+						{
+							transformedValue = [enumTransformer stringForEnum: value];
+							
+							break;
+						}
+					}
 				}
-				else
+				
+				if (transformedValue == nil)
 				{
 					transformedValue = [self _jsonObjectFrom: value 
 						fromObjectTransformer: objectTransformer];
@@ -48,7 +57,21 @@
 				
 				if (transformedValue != nil)
 				{
-					NSString *remoteKeyPath = [descriptor remoteKeyPathForLocalKey: declaredProperty.name];
+					NSString *remoteKeyPath = nil;
+					for (FDObjectDescriptor *descriptor in descriptors)
+					{
+						remoteKeyPath = [descriptor remoteKeyPathForLocalKey: declaredProperty.name];
+						
+						if ([descriptor isRemoteKeyPathOverriddenForLocalKey: declaredProperty.name] == YES)
+						{
+							break;
+						}
+					}
+					
+					if (remoteKeyPath == nil)
+					{
+						remoteKeyPath = [[descriptors firstObject] remoteKeyPathForLocalKey: declaredProperty.name];
+					}
 					
 					NSArray *keys = [remoteKeyPath componentsSeparatedByString: @"."];
 					__block NSDictionary *currentDictionary = transformedObject;

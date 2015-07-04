@@ -53,7 +53,7 @@ Attempt to convert from into an instance of the specified objectClass.
 	toClass: (Class)toClass;
 
 - (void)registerDescriptor: (FDObjectDescriptor *)descriptor forClass: (Class)objectClass;
-- (FDObjectDescriptor *)descriptorForClass: (Class)objectClass;
+- (NSArray *)descriptorsForClass: (Class)objectClass;
 
 
 @end

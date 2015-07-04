@@ -93,32 +93,6 @@
 	
 	id transformedObject = nil;
 	
-	Class toClass = objectClass;
-//	while (toClass != nil)
-//	{
-		NSString *toClassString = NSStringFromClass(toClass);
-		FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
-		if ([adaptersGoingFromClass count] > 0)
-		{
-			Class fromClass = [from class];
-//			while (fromClass != nil)
-//			{
-				NSString *fromClassString = NSStringFromClass(fromClass);
-				id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
-				if (adapter != nil)
-				{
-					transformedObject = [adapter transformObject:from intoClass:objectClass fromObjectTransformer: self];
-					
-					return transformedObject;
-				}
-				
-//				fromClass = [fromClass superclass];
-//			}
-		}
-		
-//		toClass = [toClass superclass];
-//	}
-	
 	if ([from isKindOfClass: [NSArray class]] == YES)
 	{
 		NSMutableArray *mutableArray = [NSMutableArray array];
@@ -188,21 +162,33 @@
 			transformedObject = [FDColor fd_colorFromHexString: from];
 		}
 	}
-	else if (objectClass == [NSDictionary class])
+	else
 	{
-		FDObjectToDictionaryAdapter *adapter = [FDObjectToDictionaryAdapter new];
-		
-		transformedObject = [adapter transformObject: from 
-				intoClass: objectClass 
-				fromObjectTransformer: self];
-	}
-	else if ([from isKindOfClass: [NSDictionary class]] == YES)
-	{
-		FDDictionaryToObjectAdapter *adapter = [FDDictionaryToObjectAdapter new];
-		
-		transformedObject = [adapter transformObject: from 
-			intoClass: objectClass 
-			fromObjectTransformer: self];
+		Class toClass = objectClass;
+		while (toClass != nil)
+		{
+			NSString *toClassString = NSStringFromClass(toClass);
+			FDThreadSafeMutableDictionary *adaptersGoingFromClass = [_adaptersGoingToClass objectForKey: toClassString];
+			if ([adaptersGoingFromClass count] > 0)
+			{
+				Class fromClass = [from class];
+				while (fromClass != nil)
+				{
+					NSString *fromClassString = NSStringFromClass(fromClass);
+					id<FDObjectTransformerAdapter> adapter = [adaptersGoingFromClass objectForKey: fromClassString];
+					if (adapter != nil)
+					{
+						transformedObject = [adapter transformObject:from intoClass:objectClass fromObjectTransformer: self];
+						
+						return transformedObject;
+					}
+					
+					fromClass = [fromClass superclass];
+				}
+			}
+			
+			toClass = [toClass superclass];
+		}
 	}
 	
 	return transformedObject;
@@ -239,17 +225,30 @@
 		forKey: toClassString];
 }
 
-- (FDObjectDescriptor *)descriptorForClass: (Class)objectClass
+- (NSArray *)descriptorsForClass: (Class)objectClass
 {
-	NSString *toClassString = NSStringFromClass(objectClass);
+	NSMutableArray *descriptors = [NSMutableArray new];
 	
-	FDObjectDescriptor *descriptor = [_descriptorsForClass objectForKey: toClassString];
-	if (descriptor == nil)
+	while (objectClass != nil)
 	{
-		descriptor = [FDObjectDescriptor new];
+		NSString *objectClassString = NSStringFromClass(objectClass);
+		FDObjectDescriptor *descriptor = [_descriptorsForClass objectForKey: objectClassString];
+		if (descriptor != nil)
+		{
+			[descriptors addObject: descriptor];
+		}
+		
+		objectClass = [objectClass superclass];
 	}
 	
-	return descriptor;
+	if ([descriptors count] == 0)
+	{
+		FDObjectDescriptor *descriptor = [FDObjectDescriptor new];
+		
+		[descriptors addObject: descriptor];
+	}
+	
+	return descriptors;
 }
 
 

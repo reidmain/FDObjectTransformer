@@ -60,6 +60,15 @@
 		forKey: localKey];
 }
 
+- (BOOL)isRemoteKeyPathOverriddenForLocalKey: (NSString *)localKey
+{
+	NSString *remoteKeyPath = [_remoteKeyPathsForLocalKeys objectForKey: localKey];
+	
+	BOOL isOverridden = (remoteKeyPath != nil);
+	
+	return isOverridden;
+}
+
 - (NSString *)remoteKeyPathForLocalKey: (NSString *)localKey
 {
 	NSString *remoteKeyPath = [_remoteKeyPathsForLocalKeys objectForKey: localKey];

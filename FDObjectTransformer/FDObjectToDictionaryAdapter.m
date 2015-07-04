@@ -17,7 +17,7 @@
 	
 	if (targetClass == [NSDictionary class])
 	{
-		FDObjectDescriptor *descriptor = [objectTransformer descriptorForClass: targetClass];
+		NSArray *descriptors = [objectTransformer descriptorsForClass: targetClass];
 		
 		NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
 		
@@ -28,11 +28,15 @@
 				
 				if ([propertyValue isKindOfClass: [NSNumber class]] == YES)
 				{
-					// TODO: Don't use the enum transformers instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any enum transformers and use the first one.
-					FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
-					if (enumTransformer != nil)
+					for (FDObjectDescriptor *descriptor in descriptors)
 					{
-						propertyValue = [enumTransformer stringForEnum: propertyValue];
+						FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
+						if (enumTransformer != nil)
+						{
+							propertyValue = [enumTransformer stringForEnum: propertyValue];
+							
+							break;
+						}
 					}
 				}
 				

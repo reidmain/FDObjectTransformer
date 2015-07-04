@@ -44,6 +44,7 @@ typedef id (^FDDictionaryObjectTransformerAdapterInstanceBLock)(id object, Class
 
 - (void)registerRemoteKeyPath: (NSString *)remoteKeyPath 
 	forLocalKey: (NSString *)localKey;
+- (BOOL)isRemoteKeyPathOverriddenForLocalKey: (NSString *)localKey;
 - (NSString *)remoteKeyPathForLocalKey: (NSString *)localKey;
 
 - (void)registerCollectionType: (Class)collectionType 

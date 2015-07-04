@@ -17,16 +17,9 @@
 	
 	if ([object isKindOfClass: [NSDictionary class]] == YES)
 	{
-		FDObjectDescriptor *descriptor = [objectTransformer descriptorForClass: [object class]];
+		NSArray *descriptors = [objectTransformer descriptorsForClass: targetClass];
 		
-		if (descriptor.instanceBlock != nil)
-		{
-			transformedObject = descriptor.instanceBlock(object, targetClass);
-		}
-		else
-		{
-			transformedObject = [targetClass new];
-		}
+		transformedObject = [targetClass new];
 		
 		// TODO: Verify that the transformed object is not nil.
 		
@@ -42,8 +35,21 @@
 					return;
 				}
 				
-				NSString *remoteKeyPath = [descriptor remoteKeyPathForLocalKey: declaredProperty.name];
-				// TODO: Figure out if this is the right remote key path or not. In theory a adapter for one of the superclasses of this could be returning something custom.
+				NSString *remoteKeyPath = nil;
+				for (FDObjectDescriptor *descriptor in descriptors)
+				{
+					if ([descriptor isRemoteKeyPathOverriddenForLocalKey: declaredProperty.name] == YES)
+					{
+						remoteKeyPath = [descriptor remoteKeyPathForLocalKey: declaredProperty.name];
+						
+						break;
+					}
+				}
+				
+				if (remoteKeyPath == nil)
+				{
+					remoteKeyPath = [[descriptors firstObject] remoteKeyPathForLocalKey: declaredProperty.name];
+				}
 				
 				id dictionaryObject = [object valueForKeyPath: remoteKeyPath];
 				
@@ -58,40 +64,58 @@
 				// If the dictionary object is not NSNull attempt to transform it otherwise do nothing and allow the property being set to be cleared.
 				if (dictionaryObject != [NSNull null])
 				{
-					transformedDictionaryObject = dictionaryObject;
+					transformedDictionaryObject = nil;
 					
-					// TODO: Don't use the value transformer instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any value transformers and use the first one.
-					NSValueTransformer *valueTransformer = [descriptor valueTransformerForPropertyName: declaredProperty.name];
-					if (valueTransformer != nil)
+					for (FDObjectDescriptor *descriptor in descriptors)
 					{
-						transformedDictionaryObject = [valueTransformer transformedValue: dictionaryObject];
-					}
-					else if ([dictionaryObject isKindOfClass: [NSArray class]] == YES 
-						&& declaredProperty.objectClass == [NSArray class])
-					{
-						// TODO: Don't use the collection types instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any collection types and use the first one.
-						Class collectionType = [descriptor collectionTypeForPropertyName: declaredProperty.name];
-						if (collectionType != nil)
+						NSValueTransformer *valueTransformer = [descriptor valueTransformerForPropertyName: declaredProperty.name];
+						if (valueTransformer != nil)
 						{
-							transformedDictionaryObject = [objectTransformer objectOfClass: collectionType 
+							transformedDictionaryObject = [valueTransformer transformedValue: dictionaryObject];
+							
+							break;
+						}
+					}
+					
+					if (transformedDictionaryObject == nil)
+					{
+						transformedDictionaryObject = dictionaryObject;
+						
+						if ([dictionaryObject isKindOfClass: [NSArray class]] == YES 
+							&& declaredProperty.objectClass == [NSArray class])
+						{
+							for (FDObjectDescriptor *descriptor in descriptors)
+							{
+								Class collectionType = [descriptor collectionTypeForPropertyName: declaredProperty.name];
+								if (collectionType != nil)
+								{
+									transformedDictionaryObject = [objectTransformer objectOfClass: collectionType 
+										from: dictionaryObject];
+									
+									break;
+								}
+							}
+						}
+						else if ([dictionaryObject isKindOfClass: [NSString class]] == YES 
+							&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
+						{
+							for (FDObjectDescriptor *descriptor in descriptors)
+							{
+								FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
+								if (enumTransformer != nil)
+								{
+									transformedDictionaryObject = [enumTransformer enumForString: dictionaryObject];
+									
+									break;
+								}
+							}
+						}
+						// If the declared property is not a scalar type attempt to transform the dictionary object into an instance of the property type.
+						else if (declaredProperty.objectClass != nil)
+						{
+							transformedDictionaryObject = [objectTransformer objectOfClass: declaredProperty.objectClass 
 								from: dictionaryObject];
 						}
-					}
-					else if ([dictionaryObject isKindOfClass: [NSString class]] == YES 
-						&& declaredProperty.typeEncoding != FDDeclaredPropertyTypeEncodingObject)
-					{
-						// TODO: Don't use the enum transformers instance variable. Instead check to see if this adapter or any of the adapters for superclasses define any enum transformers and use the first one.
-						FDEnumTransformer *enumTransformer = [descriptor enumTransformerForLocalKey: declaredProperty.name];
-						if (enumTransformer != nil)
-						{
-							transformedDictionaryObject = [enumTransformer enumForString: dictionaryObject];
-						}
-					}
-					// If the declared property is not a scalar type attempt to transform the dictionary object into an instance of the property type.
-					else if (declaredProperty.objectClass != nil)
-					{
-						transformedDictionaryObject = [objectTransformer objectOfClass: declaredProperty.objectClass 
-							from: dictionaryObject];
 					}
 				}
 				
